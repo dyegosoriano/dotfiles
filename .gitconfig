@@ -1,0 +1,38 @@
+[user]
+	email = 4140145+dyegosoriano@users.noreply.github.com
+	name = Dyego Soriano
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = false
+
+[help]
+    autocorrect = 1
+
+[color]
+    branch = auto
+    status = auto
+    diff = auto
+    ui = auto
+
+[alias]
+  log = log --oneline --graph --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30
+  rbk = reset --soft HEAD~1
+  stt = status -sb
+  ckt = checkout
+  cmt = commit
+	pll = pull
+
+  # incoming = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' ..@{u})
+  # outgoing = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' @{u}..)
+  # unstage = reset HEAD --
+  # undo = checkout --
+  # sf = show --name-only
+  # cb = checkout -b
+
+	# para filtrar a consulta ao git log
+	# lg-f = "!f() { git log -2 --grep=\"$*\" --pretty=format:'%Cred%h%Creset %C(auto, yellow)%>(21,trunc)%ci%x08%x08%Creset %Cgreen<%an>%Creset %s%C(auto)%d' --graph --max-count=15; }; f"
+  # para quando utilizar o git rollback, poder refazer o commit aproveitando a mesma msg anterio.
+	# msgback = commit -C ORIG_HEAD
