@@ -18,11 +18,13 @@
     ui = auto
 
 [alias]
-  log = log --oneline --graph --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30
+  lg = log --oneline --graph --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30
   rbk = reset --soft HEAD~1
   stt = status -sb
   ckt = checkout
   cmt = commit
+  rmt = remote
+  mrg = merge
 	pll = pull
 
   # incoming = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' ..@{u})
