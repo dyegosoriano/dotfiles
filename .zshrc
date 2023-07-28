@@ -100,15 +100,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias restart='sudo systemctl restart systemd-logind'
-alias shutdown='sudo shutdown now'
+# -=*=-=*=-=*=- UBUNTU -=*=-=*=-=*=-
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
 
-alias update='sudo apt update && apt upgrade -y'
-
-alias command-history='history|grep'
-alias filesize='du -sh * | sort -h'
-alias mkdir='mkdir -pv'
-alias ips='ip -c -br a'
-alias cls='clear'
-alias lsa='ls -la'
-alias ls='ls -l'
+# -=*=-=*=-=*=- OSX -=*=-=*=-=*=-
+# if [ -f ~/.bash_aliases ]; then
+#   source $HOME/.bash_aliases
+# fi
