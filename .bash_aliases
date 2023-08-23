@@ -1,5 +1,5 @@
 # REMOTE
-alias remote-instance="ssh -i ~/.ssh/ssh-key.pem ubuntu@X.X.X.X"
+alias rmt-instance="ssh -i ~/.ssh/ssh-key.pem ubuntu@X.X.X.X"
 
 # TERMINAL
 alias restart='sudo systemctl restart systemd-logind'
