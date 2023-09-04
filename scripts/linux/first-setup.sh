@@ -9,13 +9,15 @@ ln -s ~/.dotfiles/.bash_aliases ~/.bash_aliases
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 
-cd /home/${USER}
+clear
+
+cd $HOME
 
 # Atualizar sistema
 echo -e '\n\033[0;36mUpdating system\033[0m\n'
 sudo apt update 
 sudo apt upgrade -y
-sudo apt install curl -y
+sudo apt install bashtop curl -y
 
 # Instalar ZSH e Oh My Zsh
 echo -e '\n\033[0;36mInstalling ZSH and Oh My Zsh\033[0m\n'
@@ -36,6 +38,8 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
 sudo apt update
 apt-cache policy docker-ce
 sudo apt install docker-ce -y
+
+docker version
 
 # Instalar DOCKER COMPOSE
 echo -e '\n\033[0;36mInstalling DOCKER and DOCKER COMPOSE\033[0m\n'
@@ -67,6 +71,25 @@ asdf install yarn latest
 # Instalar NodeJS
 echo -e '\n\033[0;36mInstalling NodeJS using ASDF\033[0m\n'
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+
+# Instalar pacote de fontes Fira-Code
+echo -e '\n\033[0;36mInstalling Fira-Code font package\033[0m\n'
+fonts_dir="${HOME}/.local/share/fonts"
+if [ ! -d "${fonts_dir}" ]; then
+    echo "mkdir -p $fonts_dir"
+    mkdir -p "${fonts_dir}"
+else
+    echo "Found fonts dir $fonts_dir"
+fi
+
+version=5.2
+zip=Fira_Code_v${version}.zip
+curl --fail --location --show-error https://github.com/tonsky/FiraCode/releases/download/${version}/${zip} --output ${zip}
+unzip -o -q -d ${fonts_dir} ${zip}
+rm ${zip}
+
+echo "fc-cache -f"
+fc-cache -f
 
 # Limpar o cache do APT
 echo -e "\n\033[0;36mClearing APT's cache...\033[0m\n"
