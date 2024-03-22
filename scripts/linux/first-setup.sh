@@ -32,6 +32,7 @@ brew install act gh
 echo -e '\n\033[0;36mInstalling ZSH and Oh My Zsh\033[0m\n'
 sudo apt install zsh -y
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+chsh -s $(which zsh)
 
 # Instalar Zinit
 # https://github.com/zdharma-continuum/zinitcd
@@ -104,4 +105,5 @@ fc-cache -f
 echo -e "\n\033[0;36mClearing APT's cache...\033[0m\n"
 sudo apt autoclean && sudo apt autoremove -y
 
-echo -e '\n\033[0;36mFinish\033[0m\n'
+echo -e '\n\033[0;36mFinish and reboot system...\033[0m\n'
+sleep 10 && sudo reboot
