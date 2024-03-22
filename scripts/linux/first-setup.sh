@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
 echo -e '\n\033[0;36mRemoving the .gitconfig .zshrc files\033[0m\n'
 rm -rf ~/.gitconfig
 rm -rf ~/.zshrc
@@ -13,11 +15,18 @@ clear
 
 cd $HOME
 
-# Atualizar sistema
+# Atualizar sistema e instalar pacotes essenciais
 echo -e '\n\033[0;36mUpdating system\033[0m\n'
-sudo apt update 
-sudo apt upgrade -y
-sudo apt install bashtop curl -y
+sudo apt update && sudo apt upgrade -y
+
+# Instalando Homebrew
+echo -e '\n\033[0;36mInstalling Homebrew\033[0m\n'
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Instalando pacotes essenciais
+echo -e '\n\033[0;36mInstalling essential packages\033[0m\n'
+sudo apt install build-essential bashtop procps curl file git curl -y
+brew install act gh
 
 # Instalar ZSH e Oh My Zsh
 echo -e '\n\033[0;36mInstalling ZSH and Oh My Zsh\033[0m\n'
@@ -93,7 +102,6 @@ fc-cache -f
 
 # Limpar o cache do APT
 echo -e "\n\033[0;36mClearing APT's cache...\033[0m\n"
-sudo apt autoclean
-sudo apt autoremove -y
+sudo apt autoclean && sudo apt autoremove -y
 
 echo -e '\n\033[0;36mFinish\033[0m\n'
