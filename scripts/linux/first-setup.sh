@@ -26,6 +26,7 @@ echo -e '\n\033[0;36mInstalling Homebrew\033[0m\n'
 # Instalando pacotes essenciais
 echo -e '\n\033[0;36mInstalling essential packages\033[0m\n'
 sudo apt install build-essential bashtop procps curl file git curl -y
+sudo snap install beekeeper-studio dbeaver-ce
 brew install act gh
 
 # Instalar ZSH e Oh My Zsh
