@@ -1,23 +1,26 @@
 #!/bin/bash
 
+SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../" &> /dev/null && pwd )"
+
+echo -e '\n\033[0;36mRemoving the .gitconfig .zshrc files\033[0m\n'
+rm -rf ~/.bash_aliases && rm -rf ~/.gitconfig && rm -rf ~/.zshrc
+
+echo -e '\n\033[0;36mCreating shortcuts of files .bash_aliases .gitconfig .zshrc\033[0m\n'
+ln -s $SRC/backup/.bash_aliases ~/.bash_aliases
+ln -s $SRC/backup/.gitconfig ~/.gitconfig
+ln -s $SRC/backup/.zshrc ~/.zshrc
+
 echo -e '\n\033[0;36mUpdating system\033[0m\n' # Atualizar sistema e instalar pacotes essenciais
-sudo apt update && sudo apt upgrade -y && sudo apt install nano wget curl git -y
+sudo apt update && sudo apt upgrade -y && sudo apt install nano openssh-server wget curl git -y
+
+echo -e '\n\033[0;36mUpdating system\033[0m\n' # Atualizar sistema e instalar pacotes essenciais
+sudo systemctl start ssh && sudo systemctl enable ssh
+sudo chmod 700 ~/.ssh && sudo chmod 600 ~/.ssh/authorized_keys
 
 echo -e '\n\033[0;36mWant to install essential desktop packages? yes/no:\033[0m' # Instalando pacotes essenciais para usuário
 read decktop_response
 
 if [ "$decktop_response" == "yes" ]; then
-  SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-
-  echo -e '\n\033[0;36mRemoving the .gitconfig .zshrc files\033[0m\n'
-  rm -rf ~/.gitconfig
-  rm -rf ~/.zshrc
-
-  echo -e '\n\033[0;36mCreating shortcuts of files .bash_aliases .gitconfig .zshrc\033[0m\n'
-  ln -s ~/.dotfiles/.bash_aliases ~/.bash_aliases
-  ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-  ln -s ~/.dotfiles/.zshrc ~/.zshrc
-
   cd $HOME
 
   echo -e '\n\033[0;36mInstalling Homebrew\033[0m\n' # Instalando Homebrew
@@ -182,6 +185,7 @@ read tailscale_response
 if [ "$tailscale_response" == "yes" ]; then
   echo -e '\n\033[0;36mInstalling Tailscale VPN...\033[0m\n'
   curl -fsSL https://tailscale.com/install.sh | sh
+  sudo tailscale up
 fi
 
 echo -e '\n\033[0;36mDo you want to pre-configure Pihole? yes/no:\033[0m' # Configurando servidor NFS
