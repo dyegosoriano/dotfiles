@@ -19,6 +19,7 @@
 
 [alias]
   lg = log --oneline --graph --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30
+  author = log --format=%an
   rbk = reset --soft HEAD~1
   stt = status -sb
   ckt = checkout
@@ -36,5 +37,5 @@
 
 	# para filtrar a consulta ao git log
 	# lg-f = "!f() { git log -2 --grep=\"$*\" --pretty=format:'%Cred%h%Creset %C(auto, yellow)%>(21,trunc)%ci%x08%x08%Creset %Cgreen<%an>%Creset %s%C(auto)%d' --graph --max-count=15; }; f"
-  # para quando utilizar o git rollback, poder refazer o commit aproveitando a mesma msg anterio.
+  # para quando utilizar o git rollback, poder refazer o commit aproveitando a mesma msg anterior.
 	# msgback = commit -C ORIG_HEAD

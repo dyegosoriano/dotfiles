@@ -8,6 +8,7 @@ alias shutdown='sudo shutdown now'
 
 alias update='sudo apt update && apt upgrade -y'
 
+alias rank='sort | uniq -c | sort -r | head -n 3'
 alias history-command='history | grep'
 alias filesize='du -sh * | sort -h'
 alias mkdir='mkdir -pv'
