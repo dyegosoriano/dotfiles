@@ -44,7 +44,10 @@ else
 fi
 
 # Remove imagens do Docker inutilizadas
-echo -e '\n\033[0;36mRemoving unused Docker images...\033[0m\n'
+echo -e '\n\033[0;36mRemoving unused Docker images an volumes...\033[0m\n'
 docker image prune -a --force && docker volume prune -a --force
+
+echo -e '\n\033[0;36mClearing build cache......\033[0m\n'
+docker builder prune -f
 
 echo -e '\n\033[0;36mUpdate and cleaning done!\033[0m\n'
