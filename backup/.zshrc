@@ -122,3 +122,7 @@ autoload -Uz _zinit
 zinit light zdharma/fast-syntax-highlighting # https://github.com/zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions # https://github.com/zsh-users/zsh-completions
+
+ccm() {
+  git diff | cody chat --stdin -m 'Write a commit message for this diff'
+}
