@@ -31,10 +31,21 @@ if [ "$decktop_response" == "yes" ]; then
   sudo snap install beekeeper-studio dbeaver-ce
   brew install act gh
 
-  echo -e '\n\033[0;36mDo you want to install ZSH and Oh My Zsh? yes/no:\033[0m' # Instalar ZSH e Oh My Zsh
-  read zshr_response
+  echo -e '\n\033[0;36mDo you want to install Fish Shell and Starship? yes/no:\033[0m' # Instalar Fish Shell e Starship
+  read fish_response
 
-  if [ "$zshr_response" == "yes" ]; then
+  if [ "$fish_response" == "yes" ]; then
+    echo -e '\n\033[0;36mInstalling Fish Shell\033[0m\n' # https://github.com/fish-shell/fish-shell
+    sudo apt-add-repository ppa:fish-shell/release-3 && sudo apt update && sudo apt install fish -y
+
+    echo -e '\n\033[0;36mInstalling Starship\033[0m\n' # https://starship.rs/guide/
+    curl -sS https://starship.rs/install.sh | sh
+  fi
+
+  echo -e '\n\033[0;36mDo you want to install ZSH and Oh My Zsh? yes/no:\033[0m' # Instalar ZSH e Oh My Zsh
+  read zsh_response
+
+  if [ "$zsh_response" == "yes" ]; then
     echo -e '\n\033[0;36mInstalling ZSH and Oh My Zsh\033[0m\n' # Instala ZSH e Oh My Zsh
     sudo apt install zsh -y
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -78,8 +89,11 @@ if [ "$decktop_response" == "yes" ]; then
     . "$HOME/.asdf/completions/asdf.bash"
 
     echo -e '\n\033[0;36mInstalling Yarn using ASDF\033[0m\n' # Instala Yarn
-    asdf plugin-add yarn
-    asdf install yarn latest
+    asdf plugin-add yarn && asdf install yarn latest
+
+    echo -e '\n\033[0;36mInstalling XXX using ASDF\033[0m\n'
+    asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
+    asdf list all lazydocker && asdf install lazydocker latest && asdf global lazydocker latest
 
     echo -e '\n\033[0;36mInstalling NodeJS using ASDF\033[0m\n' # Instala NodeJS
     asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
