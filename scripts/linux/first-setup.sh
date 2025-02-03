@@ -11,7 +11,7 @@ ln -s $SRC/backup/.gitconfig ~/.gitconfig
 ln -s $SRC/backup/.zshrc ~/.zshrc
 
 echo -e '\n\033[0;36mUpdating system\033[0m\n' # Atualizar sistema e instalar pacotes essenciais
-sudo apt update && sudo apt upgrade -y && sudo apt install nano openssh-server wget curl git -y
+sudo apt update && sudo apt upgrade -y && sudo apt install nano openssh-server wget curl tmux git -y
 
 echo -e '\n\033[0;36mUpdating system\033[0m\n' # Atualizar sistema e instalar pacotes essenciais
 sudo systemctl start ssh && sudo systemctl enable ssh
@@ -56,27 +56,13 @@ if [ "$decktop_response" == "yes" ]; then
     zinit self-update
   fi
 
-  echo -e '\n\033[0;36mDo you want to install FiraCode? yes/no:\033[0m' # Instalar pacote de fontes Fira-Code
-  read firacode_response
+  echo -e '\n\033[0;36mDo you want to install NerdFonts? yes/no:\033[0m' # Instalar pacote de fontes NerdFonts
+  read nerd_fonts_response
 
-  if [ "$firacode_response" == "yes" ]; then
-    echo -e '\n\033[0;36mInstalling Fira-Code font package\033[0m\n'
-    fonts_dir="${HOME}/.local/share/fonts"
-    if [ ! -d "${fonts_dir}" ]; then
-      echo "mkdir -p $fonts_dir"
-      mkdir -p "${fonts_dir}"
-    else
-      echo "Found fonts dir $fonts_dir"
-    fi
-
-    version=5.2
-    zip=Fira_Code_v${version}.zip
-    curl --fail --location --show-error https://github.com/tonsky/FiraCode/releases/download/${version}/${zip} --output ${zip}
-    unzip -o -q -d ${fonts_dir} ${zip}
-    rm ${zip}
-
-    echo "fc-cache -f"
-    fc-cache -f
+  if [ "$nerd_fonts_response" == "yes" ]; then
+    echo -e '\n\033[0;36mInstalling NerdFonts font package\033[0m\n'
+    # cp -vf $SRC/utils/fonts/*.ttf ~/.local/share/fonts
+    ls -la $SRC/utils/fonts
   fi
 
   echo -e '\n\033[0;36mDo you want to install ASDF? yes/no:\033[0m' # Instalar ASDF
