@@ -8,14 +8,14 @@ alias shutdown='sudo shutdown now'
 
 alias update='sudo apt update && apt upgrade -y'
 
-alias rank='sort | uniq -c | sort -r | head -n 3'
+alias rank='sort | uniq -c | sort -nr | head -n 10'
 alias history-command='history | grep'
 alias filesize='du -sh * | sort -h'
 alias mkdir='mkdir -pv'
 alias ips='ip -c -br a'
 alias cls='clear'
-alias lsa='ls -la'
-alias ls='ls -l'
+alias lsa='ls -la --group-directories-first'
+alias ls='ls -l --group-directories-first'
 
 # DOCKER
 alias dkc='docker compose'
