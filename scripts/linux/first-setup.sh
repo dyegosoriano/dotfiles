@@ -6,9 +6,11 @@ echo -e '\n\033[0;36mRemoving the .gitconfig .zshrc files\033[0m\n'
 rm -rf ~/.bash_aliases && rm -rf ~/.gitconfig && rm -rf ~/.zshrc
 
 echo -e '\n\033[0;36mCreating shortcuts of files .bash_aliases .gitconfig .zshrc\033[0m\n'
-ln -s $SRC/backup/.bash_aliases ~/.bash_aliases
-ln -s $SRC/backup/.gitconfig ~/.gitconfig
-ln -s $SRC/backup/.zshrc ~/.zshrc
+ln -s $SRC/backup/bash_aliases ~/.bash_aliases
+ln -s $SRC/backup/gitconfig ~/.gitconfig
+ln -s $SRC/backup/zshrc ~/.zshrc
+ln -s $SRC/backup/nvim ~/.config/
+ln -s $SRC/backup/fish ~/.config/
 
 echo -e '\n\033[0;36mUpdating system\033[0m\n' # Atualizar sistema e instalar pacotes essenciais
 sudo apt update && sudo apt upgrade -y && sudo apt install nano openssh-server wget curl tmux git -y
@@ -27,7 +29,7 @@ if [ "$decktop_response" == "yes" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   echo -e '\n\033[0;36mInstalling essential packages\033[0m\n'
-  sudo apt install build-essential bashtop procps file -y
+  sudo apt install build-essential bashtop procps htop file -y
   sudo snap install beekeeper-studio dbeaver-ce
   brew install act gh
 
@@ -40,6 +42,8 @@ if [ "$decktop_response" == "yes" ]; then
 
     echo -e '\n\033[0;36mInstalling Starship\033[0m\n' # https://starship.rs/guide/
     curl -sS https://starship.rs/install.sh | sh
+
+    starship preset pastel-powerline -o ~/.config/starship.toml
   fi
 
   echo -e '\n\033[0;36mDo you want to install ZSH and Oh My Zsh? yes/no:\033[0m' # Instalar ZSH e Oh My Zsh
@@ -77,7 +81,7 @@ if [ "$decktop_response" == "yes" ]; then
     echo -e '\n\033[0;36mInstalling Yarn using ASDF\033[0m\n' # Instala Yarn
     asdf plugin-add yarn && asdf install yarn latest
 
-    echo -e '\n\033[0;36mInstalling XXX using ASDF\033[0m\n'
+    echo -e '\n\033[0;36mInstalling LazyDocker using ASDF\033[0m\n'
     asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
     asdf list all lazydocker && asdf install lazydocker latest && asdf global lazydocker latest
 
@@ -201,5 +205,5 @@ fi
 echo -e "\n\033[0;36mClearing APT's cache...\033[0m\n" # Limpar o cache do APT
 sudo apt autoclean && sudo apt autoremove -y
 
-echo -e '\n\033[0;36mFinish and reboot system...\033[0m\n'
-sleep 10 && sudo reboot
+# echo -e '\n\033[0;36mFinish and reboot system...\033[0m\n'
+# sleep 10 && sudo reboot

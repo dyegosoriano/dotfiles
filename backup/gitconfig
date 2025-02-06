@@ -39,3 +39,5 @@
 	# lg-f = "!f() { git log -2 --grep=\"$*\" --pretty=format:'%Cred%h%Creset %C(auto, yellow)%>(21,trunc)%ci%x08%x08%Creset %Cgreen<%an>%Creset %s%C(auto)%d' --graph --max-count=15; }; f"
   # para quando utilizar o git rollback, poder refazer o commit aproveitando a mesma msg anterior.
 	# msgback = commit -C ORIG_HEAD
+[safe]
+	directory = /home/soriano/Documentos/Developer/Projects/insta-scraper
