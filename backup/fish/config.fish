@@ -2,16 +2,22 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-starship init fish | source
+starship init fish | source # Inicializando o Starship
+set -g fish_greeting "" # Removendo a saudação do Fish
 
-# Adicione asdf ao caminho
-set -x PATH $HOME/.asdf/bin $PATH
-set -x PATH $HOME/.asdf/shims $PATH
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
 
-# Inicializar asdf
-source ~/.asdf/asdf.fish
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+set --erase _asdf_shims
 
-# Inportando alias
+# Importando alias
 if test -f ~/.bash_aliases
     for line in (cat ~/.bash_aliases | grep -E "^alias " | sed -E "s/^alias ([a-zA-Z0-9_-]+)='(.*)'/\1 \2/")
         set alias_name (echo $line | cut -d ' ' -f1)
@@ -19,4 +25,3 @@ if test -f ~/.bash_aliases
         abbr -a $alias_name $alias_cmd
     end
 end
-
