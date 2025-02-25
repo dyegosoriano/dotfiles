@@ -3,12 +3,13 @@
 SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../" &> /dev/null && pwd )"
 
 echo -e '\n\033[0;36mRemoving the .gitconfig .zshrc files\033[0m'
-rm -rf ~/.config/starship.toml && rm -rf ~/.bash_aliases && rm -rf ~/.config/nvim && rm -rf ~/.config/fish && rm -rf ~/.gitconfig && rm -rf ~/.zshrc
+rm -rf ~/.config/starship.toml && rm -rf ~/.config/ghostty && rm -rf ~/.bash_aliases && rm -rf ~/.config/nvim && rm -rf ~/.config/fish && rm -rf ~/.gitconfig && rm -rf ~/.zshrc
 
 echo -e '\n\033[0;36mCreating shortcuts of files .bash_aliases .gitconfig .zshrc\033[0m'
 ln -s $SRC/backup/starship.toml ~/.config/starship.toml
 ln -s $SRC/backup/bash_aliases ~/.bash_aliases
 ln -s $SRC/backup/gitconfig ~/.gitconfig
+ln -s $SRC/backup/ghostty ~/.config/
 ln -s $SRC/backup/nvim ~/.config/
 ln -s $SRC/backup/fish ~/.config/
 ln -s $SRC/backup/zshrc ~/.zshrc

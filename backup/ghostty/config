@@ -1,0 +1,17 @@
+theme = catppuccin-mocha
+
+# font-family = Fira Code Nerd Font
+font-family = fira-code
+font-size = 10
+
+keybind = ctrl+r=new_split:right
+keybind = ctrl+l=new_split:left
+keybind = ctrl+d=new_split:down
+keybind = ctrl+u=new_split:up
+keybind = ctrl+z=close_surface
+
+# background-opacity = 0.95
+gtk-titlebar = false
+
+# custom-shader = /home/chris/bloom.glsl
+custom-shader = /home/chris/crt.glsl
