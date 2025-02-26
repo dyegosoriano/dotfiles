@@ -1,0 +1,21 @@
+return {
+  {
+    "rcarriga/nvim-notify",
+    enabled = true,
+    opts = {
+      render = "default",
+      stages = "static",
+      timeout = 10000,
+      -- level = 3,
+      max_height = function()
+        return math.floor(vim.o.lines * 0.75)
+      end,
+      max_width = function()
+        return math.floor(vim.o.columns * 0.75)
+      end,
+    },
+    config = function()
+      require("telescope").load_extension("notify")
+    end,
+  },
+}
