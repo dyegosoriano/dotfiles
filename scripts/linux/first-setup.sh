@@ -3,14 +3,13 @@
 SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../" &> /dev/null && pwd )"
 
 echo -e '\n\033[0;36mRemoving the .gitconfig .zshrc files\033[0m'
-rm -rf ~/.config/starship.toml && rm -rf ~/.config/ghostty && rm -rf ~/.bash_aliases && rm -rf ~/.config/nvim && rm -rf ~/.config/fish && rm -rf ~/.gitconfig && rm -rf ~/.zshrc
+rm -rf ~/.config/starship.toml && rm -rf ~/.config/ghostty && rm -rf ~/.bash_aliases && rm -rf ~/.config/fish && rm -rf ~/.gitconfig && rm -rf ~/.zshrc
 
 echo -e '\n\033[0;36mCreating shortcuts of files .bash_aliases .gitconfig .zshrc\033[0m'
 ln -s $SRC/backup/starship.toml ~/.config/starship.toml
 ln -s $SRC/backup/bash_aliases ~/.bash_aliases
 ln -s $SRC/backup/gitconfig ~/.gitconfig
 ln -s $SRC/backup/ghostty ~/.config/
-ln -s $SRC/backup/nvim ~/.config/
 ln -s $SRC/backup/fish ~/.config/
 ln -s $SRC/backup/zshrc ~/.zshrc
 
@@ -18,10 +17,21 @@ echo -e '\n\033[0;36mInstalling NerdFonts font package\033[0m'
 cp -vf $SRC/utils/fonts/*.ttf ~/.local/share/fonts
 
 echo -e '\n\033[0;36mUpdating system\033[0m' # Atualizar sistema e instalar pacotes essenciais
-sudo apt update && sudo apt upgrade -y && sudo apt install openssh-server bashtop neovim htop tmux wget curl nano git -y
+sudo apt update && sudo apt upgrade -y && sudo apt install openssh-server bashtop htop wget curl git -y
 
 echo -e '\n\033[0;36mEnable SSH\033[0m' # Habilita o SSH
-sudo systemctl start ssh && sudo systemctl enable ssh && sudo chmod 700 ~/.ssh && sudo chmod 600 ~/.ssh/authorized_keys
+sudo chmod 700 ~/.ssh && sudo chmod 600 ~/.ssh/authorized_keys
+sudo systemctl start ssh && sudo systemctl enable ssh
+
+echo -e '\n\033[0;36mInstalling Neovim\033[0m' # Instala Neovim
+rm -rf ~/.config/nvim && ln -s $SRC/backup/nvim ~/.config/
+sudo apt install neovim -y
+
+echo -e '\n\033[0;36mInstalling Tmux\033[0m' # Instala Tmux
+rm -rf ~/.tmux/plugins/tpm && rm -rf ~/.tmux.conf && ln -s $SRC/backup/tmux/.tmux.conf ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone -b v2.1.2 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
+sudo apt install tmux -y && tmux source-file ~/.tmux.conf
 
 echo -e '\n\033[0;36mWant to install essential desktop packages? yes/no:\033[0m' # Instala pacotes essenciais para usuário
 read desktop_response
