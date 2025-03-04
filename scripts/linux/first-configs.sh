@@ -3,9 +3,16 @@
 SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../" &> /dev/null && pwd )"
 
 echo -e '\n\033[0;36mRemoving the .gitconfig .zshrc files\033[0m'
-rm -rf ~/.config/starship.toml && rm -rf ~/.config/ghostty && rm -rf ~/.bash_aliases && rm -rf ~/.config/fish && rm -rf ~/.gitconfig && rm -rf ~/.zshrc
+rm -rf ~/.config/starship.toml
+rm -rf ~/.tmuxifier/layouts
+rm -rf ~/.config/ghostty
+rm -rf ~/.bash_aliases
+rm -rf ~/.config/fish
+rm -rf ~/.gitconfig
+rm -rf ~/.zshrc
 
 echo -e '\n\033[0;36mCreating shortcuts of files .bash_aliases .gitconfig .zshrc\033[0m'
+ln -s $SRC/backup/tmuxifier/layouts ~/.tmuxifier/layouts
 ln -s $SRC/backup/starship.toml ~/.config/starship.toml
 ln -s $SRC/backup/bash_aliases ~/.bash_aliases
 ln -s $SRC/backup/gitconfig ~/.gitconfig
@@ -28,6 +35,10 @@ rm -rf ~/.tmux/plugins/tpm && rm -rf ~/.tmux.conf && ln -s $SRC/backup/tmux/.tmu
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 git clone -b v2.1.2 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
 brew install --quiet --force tmux && tmux source-file ~/.tmux.conf
+
+echo -e '\n\033[0;36mInstalling Tmuxifier\033[0m' # https://github.com/jimeh/tmuxifier
+git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
+$HOME/.tmuxifier/bin
 
 echo -e '\n\033[0;36mInstalling Neovim\033[0m' # Remove o diretório ~/.config/nvim e cria um link simbólico para o diretório ~/dotfiles/backup/nvim
 rm -rf ~/.config/nvim && ln -s $SRC/backup/nvim ~/.config/

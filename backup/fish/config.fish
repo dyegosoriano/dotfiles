@@ -22,3 +22,21 @@ if test -f ~/.bash_aliases # Importando alias
         abbr -a $alias_name $alias_cmd
     end
 end
+
+if test -z $TMUXIFIER # Set/fix Tmuxifier root path if needed.
+  set -gx TMUXIFIER "$HOME/.tmuxifier"
+end
+
+if not contains "$TMUXIFIER/bin" $PATH # Add `bin` directroy to `$PATH`.
+  set -gx PATH "$TMUXIFIER/bin" $PATH
+end
+
+# If `tmuxifier` is available, and `$TMUXIFIER_NO_COMPLETE` is not set, then
+# load Tmuxifier shell completion.
+if test -n (which tmuxifier); and test -z $TMUXIFIER_NO_COMPLETE
+    if [ (fish --version 2>| awk -F'version ' '{print $2}') = '2.0.0' ]; # fish shell 2.0.0 does not have the source alias
+      . "$TMUXIFIER/completion/tmuxifier.fish"
+    else
+      source "$TMUXIFIER/completion/tmuxifier.fish"
+    end
+end

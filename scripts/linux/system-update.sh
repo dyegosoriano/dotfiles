@@ -43,6 +43,12 @@ else
   echo -e '\n\033[0;36mHomebrew not found. Skipping update of Homebrew and Homebrew apps....\033[0m\n'
 fi
 
+DIR="$HOME/.tmuxifier"
+if [ -d "$DIR" ]; then
+  echo -e '\n\033[0;36mUpdating Tmuxifier...\033[0m\n'
+  cd "$DIR" && git pull && cd
+fi
+
 # Remove imagens do Docker inutilizadas
 echo -e '\n\033[0;36mRemoving unused Docker images an volumes...\033[0m\n'
 docker image prune -a --force && docker volume prune -a --force
