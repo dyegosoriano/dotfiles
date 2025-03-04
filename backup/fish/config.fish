@@ -38,3 +38,15 @@ if test -n (which tmuxifier); and test -z $TMUXIFIER_NO_COMPLETE
       source "$TMUXIFIER/completion/tmuxifier.fish"
     end
 end
+
+# Enable the `brew` key bindings
+set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
+set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar"
+set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
+
+fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
+
+set -q MANPATH; or set MANPATH ''
+set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
+set -q INFOPATH; or set INFOPATH ''
+set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
