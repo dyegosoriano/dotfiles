@@ -6,8 +6,6 @@ starship init fish | source # Inicializando o Starship
 set -g fish_greeting "" # Removendo a saudação do Fish
 
 if test -d ~/.asdf # ASDF configuration
-    source ~/.asdf/asdf.fish
-
     if not contains $_asdf_shims $PATH
         set -gx --prepend PATH $_asdf_shims
     end

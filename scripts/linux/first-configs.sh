@@ -54,7 +54,7 @@ if [ "$desktop_response" == "yes" ]; then
   echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-  brew install --quiet --force docker-compose lazydocker lazygit docker fzf
+  brew install --quiet --force docker-compose lazydocker lazygit neofetch ripgrep docker fzf bat
 
   echo -e '\n\033[0;36mDo you want to install Fish Shell and Starship or ZSH and Oh My Zsh? fish/zsh/no:\033[0m'
   read terminal_response
@@ -62,7 +62,8 @@ if [ "$desktop_response" == "yes" ]; then
   if [ "$terminal_response" == "fish" ]; then
       echo -e '\n\033[0;36mInstalling Fish Shell and Starship\033[0m'
       brew install --quiet --force fish starship
-      chsh -s $(which fish)
+      echo "$(brew --prefix)/bin/fish" | sudo tee -a /etc/shells
+      chsh -s "$(brew --prefix)/bin/fish"
   fi
 
   if [ "$terminal_response" == "zsh" ]; then

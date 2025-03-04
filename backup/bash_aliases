@@ -17,6 +17,8 @@ alias cls='clear'
 alias lsa='ls -la --group-directories-first'
 alias ls='ls -l --group-directories-first'
 
+alias nvim-open='nvim $(fzf --preview "bat --color=always {}")'
+
 # DOCKER
 alias dkc='docker compose'
 alias dk='docker'
