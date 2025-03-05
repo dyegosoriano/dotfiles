@@ -19,15 +19,18 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
--- Telescope
-map("n", "<leader>fn", "<cmd>Telescope notify<cr>", { desc = "Buscar notificações" })
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Buscar Arquivos" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Buffers Abertos" })
-map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Buscar Texto" })
-
 -- Tmux Navigator
 map("n" ,"<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>", { desc = "Navegar para a janela anterior" })
 map("n" ,"<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>", { desc = "Navegar para a janela anterior" })
 map("n" ,"<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>", { desc = "Navegar para a janela anterior" })
 map("n" ,"<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>", { desc = "Navegar para a janela anterior" })
 map("n" ,"<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>", { desc = "Navegar para a janela anterior" })
+
+-- Telescope
+map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Buscar por buffers abertos" })
+map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Buscar por arquivos" })
+map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Buscar por texto" })
+
+-- Neotree
+map("n", "<leader>er", "<cmd>Neotree filesystem reveal right<cr>", { desc = "" })
+map("n", "<leader>el", "<cmd>Neotree filesystem reveal left<cr>", { desc = "" })
