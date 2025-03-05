@@ -81,12 +81,12 @@ if [ "$desktop_response" == "yes" ]; then
     echo -e '\n\033[0;36mInstalling ASDF\033[0m'
     brew install --quiet --force asdf
 
-    asdf plugin-add ollama https://github.com/virtualstaticvoid/asdf-ollama.git # Instala Ollama
-    asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git # Instala Deno
+    asdf plugin add yarn https://github.com/twuni/asdf-yarn.git && asdf install yarn latest # Instala Yarn
+    asdf plugin add ollama https://github.com/virtualstaticvoid/asdf-ollama.git # Instala Ollama
+    asdf plugin add awscli https://github.com/MetricMike/asdf-awscli.git # Instala AWS CLI
+    asdf plugin add deno https://github.com/asdf-community/asdf-deno.git # Instala Deno
     asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git # Instala NodeJS
     asdf plugin add lua https://github.com/Stratus3D/asdf-lua.git # Instala Lua
-    asdf plugin add awscli # Instala AWS CLI
-    asdf plugin-add yarn # Instala Yarn
   fi
 fi
 

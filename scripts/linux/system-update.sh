@@ -10,6 +10,8 @@ echo -e "\n\033[0;36mClearing apt's cache...\033[0m\n"
 sudo apt autoclean
 sudo apt autoremove -y
 
+asdf plugin update --all
+
 # Verifica se o Snap está instalado
 if [ -x "$(command -v snap)" ]; then
   # Atualiza o Snap
