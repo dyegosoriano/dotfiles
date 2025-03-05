@@ -117,3 +117,12 @@
 : 0000000000:0;watch -n 1 free -h
 : 0000000000:0;watch -n 1 vmstat -s
 : 0000000000:0;watch -n 1 nvidia-smi
+
+: 0000000000:0;git clone https://github.com/user/repo.git
+: 0000000000:0;git push --set-upstream origin branch-name
+: 0000000000:0;git reset --hard commit-hash
+: 0000000000:0;git cherry-pick commit-hash
+: 0000000000:0;git reset --soft HEAD~1
+: 0000000000:0;git revert commit-hash
+: 0000000000:0;git mrg branch-name
+: 0000000000:0;git ckt branch-name
