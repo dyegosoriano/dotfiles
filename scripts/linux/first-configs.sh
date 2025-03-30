@@ -24,6 +24,7 @@ echo -e '\n\033[0;36mInstalling NerdFonts font package\033[0m'
 cp -vf $SRC/utils/fonts/*.ttf ~/.local/share/fonts
 
 echo -e '\n\033[0;36mEnable SSH\033[0m' # Habilita o SSH
+sudo apt install openssh-server -y && sudo systemctl enable ssh && sudo systemctl start ssh
 sudo chmod 700 ~/.ssh && sudo chmod 600 ~/.ssh/authorized_keys
 sudo systemctl start ssh && sudo systemctl enable ssh
 
@@ -63,7 +64,8 @@ if [ "$desktop_response" == "yes" ]; then
       echo -e '\n\033[0;36mInstalling Fish Shell and Starship\033[0m'
       brew install --quiet --force fish starship
       echo "$(brew --prefix)/bin/fish" | sudo tee -a /etc/shells
-      chsh -s "$(brew --prefix)/bin/fish"
+      # chsh -s "$(brew --prefix)/bin/fish" # Set the default shell to fish
+      chsh -s $(which fish) # Set the default shell to fish
   fi
 
   if [ "$terminal_response" == "zsh" ]; then
