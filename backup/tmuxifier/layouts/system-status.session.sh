@@ -5,7 +5,7 @@ if initialize_session "system-status"; then
 
   run_cmd "neofetch"
   split_h 50
-  run_cmd "htop"
+  run_cmd "bashtop"
   split_v 50
   run_cmd "lazydocker"
 
