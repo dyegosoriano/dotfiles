@@ -13,14 +13,16 @@ alias history-command='history | grep'
 alias filesize='du -sh * | sort -h'
 alias mkdir='mkdir -pv'
 alias ips='ip -c -br a'
-alias cls='clear'
-alias lsa='ls -la --group-directories-first'
-alias ls='ls -l --group-directories-first'
 
-alias nvim-open='nvim $(fzf --preview "bat --color=always {}")'
+alias ls='eza --long --group-directories-first --no-permissions --color=always --icons=always --no-time --no-user' # options: --grid
+alias lsa='ls -la --group-directories-first'
+alias cat='bat'
+alias cd='z'
+
+# alias nvim-open='nvim $(fzf --preview "bat --color=always {}")'
 
 # DOCKER
-alias dkc='docker compose'
+alias dkc='docker-compose'
 alias dk='docker'
 
 # KUBERNETS

@@ -3,6 +3,9 @@ if status is-interactive
 end
 
 starship init fish | source # Inicializando o Starship
+zoxide init fish | source # Inicializando o Zoxide
+fzf --fish | source # Inicializando o FZF
+
 set -g fish_greeting "" # Removendo a saudação do Fish
 
 if test "$TERM_PROGRAM" != "WarpTerminal"
@@ -51,3 +54,14 @@ set -q MANPATH; or set MANPATH ''
 set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
 set -q INFOPATH; or set INFOPATH ''
 set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
+
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+export FZF_CTRL_T_OPTS="--preview 'bat -n color=always {}'"
+
+export FZF_DEFAULT_OPTS='
+  --walker-skip .git,node_modules,dist
+  --layout reverse
+  --border top
+  --height 40%
+  --style full
+'
