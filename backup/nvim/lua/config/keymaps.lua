@@ -42,4 +42,31 @@ if vim.fn.executable("lazygit") == 1 then
   map("n", "<leader>gG", function() Snacks.lazygit() end, { desc = "Lazygit (cwd)" })
 end
 
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" }) -- quit
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" }) -- save file
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" }) -- new file
+-- map("n", "<leader>qw", "<cmd>wqa<cr>", { desc = "Save and Quit All" }) -- save and quit
+map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" }) -- quit
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" }) -- lazy
+
+-- Move Lines
+map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
+map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+
+-- windows
+-- map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
+-- map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
+-- map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+-- Snacks.toggle.zoom():map("<leader>wm"):map("<leader>uZ")
+-- Snacks.toggle.zen():map("<leader>uz")
+
+-- commenting
+-- map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
+-- map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
+
+-- better indenting
+-- map("v", "<", "<gv")
+-- map("v", ">", ">gv")

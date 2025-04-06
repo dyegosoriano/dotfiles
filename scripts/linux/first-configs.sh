@@ -39,6 +39,7 @@ brew install --quiet --force tmux && tmux source-file ~/.tmux.conf
 
 echo -e '\n\033[0;36mInstalling Tmuxifier\033[0m' # https://github.com/jimeh/tmuxifier
 git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
+export PATH="$HOME/.tmuxifier/bin:$PATH" # Tornar o tmuxifier executável nos shell's bash e zsh
 $HOME/.tmuxifier/bin
 
 echo -e '\n\033[0;36mInstalling Neovim\033[0m' # Remove o diretório ~/.config/nvim e cria um link simbólico para o diretório ~/dotfiles/backup/nvim
@@ -55,7 +56,7 @@ if [ "$desktop_response" == "yes" ]; then
   echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-  brew install --quiet --force docker-compose lazydocker lazygit neofetch ripgrep zoxide docker fzf bat eza
+  brew install --quiet --force docker-compose lazydocker lazygit neofetch ripgrep zoxide docker fzf bat
 
   echo -e '\n\033[0;36mDo you want to install Fish Shell and Starship or ZSH and Oh My Zsh? fish/zsh/no:\033[0m'
   read terminal_response

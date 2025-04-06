@@ -4,7 +4,7 @@ HOST="r2-d2.local"
 USER="soriano"
 
 SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )" # Diretório local
-DEST="/home/soriano/" # Diretório destinio
+DEST="/home/soriano/" # Diretório destino
 
 clear
 
