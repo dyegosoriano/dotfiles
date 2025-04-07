@@ -29,7 +29,7 @@ sudo chmod 700 ~/.ssh && sudo chmod 600 ~/.ssh/authorized_keys
 sudo systemctl start ssh && sudo systemctl enable ssh
 
 echo -e '\n\033[0;36mUpdating system\033[0m' # Atualizar sistema e instalar pacotes essenciais
-sudo apt update && sudo apt upgrade -y && sudo apt install build-essential bashtop htop wget curl git -y
+sudo apt update && sudo apt upgrade -y && sudo apt install build-essential bashtop htop wget curl eza git -y
 
 echo -e '\n\033[0;36mInstalling Tmux\033[0m' # Instala Tmux
 rm -rf ~/.tmux/plugins/tpm && rm -rf ~/.tmux.conf && ln -s $SRC/backup/tmux/.tmux.conf ~/.tmux.conf
