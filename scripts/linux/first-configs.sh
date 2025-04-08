@@ -14,11 +14,11 @@ rm -rf ~/.zshrc
 echo -e '\n\033[0;36mCreating shortcuts of files .bash_aliases .gitconfig .zshrc\033[0m'
 ln -s $SRC/backup/tmuxifier/layouts ~/.tmuxifier/layouts
 ln -s $SRC/backup/starship.toml ~/.config/starship.toml
-ln -s $SRC/backup/bash_aliases ~/.bash_aliases
+ln -s $SRC/backup/aliases ~/.bash_aliases
 ln -s $SRC/backup/gitconfig ~/.gitconfig
+ln -s $SRC/backup/zsh/zshrc ~/.zshrc
 ln -s $SRC/backup/ghostty ~/.config/
 ln -s $SRC/backup/fish ~/.config/
-ln -s $SRC/backup/zshrc ~/.zshrc
 
 echo -e '\n\033[0;36mInstalling NerdFonts font package\033[0m'
 cp -vf $SRC/utils/fonts/*.ttf ~/.local/share/fonts

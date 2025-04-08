@@ -1,0 +1,41 @@
+# REMOTE
+# alias rmt-instance="ssh -i ~/.ssh/ssh-key.pem ubuntu@X.X.X.X"
+alias kali-tunnel='ssh -L 61000:localhost:5901 -N -f soriano@r2-d2.local'
+alias rmt-r2d2="ssh soriano@r2-d2.local"
+
+# SYSTEM
+alias restart='sudo systemctl restart systemd-logind'
+alias update='sudo apt update && apt upgrade -y'
+alias shutdown='sudo shutdown now'
+
+# TERMINAL
+alias rank='sort | uniq -c | sort -nr | head -n 10'
+alias history-command='history | grep'
+alias file-size='du -sh * | sort -h'
+alias mkdir='mkdir -pv'
+alias ips='ip -c -br a'
+
+alias lsa='ls -la --group-directories-first'
+
+# GIT
+alias glog='git log --oneline --graph --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30'
+alias gs='git status -sb'
+alias gc='git commit -m'
+alias ga='git add .'
+alias gt='git'
+
+# TOOLS
+# alias nvim-open='nvim $(fzf --preview "bat --color=always {}")'
+# alias tmux-t='tmuxifier load-session -y'
+alias ls='eza --long --group-directories-first --no-permissions --color=always --icons=always --no-time --no-user' # options: --grid
+alias ld='lazydocker'
+alias lg='lazygit'
+alias cat='bat'
+alias cd='z'
+
+# DOCKER
+alias dkc='docker-compose'
+alias dk='docker'
+
+# KUBERNETES
+alias kube='kubectl'
