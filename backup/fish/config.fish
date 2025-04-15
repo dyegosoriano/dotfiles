@@ -12,9 +12,8 @@ if test "$TERM_PROGRAM" != "WarpTerminal"
 end
 
 if test -d ~/.asdf # ASDF configuration
-  # source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
-  set -gx PATH $HOME/.asdf/shims $PATH
-  set -gx PATH $HOME/.asdf/bin $PATH
+  source (brew --prefix asdf)/libexec/asdf.fish
+  set -gx PATH $HOME/.asdf/installs/nodejs/(asdf current nodejs | awk '{print $2}')/.npm/bin $PATH
 end
 
 if test -f ~/.bash_aliases # Importando alias
