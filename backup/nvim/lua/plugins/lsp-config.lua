@@ -40,14 +40,6 @@ return {
       lspconfig.prismals.setup({ capabilities = capabilities })
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.rome.setup({ capabilities = capabilities })
-
-      -- Atalhos de teclado para funcionalidades LSP
-      -- vim.keymap.set("n", "K", vim.lsp.buf.hover, {}) -- Mostra documentação ao passar o cursor
-      -- vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {}) -- Vai para a definição
-      -- vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {}) -- Mostra referências
-      -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {}) -- Ações de código
-      -- vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {}) -- Formata o código
-      -- vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, {}) -- Renomeia símbolos
     end,
   },
 }
