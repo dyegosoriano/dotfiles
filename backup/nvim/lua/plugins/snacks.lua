@@ -1,3 +1,6 @@
+-- https://github.com/folke/snacks.nvim
+-- if true then return {} end
+
 return {
   "folke/snacks.nvim",
   opts = {

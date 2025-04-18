@@ -1,7 +1,9 @@
+-- https://github.com/rcarriga/nvim-notify
+-- if true then return {} end
+
 return {
   {
     "rcarriga/nvim-notify",
-    enabled = true,
     opts = {
       render = "default",
       stages = "static",
