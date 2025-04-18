@@ -11,7 +11,7 @@ if initialize_session "insta-scraper"; then
   split_v 50
   run_cmd "yarn dev:apollo"
   split_h 50
-  run_cmd "yarn dev:queue"
+  run_cmd "yarn start:queue"
 
   # Load a defined window layout.
   #load_window "example"
