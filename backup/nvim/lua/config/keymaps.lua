@@ -24,6 +24,14 @@ map("n" ,"<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>", { desc = "Navegar para a jan
 map("n" ,"<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>", { desc = "Navegar para a janela anterior" })
 map("n" ,"<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>", { desc = "Navegar para a janela anterior" })
 
+-- Move Lines
+map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
+map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+
 -- Telescope
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Buscar por buffers abertos" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Buscar por arquivos" })
@@ -42,19 +50,15 @@ if vim.fn.executable("lazygit") == 1 then
   map("n", "<leader>gG", function() Snacks.lazygit() end, { desc = "Lazygit (cwd)" })
 end
 
-map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" }) -- save file
-map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" }) -- new file
--- map("n", "<leader>qw", "<cmd>wqa<cr>", { desc = "Save and Quit All" }) -- save and quit
-map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" }) -- quit
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" }) -- lazy
+-- LSP
+map("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+map("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format code" })
 
--- Move Lines
-map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
-map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" }) -- Save file
+map("n", "<leader>wqa", "<cmd>wqa<cr>", { desc = "Save and Quit All" }) -- Save and quit
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" }) -- New file
+map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" }) -- Quit
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" }) -- Lazy
 
 -- windows
 -- map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
