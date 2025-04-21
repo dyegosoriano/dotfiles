@@ -1,3 +1,6 @@
+-- https://github.com/nvim-treesitter/nvim-treesitter
+-- if true then return {} end
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -5,7 +8,7 @@ return {
     config = function()
       local config = require("nvim-treesitter.configs")
       config.setup({
-        auto_install = false,
+        auto_install = false, -- TODO: Identificar do que se trata esse ajuste.
         ensure_installed = {
           "javascript",
           "typescript",
