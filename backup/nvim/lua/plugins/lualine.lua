@@ -1,50 +1,62 @@
 -- https://github.com/nvim-lualine/lualine.nvim
 -- if true then return {} end
 
-local colors = {
-  turquoise_blue = '#00BFA5',
-  orange = '#FF6F00',
-  purple = '#651FFF',
-  black = '#1F1F1F',
-  white = '#f3f3f3',
-  green = '#76FF03',
-  gray = '#6C6F93',
-  red = '#F50057',
-
-  transparent = nil,
-}
+local colors = require("colors.andromeda")
 
 local theme = {
-  inactive = {
-    a = { fg = colors.gray, bg = colors.transparent },
-    b = { fg = colors.gray, bg = colors.transparent },
-    c = { fg = colors.gray, bg = colors.transparent },
-  },
-  visual = {
-    a = { fg = colors.black, bg = colors.gray },
-    b = { fg = colors.white, bg = colors.purple },
-    c = { fg = colors.white, bg = colors.transparent },
-  },
-  replace = {
-    a = { fg = colors.black, bg = colors.orange },
-    b = { fg = colors.white, bg = colors.purple },
-    c = { fg = colors.white, bg = colors.transparent },
-  },
   normal = {
-      a = { fg = colors.black, bg = colors.green },
-      b = { fg = colors.white, bg = colors.purple },
-      c = { fg = colors.white, bg = colors.transparent },
+    a = { fg = colors.background, bg = colors.blue, gui = "bold" },
+    b = { fg = colors.green, bg = colors.mono_2 },
+    c = { fg = colors.mono_5, bg = colors.mono_1 },
+    x = { fg = colors.mono_5, bg = colors.mono_1 },
+    y = { fg = colors.mono_5, bg = colors.mono_1 },
+    z = { fg = colors.mono_6, bg = colors.mono_1 },
   },
   insert = {
-      a = { fg = colors.black, bg = colors.red },
-      b = { fg = colors.white, bg = colors.purple },
-      c = { fg = colors.white, bg = colors.transparent },
+    a = { fg = colors.background, bg = colors.cyan, gui = "bold" },
+    b = { fg = colors.green, bg = colors.mono_2 },
+    c = { fg = colors.mono_5, bg = colors.mono_1 },
+    x = { fg = colors.mono_5, bg = colors.mono_1 },
+    y = { fg = colors.mono_5, bg = colors.mono_1 },
+    z = { fg = colors.mono_6, bg = colors.mono_1 },
+  },
+  visual = {
+    a = { fg = colors.background, bg = colors.green, gui = "bold" },
+    b = { fg = colors.green, bg = colors.mono_2 },
+    c = { fg = colors.mono_5, bg = colors.mono_1 },
+    x = { fg = colors.mono_5, bg = colors.mono_1 },
+    y = { fg = colors.mono_5, bg = colors.mono_1 },
+    z = { fg = colors.mono_6, bg = colors.mono_1 },
+  },
+  replace = {
+    a = { fg = colors.background, bg = colors.orange, gui = "bold" },
+    b = { fg = colors.green, bg = colors.mono_2 },
+    c = { fg = colors.mono_5, bg = colors.mono_1 },
+    x = { fg = colors.mono_5, bg = colors.mono_1 },
+    y = { fg = colors.mono_5, bg = colors.mono_1 },
+    z = { fg = colors.mono_6, bg = colors.mono_1 },
   },
   command = {
-      a = { fg = colors.black, bg = colors.turquoise_blue },
-      b = { fg = colors.white, bg = colors.purple },
-      c = { fg = colors.white, bg = colors.transparent },
-  }
+    a = { fg = colors.background, bg = colors.hot_pink, gui = "bold" },
+    b = { fg = colors.green, bg = colors.mono_2 },
+    c = { fg = colors.mono_5, bg = colors.mono_1 },
+    x = { fg = colors.mono_5, bg = colors.mono_1 },
+    y = { fg = colors.mono_5, bg = colors.mono_1 },
+    z = { fg = colors.mono_6, bg = colors.mono_1 },
+  },
+  terminal = {
+    a = { fg = colors.background, bg = colors.hot_pink, gui = "bold" },
+    b = { fg = colors.green, bg = colors.mono_2 },
+    c = { fg = colors.mono_5, bg = colors.mono_1 },
+    x = { fg = colors.mono_5, bg = colors.mono_1 },
+    y = { fg = colors.mono_5, bg = colors.mono_1 },
+    z = { fg = colors.hot_pink, bg = colors.mono_1 },
+  },
+  inactive = {
+    a = { fg = colors.background, bg = colors.background },
+    b = { fg = colors.background, bg = colors.background },
+    c = { fg = colors.background, bg = colors.background },
+  },
 }
 
 return {
