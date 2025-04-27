@@ -50,27 +50,8 @@ if vim.fn.executable("lazygit") == 1 then
   map("n", "<leader>gG", function() Snacks.lazygit() end, { desc = "Lazygit (cwd)" })
 end
 
--- LSP
-map("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-map("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format code" })
-
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" }) -- Save file
 map("n", "<leader>wqa", "<cmd>wqa<cr>", { desc = "Save and Quit All" }) -- Save and quit
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" }) -- New file
 map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" }) -- Quit
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" }) -- Lazy
-
--- windows
--- map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
--- map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
--- map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
--- Snacks.toggle.zoom():map("<leader>wm"):map("<leader>uZ")
--- Snacks.toggle.zen():map("<leader>uz")
-
--- commenting
--- map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
--- map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
-
--- better indenting
--- map("v", "<", "<gv")
--- map("v", ">", ">gv")

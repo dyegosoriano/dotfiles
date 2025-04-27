@@ -3,7 +3,6 @@
 
 return {
   {
-    -- Mason: Gerenciador de instalação de LSP, DAP, linters e formatadores
     "williamboman/mason.nvim",
     lazy = false,
     config = function()
@@ -11,22 +10,20 @@ return {
     end,
   },
   {
-    -- Mason-LSPConfig: Integração entre Mason e LSPConfig
     "williamboman/mason-lspconfig.nvim",
     lazy = false,
+    -- opts = { auto_install = true },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "rome", "prismals", "tailwindcss" },
+        ensure_installed = { "lua_ls", "biome", "prismals", "tailwindcss" },
       })
     end,
   },
   {
-    -- LSPConfig: Configuração principal dos servidores LSP
     "neovim/nvim-lspconfig",
     lazy = false,
     config = function()
-      -- Configura as capacidades do LSP com suporte a autocompletion
-      -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      local cmp_nvim_lsp = require("cmp_nvim_lsp")
       local capabilities = vim.tbl_deep_extend(
         "force",
         {},
@@ -40,7 +37,7 @@ return {
       lspconfig.tailwindcss.setup({ capabilities = capabilities })
       lspconfig.prismals.setup({ capabilities = capabilities })
       lspconfig.lua_ls.setup({ capabilities = capabilities })
-      lspconfig.rome.setup({ capabilities = capabilities })
+      lspconfig.biome.setup({ capabilities = capabilities })
     end,
   },
 }

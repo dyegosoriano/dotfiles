@@ -11,12 +11,13 @@ ln -s $SRC/shell/zsh/zshrc ~/.zshrc
 ln -s $SRC/shell/fish ~/.config/
 
 echo -e '\n\033[0;36mRestoring program settings...\033[0m'
-rm -rf ~/.tmuxifier/layouts && rm -rf ~/.config/ghostty && rm -rf ~/.tmux.conf && rm -rf ~/.gitconfig
+rm -rf ~/.tmuxifier/layouts && rm -rf ~/.config/ghostty && rm -rf ~/.tmux.conf && rm -rf ~/.config/nvim && rm -rf ~/.gitconfig
 
 ln -s $SRC/programs/tmuxifier/layouts ~/.tmuxifier/layouts
 ln -s $SRC/programs/tmux/.tmux.conf ~/.tmux.conf
 ln -s $SRC/programs/git/gitconfig ~/.gitconfig
 ln -s $SRC/programs/ghostty ~/.config/
+ln -s $SRC/programs/nvim ~/.config/
 
 echo -e '\n\033[0;36mInstalling NerdFonts font package\033[0m'
 cp -vf $SRC/utils/fonts/*.ttf ~/.local/share/fonts
@@ -41,7 +42,6 @@ export PATH="$HOME/.tmuxifier/bin:$PATH" # Tornar o tmuxifier executável nos sh
 $HOME/.tmuxifier/bin
 
 echo -e '\n\033[0;36mInstalling Neovim\033[0m' # Remove o diretório ~/.config/nvim e cria um link simbólico para o diretório ~/dotfiles/backup/nvim
-rm -rf ~/.config/nvim && ln -s $SRC/backup/nvim ~/.config/
 brew install --quiet --force neovim
 
 echo -e '\n\033[0;36mWant to install essential desktop packages? yes/no:\033[0m' # Instala pacotes essenciais para usuário
