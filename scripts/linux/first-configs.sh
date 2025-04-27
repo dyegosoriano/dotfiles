@@ -10,13 +10,13 @@ ln -s $SRC/shell/bash/aliases ~/.bash_aliases
 ln -s $SRC/shell/zsh/zshrc ~/.zshrc
 ln -s $SRC/shell/fish ~/.config/
 
-echo -e '\n\033[0;36mRemoving the .gitconfig .zshrc files\033[0m'
-rm -rf ~/.tmuxifier/layouts && rm -rf ~/.config/ghostty && rm -rf ~/.gitconfig
+echo -e '\n\033[0;36mRestoring program settings...\033[0m'
+rm -rf ~/.tmuxifier/layouts && rm -rf ~/.config/ghostty && rm -rf ~/.tmux.conf && rm -rf ~/.gitconfig
 
-echo -e '\n\033[0;36mCreating shortcuts of files .bash_aliases .gitconfig .zshrc\033[0m'
-ln -s $SRC/backup/tmuxifier/layouts ~/.tmuxifier/layouts
-ln -s $SRC/backup/gitconfig ~/.gitconfig
-ln -s $SRC/backup/ghostty ~/.config/
+ln -s $SRC/programs/tmuxifier/layouts ~/.tmuxifier/layouts
+ln -s $SRC/programs/tmux/.tmux.conf ~/.tmux.conf
+ln -s $SRC/programs/git/gitconfig ~/.gitconfig
+ln -s $SRC/programs/ghostty ~/.config/
 
 echo -e '\n\033[0;36mInstalling NerdFonts font package\033[0m'
 cp -vf $SRC/utils/fonts/*.ttf ~/.local/share/fonts
@@ -30,7 +30,7 @@ echo -e '\n\033[0;36mUpdating system\033[0m' # Atualizar sistema e instalar paco
 sudo apt update && sudo apt upgrade -y && sudo apt install build-essential bashtop htop wget curl git -y
 
 echo -e '\n\033[0;36mInstalling Tmux\033[0m' # Instala Tmux
-rm -rf ~/.tmux/plugins/tpm && rm -rf ~/.tmux.conf && ln -s $SRC/backup/tmux/.tmux.conf ~/.tmux.conf
+rm -rf ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 git clone -b v2.1.2 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
 brew install --quiet --force tmux && tmux source-file ~/.tmux.conf
