@@ -2,23 +2,21 @@
 
 SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../" &> /dev/null && pwd )"
 
+echo -e '\n\033[0;36mConfiguring shell...\033[0m'
+rm -rf ~/.config/starship.toml && rm -rf ~/.bash_aliases && rm -rf ~/.config/fish && rm -rf ~/.zshrc
+
+ln -s $SRC/shell/starship/starship.toml ~/.config/starship.toml
+ln -s $SRC/shell/bash/aliases ~/.bash_aliases
+ln -s $SRC/shell/zsh/zshrc ~/.zshrc
+ln -s $SRC/shell/fish ~/.config/
+
 echo -e '\n\033[0;36mRemoving the .gitconfig .zshrc files\033[0m'
-rm -rf ~/.config/starship.toml
-rm -rf ~/.tmuxifier/layouts
-rm -rf ~/.config/ghostty
-rm -rf ~/.bash_aliases
-rm -rf ~/.config/fish
-rm -rf ~/.gitconfig
-rm -rf ~/.zshrc
+rm -rf ~/.tmuxifier/layouts && rm -rf ~/.config/ghostty && rm -rf ~/.gitconfig
 
 echo -e '\n\033[0;36mCreating shortcuts of files .bash_aliases .gitconfig .zshrc\033[0m'
 ln -s $SRC/backup/tmuxifier/layouts ~/.tmuxifier/layouts
-ln -s $SRC/backup/starship.toml ~/.config/starship.toml
-ln -s $SRC/backup/aliases ~/.bash_aliases
 ln -s $SRC/backup/gitconfig ~/.gitconfig
-ln -s $SRC/backup/zsh/zshrc ~/.zshrc
 ln -s $SRC/backup/ghostty ~/.config/
-ln -s $SRC/backup/fish ~/.config/
 
 echo -e '\n\033[0;36mInstalling NerdFonts font package\033[0m'
 cp -vf $SRC/utils/fonts/*.ttf ~/.local/share/fonts
@@ -29,7 +27,7 @@ sudo chmod 700 ~/.ssh && sudo chmod 600 ~/.ssh/authorized_keys
 sudo systemctl start ssh && sudo systemctl enable ssh
 
 echo -e '\n\033[0;36mUpdating system\033[0m' # Atualizar sistema e instalar pacotes essenciais
-sudo apt update && sudo apt upgrade -y && sudo apt install build-essential bashtop htop wget curl eza git -y
+sudo apt update && sudo apt upgrade -y && sudo apt install build-essential bashtop htop wget curl git -y
 
 echo -e '\n\033[0;36mInstalling Tmux\033[0m' # Instala Tmux
 rm -rf ~/.tmux/plugins/tpm && rm -rf ~/.tmux.conf && ln -s $SRC/backup/tmux/.tmux.conf ~/.tmux.conf
@@ -56,7 +54,7 @@ if [ "$desktop_response" == "yes" ]; then
   echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-  brew install --quiet --force docker-compose lazydocker lazygit neofetch ripgrep zoxide docker fzf bat
+  brew install --quiet --force docker-compose lazydocker lazygit neofetch ripgrep zoxide docker eza fzf bat
 
   echo -e '\n\033[0;36mDo you want to install Fish Shell and Starship or ZSH and Oh My Zsh? fish/zsh/no:\033[0m'
   read terminal_response

@@ -11,31 +11,29 @@ alias shutdown='sudo shutdown now'
 # TERMINAL
 alias rank='sort | uniq -c | sort -nr | head -n 10'
 alias history-command='history | grep'
-alias file-size='du -sh * | sort -h'
+alias fs='du -sh * | sort -h'
 alias mkdir='mkdir -pv'
 alias ips='ip -c -br a'
-
-alias lsa='ls -la --group-directories-first'
 
 # GIT
 alias gl='git log --oneline --graph --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30'
 alias gs='git status -sb'
 alias gc='git commit -m'
 alias ga='git add -p'
-alias gt='git'
+alias g='git'
 
 # TOOLS
 # alias nvim-open='nvim $(fzf --preview "bat --color=always {}")'
 # alias tmux-t='tmuxifier load-session -y'
-alias ls='eza --long --group-directories-first --no-permissions --color=always --icons=always --no-time --no-user' # options: --grid
+alias lsa='eza --long --group-directories-first --no-permissions --color=always --icons=always --no-time --no-user --grid --all'
+alias ls='eza --long --group-directories-first --no-permissions --color=always --icons=always --no-time --no-user --grid'
 alias ld='lazydocker'
 alias lg='lazygit'
 alias cat='bat'
-alias cd='z'
 
 # DOCKER
 alias dkc='docker-compose'
 alias dk='docker'
 
 # KUBERNETES
-alias kube='kubectl'
+alias kb='kubectl'
