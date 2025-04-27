@@ -61,7 +61,11 @@ map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" })
 -- windows
 map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 
 -- LSP
 map("n", "<leader>ld", vim.lsp.buf.definition, { desc = "Go to definition" })
+map("n", "<leader>lr", vim.lsp.buf.references, { desc = "List references" })
+map("n", "<leader>ldoc", vim.lsp.buf.hover, { desc = "Show Documentation" })
+map("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code actions" })
 map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })

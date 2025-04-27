@@ -11,6 +11,7 @@ return {
   },
   config = function()
     require("neo-tree").setup({
+      sources = { "filesystem", "buffers", "git_status", "document_symbols" },
       filesystem = {
         follow_current_file = {
           leave_dirs_open = false,
@@ -24,6 +25,10 @@ return {
           hide_hidden = false,
           visible = true,
         },
+      },
+      window = {
+        mappings = {},
+        width = 30,
       },
     })
   end,

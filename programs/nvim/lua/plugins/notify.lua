@@ -6,9 +6,12 @@ return {
     "rcarriga/nvim-notify",
     opts = {
       render = "default",
+      top_down = false,
       timeout = 10000,
       stages = "fade",
-      -- level = 3,
+      level = 3,
+      fps = 60,
+
       max_height = function()
         return math.floor(vim.o.lines * 0.75)
       end,

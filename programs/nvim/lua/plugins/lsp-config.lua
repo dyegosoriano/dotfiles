@@ -15,7 +15,7 @@ return {
     -- opts = { auto_install = true },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "biome", "prismals", "tailwindcss" },
+        ensure_installed = { "lua_ls", "ts_ls", "prismals", "tailwindcss" },
       })
     end,
   },
@@ -37,7 +37,7 @@ return {
       lspconfig.tailwindcss.setup({ capabilities = capabilities })
       lspconfig.prismals.setup({ capabilities = capabilities })
       lspconfig.lua_ls.setup({ capabilities = capabilities })
-      lspconfig.biome.setup({ capabilities = capabilities })
+      lspconfig.ts_ls.setup({ capabilities = capabilities })
     end,
   },
 }
