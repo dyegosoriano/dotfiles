@@ -9,10 +9,10 @@ local M = {
   mono_6 = "#d5ced9",
 
   secondary = "#ff00aa", -- pink
-  primary = "#00e8c6", -- cyan
+  primary = "#00e8c6",   -- cyan
 
-  pink = "#ff00aa", -- secondary
-  cyan = "#00e8c6", -- primary
+  pink = "#ff00aa",      -- secondary
+  cyan = "#00e8c6",      -- primary
 
   hot_pink = "#f92672",
   purple = "#c74ded",
@@ -30,6 +30,12 @@ local M = {
   diff_change = "#47eae0",
   diff_delete = "#ff0038",
   diff_add = "#00ff77",
+
+  notify_warning = "#ff7700",
+  notify_debug = "#606064",
+  notify_error = "#ff0038",
+  notify_trace = "#c74ded",
+  notify_info = "#00ff77",
 }
 
 return M

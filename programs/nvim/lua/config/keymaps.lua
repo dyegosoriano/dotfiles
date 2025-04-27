@@ -35,6 +35,7 @@ map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
 -- Telescope
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Buscar por buffers abertos" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Buscar por arquivos" })
+map("n", "<leader>fn", "<cmd>Telescope notify<cr>", { desc = "Buscar por notificações" })
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Buscar por texto" })
 
 -- Neotree
@@ -50,8 +51,17 @@ if vim.fn.executable("lazygit") == 1 then
   map("n", "<leader>gG", function() Snacks.lazygit() end, { desc = "Lazygit (cwd)" })
 end
 
+-- Others
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" }) -- Save file
-map("n", "<leader>wqa", "<cmd>wqa<cr>", { desc = "Save and Quit All" }) -- Save and quit
-map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" }) -- New file
-map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" }) -- Quit
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" }) -- Lazy
+map("n", "<leader>wqa", "<cmd>wqa<cr>", { desc = "Save and Quit All" })
+map("n", "<leader>wa", "<cmd>wa<cr>", { desc = "Save all files" })
+map("n", "<leader>nf", "<cmd>enew<cr>", { desc = "New File" })
+map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" })
+
+-- windows
+map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
+map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
+
+-- LSP
+map("n", "<leader>ld", vim.lsp.buf.definition, { desc = "Go to definition" })
+map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
