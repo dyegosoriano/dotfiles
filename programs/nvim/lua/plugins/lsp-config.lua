@@ -15,7 +15,7 @@ return {
     -- opts = { auto_install = true },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "prismals", "tailwindcss" },
+        ensure_installed = { "docker_compose_language_service", "tailwindcss", "dockerls", "prismals", "pylsp", "gopls", "lua_ls", "ts_ls" },
       })
     end,
   },
@@ -27,15 +27,19 @@ return {
       local capabilities = vim.tbl_deep_extend(
         "force",
         {},
-        vim.lsp.protocol.make_client_capabilities()
-        -- cmp_nvim_lsp.default_capabilities()
+        vim.lsp.protocol.make_client_capabilities(),
+        cmp_nvim_lsp.default_capabilities()
       )
 
       local lspconfig = require("lspconfig")
 
       -- Configuração dos servidores LSP
+      lspconfig.docker_compose_language_service.setup({ capabilities = capabilities, filetypes = { "yaml.docker-compose" } })
+      lspconfig.gopls.setup({ capabilities = capabilities, filetypes = { "go", "gomod", "gowork", "gotmpl" } })
+      lspconfig.dockerls.setup({ capabilities = capabilities, filetypes = { "dockerfile" } })
+      lspconfig.prismals.setup({ capabilities = capabilities, filetypes = { "prisma" } })
+      lspconfig.pylsp.setup({ capabilities = capabilities, filetypes = { "python" } })
       lspconfig.tailwindcss.setup({ capabilities = capabilities })
-      lspconfig.prismals.setup({ capabilities = capabilities })
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.ts_ls.setup({ capabilities = capabilities })
     end,
