@@ -16,7 +16,7 @@ alias mkdir='mkdir -pv'
 alias ips='ip -c -br a'
 
 # GIT
-alias gl='git log --oneline --graph --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30'
+alias gl="git log --oneline --graph --pretty=format:'%C(bold)%cr%Creset %s' --max-count=30"
 alias gs='git status -sb'
 alias gc='git commit -m'
 alias ga='git add -p'
@@ -29,7 +29,7 @@ alias lsa='eza --long --group-directories-first --no-permissions --color=always 
 alias ls='eza --long --group-directories-first --no-permissions --color=always --icons=always --no-time --no-user --grid'
 alias ld='lazydocker'
 alias lg='lazygit'
-alias cat='bat'
+alias b='bat'
 
 # DOCKER
 alias dkc='docker-compose'

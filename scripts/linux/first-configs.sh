@@ -11,10 +11,8 @@ ln -s $SRC/shell/zsh/zshrc ~/.zshrc
 ln -s $SRC/shell/fish ~/.config/
 
 echo -e '\n\033[0;36mRestoring program settings...\033[0m'
-rm -rf ~/.tmuxifier/layouts && rm -rf ~/.config/ghostty && rm -rf ~/.tmux.conf && rm -rf ~/.config/nvim && rm -rf ~/.gitconfig
+rm -rf ~/.config/ghostty && rm -rf ~/.config/nvim && rm -rf ~/.gitconfig
 
-ln -s $SRC/programs/tmuxifier/layouts ~/.tmuxifier/layouts
-ln -s $SRC/programs/tmux/.tmux.conf ~/.tmux.conf
 ln -s $SRC/programs/git/gitconfig ~/.gitconfig
 ln -s $SRC/programs/ghostty ~/.config/
 ln -s $SRC/programs/nvim ~/.config/
@@ -34,10 +32,12 @@ echo -e '\n\033[0;36mInstalling Tmux\033[0m' # Instala Tmux
 rm -rf ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 git clone -b v2.1.2 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
+rm -rf ~/.tmux.conf && ln -s $SRC/programs/tmux/.tmux.conf ~/.tmux.conf
 brew install --quiet --force tmux && tmux source-file ~/.tmux.conf
 
 echo -e '\n\033[0;36mInstalling Tmuxifier\033[0m' # https://github.com/jimeh/tmuxifier
 git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
+rm -rf ~/.tmuxifier/layouts && ln -s $SRC/programs/tmuxifier/layouts ~/.tmuxifier/layouts
 export PATH="$HOME/.tmuxifier/bin:$PATH" # Tornar o tmuxifier executável nos shell's bash e zsh
 $HOME/.tmuxifier/bin
 
