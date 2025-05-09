@@ -7,7 +7,7 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    notifier = { enabled = true, top_down = false, render = "fancy" },
+    notifier = { enabled = true },
     bigfile = { enabled = true },
     dashboard = {
       enabled = true,

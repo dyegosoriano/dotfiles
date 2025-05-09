@@ -32,6 +32,8 @@ return {
       )
 
       local lspconfig = require("lspconfig")
+      -- Documentação com todos os LSP
+      -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 
       -- Configuração dos servidores LSP
       lspconfig.docker_compose_language_service.setup({ capabilities = capabilities, filetypes = { "yaml.docker-compose" } })
