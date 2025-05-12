@@ -6,7 +6,13 @@ return {
   event = "VeryLazy",
   version = false,
   opts = {
-    provider = "openai",
+    provider = "groq",
+    claude = {
+      endpoint = "https://api.anthropic.com",
+      model = "claude-3-5-sonnet-20241022",
+      max_tokens = 4096,
+      temperature = 0,
+    },
     openai = {
       --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
       endpoint = "https://api.openai.com/v1",
@@ -14,6 +20,23 @@ return {
       model = "gpt-4o",
       temperature = 0,
       timeout = 30000,
+    },
+    vendors = {
+      -- https://github.com/yetone/avante.nvim/wiki/Custom-providers
+      groq = {
+        endpoint = "https://api.groq.com/openai/v1",
+        model = "meta-llama/llama-4-scout-17b-16e-instruct",
+        api_key_name = "GROQ_API_KEY",
+        __inherited_from = "openai",
+        max_tokens = 4096,
+        temperature = 0,
+      },
+      ollama = {
+        endpoint = "http://127.0.0.1:11434/v1",
+        __inherited_from = "openai",
+        disable_tools = true,
+        model = "codegemma",
+      },
     },
   },
   build = "make",
