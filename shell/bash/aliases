@@ -15,6 +15,10 @@ alias fs='du -sh * | sort -h'
 alias mkdir='mkdir -pv'
 alias ips='ip -c -br a'
 
+# other Aliases shortcuts
+alias c="clear"
+alias e="exit"
+
 # GIT
 alias gl="git log --oneline --graph --pretty=format:'%C(bold)%cr%Creset %s' --max-count=30"
 alias gs='git status -sb'
@@ -37,3 +41,6 @@ alias dk='docker'
 
 # KUBERNETES
 alias kb='kubectl'
+
+alias nzo="~/.dotfiles/scripts/scripts/zoxide_openfiles_nvim.sh"
+alias nlof="~/.dotfiles/scripts/scripts/fzf_listoldfiles.sh"
