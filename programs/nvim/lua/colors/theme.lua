@@ -5,14 +5,14 @@ local colors = require("colors.andromeda")
 M.setup = function()
   -- Vim Editor
   vim.api.nvim_set_hl(0, "InvNormal", { fg = colors.mono_2, bg = colors.background })
-  vim.api.nvim_set_hl(0, "Normal", { fg = colors.mono_5, bg = colors.background })
+  vim.api.nvim_set_hl(0, "Normal", { fg = colors.mono_5, bg = colors.background }) -- AQUI
   vim.api.nvim_set_hl(0, "NormalFloat", { fg = colors.mono_6 })
   vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.mono_3 })
 
   vim.api.nvim_set_hl(0, "LineNr", { fg = colors.mono_3, bg = colors.background })
   vim.api.nvim_set_hl(0, "SignColumn", { fg = nil, bg = colors.background })
   vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = colors.mono_3, bg = nil })
-  -- vim.api.nvim_set_hl(0, "VertSplit",   { g.FloatBorder, g.FloatBorder })
+  -- vim.api.nvim_set_hl(0, "VertSplit",   { fg = colors.background, bg = colors.background })
 
   vim.api.nvim_set_hl(0, "WarningMsg", { fg = colors.diagnostic_warning })
   vim.api.nvim_set_hl(0, "ErrorMsg", { fg = colors.diagnostic_error })

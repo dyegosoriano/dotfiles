@@ -18,4 +18,5 @@ vim.opt.guifont = "Fira Code"
 vim.opt.relativenumber = false
 vim.opt.number = true
 
+vim.opt.fillchars:append({ eob = " " })
 vim.g.netrw_list_hide = ''
