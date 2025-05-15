@@ -25,14 +25,22 @@ map("n" ,"<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>", { desc = "Navegar para a jan
 map("n" ,"<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>", { desc = "Navegar para a janela anterior" })
 
 -- Move Lines
+map("v", "<A-Up>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+map("n", "<A-Up>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
 map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
+map("i", "<A-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+
+map("v", "<A-Down>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
 map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
+map("n", "<A-Down>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
 map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
+map("i", "<A-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
 map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
 
 -- Telescope
+map("n", "<leader>fh", "<cmd>Telescope command_history<cr>", { desc = "Buscar por histórico de comandos" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Buscar por buffers abertos" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Buscar por arquivos" })
 map("n", "<leader>fn", "<cmd>Telescope notify<cr>", { desc = "Buscar por notificações" })
@@ -52,7 +60,6 @@ if vim.fn.executable("lazygit") == 1 then
 end
 
 -- Others
-map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" }) -- Save file
 map("n", "<leader>wqa", "<cmd>wqa<cr>", { desc = "Save and Quit All" })
 map("n", "<leader>wa", "<cmd>wa<cr>", { desc = "Save all files" })
 map("n", "<leader>nf", "<cmd>enew<cr>", { desc = "New File" })
@@ -66,6 +73,6 @@ map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 -- LSP
 map("n", "<leader>ld", vim.lsp.buf.definition, { desc = "Go to definition" })
 map("n", "<leader>lr", vim.lsp.buf.references, { desc = "List references" })
-map("n", "<leader>ldoc", vim.lsp.buf.hover, { desc = "Show Documentation" })
+map("n", "<leader>ldoc", vim.lsp.buf.hover, { desc = "Show Documentation" }) -- Mostra documentação ao passar o cursor
 map("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code actions" })
 map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })

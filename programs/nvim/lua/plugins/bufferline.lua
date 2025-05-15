@@ -12,7 +12,7 @@ return {
             highlight = "Directory",
             text = "File Explorer",
             filetype = "neo-tree",
-            text_align = "left"
+            text_align = "center"
           }
         }
       }
