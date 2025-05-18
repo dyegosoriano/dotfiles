@@ -45,6 +45,7 @@ map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Buscar por buffer
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Buscar por arquivos" })
 map("n", "<leader>fn", "<cmd>Telescope notify<cr>", { desc = "Buscar por notificações" })
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Buscar por texto" })
+map("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Buscar pela lista de TODO" })
 
 -- Neotree
 map("n", "<leader>e>", "<cmd>Neotree filesystem reveal right<cr>", { desc = "" })
@@ -60,6 +61,7 @@ if vim.fn.executable("lazygit") == 1 then
 end
 
 -- Others
+-- map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" }) -- Save file
 map("n", "<leader>wqa", "<cmd>wqa<cr>", { desc = "Save and Quit All" })
 map("n", "<leader>wa", "<cmd>wa<cr>", { desc = "Save all files" })
 map("n", "<leader>nf", "<cmd>enew<cr>", { desc = "New File" })

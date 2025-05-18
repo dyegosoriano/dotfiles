@@ -28,12 +28,16 @@ alias g='git'
 
 # TOOLS
 # alias nvim-open='nvim $(fzf --preview "bat --color=always {}")'
-# alias tmux-t='tmuxifier load-session -y'
 alias lsa='eza --long --group-directories-first --no-permissions --color=always --icons=always --no-time --no-user --grid --all'
 alias ls='eza --long --group-directories-first --no-permissions --color=always --icons=always --no-time --no-user --grid'
 alias ld='lazydocker'
 alias lg='lazygit'
 alias b='bat'
+
+# TMUX
+alias tk='tmux kill-session -t '
+alias ta='tmux attach -t '
+alias tn='tmux new -s '
 
 # DOCKER
 alias dkc='docker-compose'

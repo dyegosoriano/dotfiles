@@ -7,6 +7,7 @@ return {
   config = function()
     require("bufferline").setup({
       options = {
+        indicator = { icon = '▎', style = 'icon' },
         offsets = {
           {
             highlight = "Directory",

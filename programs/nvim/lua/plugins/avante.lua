@@ -6,6 +6,7 @@ return {
   event = "VeryLazy",
   version = false,
   opts = {
+    -- auto_suggestions_provider = "local_ollama",
     provider = "groq",
     claude = {
       endpoint = "https://api.anthropic.com",
@@ -21,21 +22,23 @@ return {
       temperature = 0,
       timeout = 30000,
     },
+    -- https://github.com/yetone/avante.nvim/wiki/Custom-providers
     vendors = {
-      -- https://github.com/yetone/avante.nvim/wiki/Custom-providers
       groq = {
         endpoint = "https://api.groq.com/openai/v1",
-        model = "meta-llama/llama-4-scout-17b-16e-instruct",
+        model = "meta-llama/llama-4-maverick-17b-128e-instruct",
         api_key_name = "GROQ_API_KEY",
         __inherited_from = "openai",
         max_tokens = 4096,
         temperature = 0,
       },
-      ollama = {
+      local_ollama = {
         endpoint = "http://127.0.0.1:11434/v1",
+        model = "codegemma",
         __inherited_from = "openai",
         disable_tools = true,
-        model = "codegemma",
+        max_tokens = 4096,
+        temperature = 0,
       },
     },
   },
