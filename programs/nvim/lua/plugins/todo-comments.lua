@@ -4,11 +4,20 @@
 return {
   "folke/todo-comments.nvim",
   opts = {
+    sign_priority = 8,
+    signs = true,
     keywords = {
-      WARN = { icon = "⚠️ ", color = "warning", alt = { "WARNING", "XXX" } },
-      HACK = { icon = "⚡", color = "warning" },
-      TODO = { icon = "📝", color = "info" },
-      FIX = { icon = "🔧", color = "error" },
+      FIX = {
+        alt = { "FIXME", "BUG", "FIXIT", "ISSUE" },
+        color = "error",
+        icon = " ",
+      },
+      TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+      WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+      PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+      NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+      HACK = { icon = " ", color = "warning" },
+      TODO = { icon = " ", color = "info" },
     },
     colors = {
       warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
