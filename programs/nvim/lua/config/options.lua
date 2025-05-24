@@ -20,3 +20,6 @@ vim.opt.number = true
 
 vim.opt.fillchars:append({ eob = " " })
 vim.g.netrw_list_hide = ''
+
+vim.o.swapfile = false
+
