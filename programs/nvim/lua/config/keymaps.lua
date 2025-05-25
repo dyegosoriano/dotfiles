@@ -78,3 +78,7 @@ map("n", "<leader>lr", vim.lsp.buf.references, { desc = "List references" })
 map("n", "<leader>ldoc", vim.lsp.buf.hover, { desc = "Show Documentation" }) -- Mostra documentação ao passar o cursor
 map("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code actions" })
 map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
+-- map("n", "<space>rn", vim.lsp.buf.rename, { desc = "" }) -- Renomeia símbolos
+
+-- MCPHub
+map("n", "<leader>am", "<cmd>MCPHub<CR>")
