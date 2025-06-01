@@ -2,3 +2,6 @@ utils/fonts/.uuid
 .DS_Store
 examples
 backup
+
+programs/tmuxifier/layouts/*
+!programs/tmuxifier/layouts/.gitkeep
