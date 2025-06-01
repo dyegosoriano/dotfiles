@@ -3,5 +3,7 @@ utils/fonts/.uuid
 examples
 backup
 
+programs/nvim/lazy-lock.json
 programs/tmuxifier/layouts/*
+
 !programs/tmuxifier/layouts/.gitkeep
