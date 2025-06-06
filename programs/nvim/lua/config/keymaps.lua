@@ -68,6 +68,9 @@ map("n", "<leader>nf", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" })
 
 -- windows
+map("n", "<leader>tl", "<cmd>rightbelow vsplit | vertical resize 80 | terminal<cr>", { desc = "Split Window Right and Open Terminal", remap = true })
+map("n", "<leader>tb", "<cmd>belowright split | resize 10 | terminal<cr>", { desc = "Split Window Below and Open Terminal", remap = true })
+
 map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
@@ -82,3 +85,4 @@ map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
 
 -- MCPHub
 map("n", "<leader>am", "<cmd>MCPHub<CR>")
+
