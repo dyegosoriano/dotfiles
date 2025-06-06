@@ -10,55 +10,57 @@ return {
     behaviour = { enable_cursor_planning_mode = true },
     auto_suggestions_provider = "groq_mistral",
     provider = "openai",
-    claude = {
-      endpoint = "https://api.anthropic.com",
-      model = "claude-3-5-sonnet-20241022",
-      max_tokens = 4096,
-      temperature = 0,
-    },
-    openai = {
-      endpoint = "https://api.openai.com/v1",
-      model = "gpt-4.1-mini",
-      max_completion_tokens = 4096,
-      temperature = 0,
-    },
-    ollama = {
-      endpoint = "http://127.0.0.1:11434",
-      model = "qwq:32b",
-      enabled = false
-    },
-    -- https://github.com/yetone/avante.nvim/wiki/Custom-providers
-    vendors = {
-      groq_llama4 = {
-        endpoint = "https://api.groq.com/openai/v1",
-        model = "meta-llama/llama-4-maverick-17b-128e-instruct",
-        max_tokens = 4096,
-        api_key_name = "GROQ_API_KEY",
-        __inherited_from = "openai",
-        temperature = 0,
+
+    -- https://github.com/yetone/avante.nvim/wiki
+    providers = {
+      claude = {
+        extra_request_body = { max_completion_tokens = 8192, reasoning_effort = "medium", temperature = 0 },
+        endpoint = "https://api.anthropic.com",
+        model = "claude-3-5-sonnet-20241022",
+        timeout = 30000,
       },
+      openai = {
+        extra_request_body = { max_completion_tokens = 8192, reasoning_effort = "medium", temperature = 0 },
+        endpoint = "https://api.openai.com/v1",
+        model = "gpt-4.1-mini",
+        timeout = 30000,
+      },
+      -- ollama = {
+      --   extra_request_body = { options = { temperature = 0.75, keep_alive = "5m", num_ctx = 20480, }, },
+      --   endpoint = "http://127.0.0.1:11434",
+      --   timeout = 30000,
+      -- },
       groq_llama3 = {
+        extra_request_body = { max_tokens = 32768, temperature = 0 },
         endpoint = 'https://api.groq.com/openai/v1/',
         model = 'llama-3.3-70b-versatile',
-        max_completion_tokens = 32768,
         api_key_name = 'GROQ_API_KEY',
         __inherited_from = 'openai',
+        disable_tools = true,
+      },
+      groq_llama4 = {
+        extra_request_body = { max_tokens = 32768, temperature = 0 },
+        endpoint = 'https://api.groq.com/openai/v1/',
+        model = "meta-llama/llama-4-maverick-17b-128e-instruct",
+        api_key_name = 'GROQ_API_KEY',
+        __inherited_from = 'openai',
+        disable_tools = true,
       },
       groq_deepseek = {
-        endpoint = "https://api.groq.com/openai/v1",
+        extra_request_body = { max_tokens = 32768, temperature = 0 },
+        endpoint = 'https://api.groq.com/openai/v1/',
         model = "deepseek-r1-distill-llama-70b",
-        max_tokens = 4096,
-        api_key_name = "GROQ_API_KEY",
-        __inherited_from = "openai",
-        temperature = 0,
+        api_key_name = 'GROQ_API_KEY',
+        __inherited_from = 'openai',
+        disable_tools = true,
       },
       groq_mistral = {
-        endpoint = "https://api.groq.com/openai/v1",
+        extra_request_body = { max_tokens = 32768, temperature = 0 },
+        endpoint = 'https://api.groq.com/openai/v1/',
         model = "mistral-saba-24b",
-        max_tokens = 4096,
-        api_key_name = "GROQ_API_KEY",
-        __inherited_from = "openai",
-        temperature = 0,
+        api_key_name = 'GROQ_API_KEY',
+        __inherited_from = 'openai',
+        disable_tools = true,
       },
     },
     system_prompt = function()
