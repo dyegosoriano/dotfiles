@@ -82,13 +82,13 @@ if [ "$desktop_response" == "yes" ]; then
     echo -e '\n\033[0;36mInstalling ASDF\033[0m'
     brew install --quiet --force asdf
 
-    asdf plugin add yarn https://github.com/twuni/asdf-yarn.git && asdf install yarn latest # Instala Yarn
-    asdf plugin add ollama https://github.com/virtualstaticvoid/asdf-ollama.git # Instala Ollama
-    asdf plugin add golang https://github.com/asdf-community/asdf-golang.git # Instala GoLang
-    asdf plugin add awscli https://github.com/MetricMike/asdf-awscli.git # Instala AWS CLI
-    asdf plugin add deno https://github.com/asdf-community/asdf-deno.git # Instala Deno
-    asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git # Instala NodeJS
-    asdf plugin add lua https://github.com/Stratus3D/asdf-lua.git # Instala Lua
+    asdf plugin add ollama https://github.com/virtualstaticvoid/asdf-ollama.git && asdf install ollama latest && asdf set ollama latest # Instala Ollama
+    asdf plugin add golang https://github.com/asdf-community/asdf-golang.git && asdf install golang latest && asdf set golang latest # Instala GoLang
+    asdf plugin add awscli https://github.com/MetricMike/asdf-awscli.git && asdf install awscli latest && asdf set awscli latest # Instala AWS CLI
+    asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && asdf install nodejs latest && asdf set nodejs latest # Instala NodeJS
+    asdf plugin add deno https://github.com/asdf-community/asdf-deno.git && asdf install deno latest && asdf set deno latest # Instala Deno
+    asdf plugin add yarn https://github.com/twuni/asdf-yarn.git && asdf install yarn latest && asdf set yarn latest # Instala Yarn
+    asdf plugin add lua https://github.com/Stratus3D/asdf-lua.git && asdf install lua latest && asdf set lua latest # Instala Lua
     asdf plugin-add python # Instala Python
   fi
 fi
