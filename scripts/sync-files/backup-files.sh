@@ -10,16 +10,27 @@ clear
 
 echo -e '\n\033[0;36mCopy files...\033[0m\n'
 
-rsync -azv --delete -e ssh --update \
+rsync -azv --delete --force -e ssh --update \
 --exclude='node_modules' \
+--exclude='.tmuxifier/*' \
+--exclude='.dbclient/*' \
+--exclude='.windsurf/*' \
+--exclude='.codeium/*' \
+--exclude='.mcp-hub/*' \
+--exclude='.mongodb/*' \
 --exclude='.config/*' \
 --exclude='.dotnet/*' \
 --exclude='.docker/*' \
+--exclude='.vscode/*' \
+--exclude='.cursor/*' \
 --exclude='.cache/*' \
+--exclude='.local/*' \
 --exclude='.asdf/*' \
 --exclude='.tmux/*' \
+--exclude='.warp/*' \
 --exclude='.yarn/*' \
 --exclude='.npm/*' \
+--exclude='snap/*' \
 --include=* $SRC $USER@$HOST:$DEST --chown=soriano:soriano
 
 echo -e '\n\033[0;36mFinish\033[0m\n'
