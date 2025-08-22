@@ -18,13 +18,14 @@
     ui = auto
 
 [alias]
-  lg = log --oneline --graph --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30
+  log = log --oneline --graph --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30
   author = log --format=%an
   rsh = reset --soft HEAD~1
   stt = status -sb
   cmt = commit -m
   ckt = checkout
   rmt = remote
+  add = add -p
   mrg = merge
 	pll = pull
 

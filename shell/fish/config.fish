@@ -16,14 +16,6 @@ if test -d ~/.asdf # ASDF configuration
   set -gx PATH $HOME/.asdf/installs/nodejs/(asdf current nodejs | awk '{print $2}')/.npm/bin $PATH
 end
 
-if test -f ~/.bash_aliases # Importando alias
-  for line in (cat ~/.bash_aliases | grep -E "^alias " | sed -E "s/^alias ([a-zA-Z0-9_-]+)='(.*)'/\1 \2/")
-    set alias_name (echo $line | cut -d ' ' -f1)
-    set alias_cmd (echo $line | cut -d ' ' -f2-)
-    abbr -a $alias_name $alias_cmd
-  end
-end
-
 if test -z $TMUXIFIER # Set/fix Tmuxifier root path if needed.
   set -gx TMUXIFIER "$HOME/.tmuxifier"
 end
@@ -40,6 +32,11 @@ if test -n (which tmuxifier); and test -z $TMUXIFIER_NO_COMPLETE
   else
     source "$TMUXIFIER/completion/tmuxifier.fish"
   end
+end
+
+# Força o carregamento de todas as funções personalizadas
+for file in ~/.dotfiles/shell/fish/functions/*.fish
+    source $file
 end
 
 # Enable the `brew` key bindings
