@@ -5,6 +5,10 @@ SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../" &> /dev/null && pwd )"
 echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 rm -rf ~/.config/starship.toml && rm -rf ~/.bash_aliases && rm -rf ~/.config/fish && rm -rf ~/.zshrc
 
+rm -rf ~/.local/share/fish/fish_history && rm -rf ~/.bash_history
+ln -s $SRC/backup/fish_history ~/.local/share/fish/fish_history
+ln -s $SRC/backup/bash_history ~/.bash_history
+
 ln -s $SRC/shell/starship/starship.toml ~/.config/starship.toml
 ln -s $SRC/shell/bash/aliases ~/.bash_aliases
 ln -s $SRC/shell/zsh/zshrc ~/.zshrc

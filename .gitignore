@@ -7,3 +7,4 @@ programs/nvim/lazy-lock.json
 programs/tmuxifier/layouts/*
 
 !programs/tmuxifier/layouts/.gitkeep
+!backup/.gitkeep
