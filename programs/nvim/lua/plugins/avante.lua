@@ -16,7 +16,7 @@ return {
       claude = {
         extra_request_body = { max_completion_tokens = 8192, reasoning_effort = "medium", temperature = 0 },
         endpoint = "https://api.anthropic.com",
-        model = "claude-3-5-sonnet-20241022",
+        model = "claude-sonnet-4-20250514",
         timeout = 30000,
       },
       openai = {
@@ -30,6 +30,22 @@ return {
       --   endpoint = "http://127.0.0.1:11434",
       --   timeout = 30000,
       -- },
+      groq_gpt_oss_120b = {
+        extra_request_body = { max_tokens = 32768, temperature = 0 },
+        endpoint = 'https://api.groq.com/openai/v1/',
+        model = 'openai/gpt-oss-120b',
+        api_key_name = 'GROQ_API_KEY',
+        __inherited_from = 'openai',
+        disable_tools = true,
+      },
+      groq_gpt_oss_20b = {
+        extra_request_body = { max_tokens = 32768, temperature = 0 },
+        endpoint = 'https://api.groq.com/openai/v1/',
+        model = 'openai/gpt-oss-20b',
+        api_key_name = 'GROQ_API_KEY',
+        __inherited_from = 'openai',
+        disable_tools = true,
+      },
       groq_llama3 = {
         extra_request_body = { max_tokens = 32768, temperature = 0 },
         endpoint = 'https://api.groq.com/openai/v1/',
