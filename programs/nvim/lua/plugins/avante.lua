@@ -14,13 +14,13 @@ return {
     -- https://github.com/yetone/avante.nvim/wiki
     providers = {
       claude = {
-        extra_request_body = { max_completion_tokens = 8192, reasoning_effort = "medium", temperature = 0 },
+        extra_request_body = { max_tokens = 8192, temperature = 0 },
         endpoint = "https://api.anthropic.com",
         model = "claude-sonnet-4-20250514",
         timeout = 30000,
       },
       openai = {
-        extra_request_body = { max_completion_tokens = 8192, reasoning_effort = "medium", temperature = 0 },
+        extra_request_body = { max_tokens = 8192, temperature = 0 },
         endpoint = "https://api.openai.com/v1",
         model = "gpt-4.1-mini",
         timeout = 30000,
