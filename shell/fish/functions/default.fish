@@ -19,11 +19,19 @@ function history
 end
 
 function mkdir
-  mkdir -pv $argv
+  mkdir -pv
 end
 
 function cat
   bat $argv
+end
+
+function y
+  yarn $argv
+end
+
+function n
+  npm $argv
 end
 
 function b
