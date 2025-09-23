@@ -28,7 +28,7 @@ return {
       },
       window = {
         mappings = {},
-        width = 30,
+        width = 40,
       },
     })
   end,
