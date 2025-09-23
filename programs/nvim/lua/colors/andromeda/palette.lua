@@ -1,5 +1,5 @@
 local M = {
-  background = "#23262e",
+  background = "#110f18",
   mono_1 = "#2f323c",
   mono_2 = "#3a3e4b",
   mono_3 = "#464959",

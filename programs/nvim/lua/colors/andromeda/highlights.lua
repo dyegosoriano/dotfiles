@@ -1,6 +1,6 @@
-local M = {}
+local colors = require("colors.andromeda.palette")
 
-local colors = require("colors.andromeda")
+local M = {}
 
 M.setup = function()
   -- Vim Editor
