@@ -1,5 +1,5 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+  # Commands to run in interactive sessions can go here
 end
 
 # Inicializando o Starship, Zoxide e FZF
@@ -35,7 +35,7 @@ end
 
 # Força o carregamento de todas as funções personalizadas
 for file in ~/.dotfiles/shell/fish/functions/*.fish
-    source $file
+  source $file
 end
 
 # Enable the `brew` key bindings
@@ -53,5 +53,3 @@ set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
 export FZF_DEFAULT_OPTS="--walker-skip .git,node_modules,dist --layout reverse --border top --height 40% --style full"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 export FZF_CTRL_T_OPTS="--preview 'bat -n color=always {}'"
-
-fish_vi_key_bindings # Ativa vi key bindings
