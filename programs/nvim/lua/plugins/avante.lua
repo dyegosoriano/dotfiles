@@ -16,7 +16,7 @@ return {
       claude = {
         extra_request_body = { max_tokens = 8192, temperature = 0 },
         endpoint = "https://api.anthropic.com",
-        model = "claude-sonnet-4-20250514",
+        model = "claude-sonnet-4-5-20250929",
         timeout = 30000,
       },
       openai = {
