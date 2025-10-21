@@ -91,6 +91,7 @@ if [ "$desktop_response" == "yes" ]; then
     asdf plugin add awscli https://github.com/MetricMike/asdf-awscli.git && asdf install awscli latest && asdf set awscli latest # Instala AWS CLI
     asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && asdf install nodejs latest && asdf set nodejs latest # Instala NodeJS
     asdf plugin add deno https://github.com/asdf-community/asdf-deno.git && asdf install deno latest && asdf set deno latest # Instala Deno
+    asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git && asdf install ruby latest && asdf set ruby latest # Install Runy
     asdf plugin add yarn https://github.com/twuni/asdf-yarn.git && asdf install yarn latest && asdf set yarn latest # Instala Yarn
     asdf plugin add lua https://github.com/Stratus3D/asdf-lua.git && asdf install lua latest && asdf set lua latest # Instala Lua
     asdf plugin-add python # Instala Python
