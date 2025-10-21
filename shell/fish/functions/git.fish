@@ -17,7 +17,7 @@ function gcm
     return 1
   end
 
-  set -l prompt "Analyze this git diff and write a commit message following the Commitizen conventional commits format.
+  set -l prompt "Analyze this git diff and write ONLY the first line of a commit message following the Commitizen conventional commits format.
 
     CRITICAL RULES:
     - ONLY describe changes that are marked with + (additions) or - (deletions) in the diff
@@ -28,7 +28,7 @@ function gcm
     - Subject must be lowercase and not end with a period
     - Keep the first line under 72 characters
     - Focus ONLY on what was actually changed (lines with + or -)
-    - Return ONLY the commit message, nothing else
+    - Return ONLY the first line of the commit message, nothing else
 
     Git Diff:
     $git_diff"
