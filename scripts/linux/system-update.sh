@@ -1,61 +1,54 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Atualiza o sistema Linux
-echo -e '\n\033[0;36mUpdating the system...\033[0m\n'
-sudo apt update
-sudo apt upgrade -y
+GREEN='\033[0;32m'
+BLUE='\033[0;36m'
+RED='\033[0;31m'
+NC='\033[0m'
 
-# Limpa o cache do apt
-echo -e "\n\033[0;36mClearing apt's cache...\033[0m\n"
-sudo apt autoclean
-sudo apt autoremove -y
+# CONFIGURAÇÃO
+set -e # Se qualquer comando falhar, o script será encerrado imediatamente
 
-asdf plugin update --all
+# 1. Atualização do Sistema (APT)
+if command -v apt &> /dev/null; then
+  echo -e "\n${BLUE}>>> Atualizando o sistema (APT)...${NC}\n"
+  sudo apt update && sudo apt upgrade -y
 
-# Verifica se o Snap está instalado
-if [ -x "$(command -v snap)" ]; then
-  # Atualiza o Snap
-  echo -e '\n\033[0;36mUpdating Snap...\033[0m\n'
+  echo -e "\n${BLUE}>>> Limpando cache do APT...${NC}\n"
+  sudo apt autoclean && sudo apt autoremove -y
+fi
+
+# 2. Atualização do SNAP
+if command -v snap &> /dev/null; then
+  echo -e "\n${BLUE}>>> Atualizando Snap e aplicativos Snap...${NC}\n"
   sudo snap refresh
-
-  # Atualiza os aplicativos do Snap
-  echo -e '\n\033[0;36mUpdating Snap apps...\033[0m\n'
-  sudo snap refresh --list | awk '{print $1}' | xargs -n1 snap refresh
-
-  # Faz a limpeza do cache.
-  sudo rm -rf /var/cache/snapd
-else
-  echo -e '\n\033[0;36mSnap not found. Skipping update of Snap and Snap apps....\033[0m\n'
 fi
 
-# Verifica se o Homebrew está instalado
-if [ -x "$(command -v brew)" ]; then
-  # Atualiza o Homebrew
-  echo -e '\n\033[0;36mUpdating Homebrew...\033[0m\n'
-  brew update --auto-update
+# 3. Atualização do HOMEBREW
+if command -v brew &> /dev/null; then
+  echo -e "\n${BLUE}>>> Atualizando Homebrew e aplicativos Homebrew...${NC}\n"
+  brew update --auto-update && brew upgrade
 
-  # Atualiza os aplicativos do Homebrew
-  echo -e '\n\033[0;36mUpdating Homebrew apps...\033[0m\n'
-  brew upgrade
-
-  # Faz a limpeza de dependências que não estão mais em uso.
-  echo -e '\n\033[0;36mCleaning up Homebrew dependencies...\033[0m\n'
-  brew autoremove && brew cleanup --prune=all
-else
-  echo -e '\n\033[0;36mHomebrew not found. Skipping update of Homebrew and Homebrew apps....\033[0m\n'
+  echo -e "\n${BLUE}>>> Limpando dependências do Homebrew...${NC}\n"
+  brew autoremove && brew cleanup --verbose
 fi
 
-DIR="$HOME/.tmuxifier"
-if [ -d "$DIR" ]; then
-  echo -e '\n\033[0;36mUpdating Tmuxifier...\033[0m\n'
-  cd "$DIR" && git pull && cd
+# 4. Atualização de Plugins ASDF
+if command -v asdf &> /dev/null; then
+  echo -e "\n${BLUE}>>> Atualizando plugins do ASDF...${NC}\n"
+  asdf plugin update --all
 fi
 
-# Remove imagens do Docker inutilizadas
-echo -e '\n\033[0;36mRemoving unused Docker images an volumes...\033[0m\n'
-docker image prune -a --force && docker volume prune -a --force
+# 5. Atualização do TMUXIFIER
+TMUXIFIER_DIR="$HOME/.tmuxifier"
+if [ -d "$TMUXIFIER_DIR" ]; then
+  echo -e "\n${BLUE}>>> Atualizando Tmuxifier...${NC}\n"
+  (cd "$TMUXIFIER_DIR" && git pull)
+fi
 
-echo -e '\n\033[0;36mClearing build cache......\033[0m\n'
-docker builder prune -f
+# 6. Limpeza do DOCKER
+if command -v docker &> /dev/null; then
+  echo -e "\n${BLUE}>>> Removendo imagens, volumes e cache de build do Docker não utilizados...${NC}\n"
+  docker image prune -a --force && docker volume prune -a --force && docker builder prune -f
+fi
 
-echo -e '\n\033[0;36mUpdate and cleaning done!\033[0m\n'
+echo -e "\n${GREEN}*** Update e limpeza concluídos! ✨ ***${NC}\n"
