@@ -14,8 +14,8 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 
+vim.opt.guifont = "Fira Code:h12"
 vim.opt.relativenumber = true
-vim.opt.guifont = "Fira Code"
 vim.opt.cursorline = true
 vim.opt.number = true
 
@@ -24,3 +24,8 @@ vim.g.netrw_list_hide = ''
 
 vim.o.swapfile = false
 
+-- Habilitar font ligatures
+if vim.g.neovide then
+  vim.g.neovide_font_ligatures = true
+  vim.o.guifont = "Fira Code:h12"
+end
