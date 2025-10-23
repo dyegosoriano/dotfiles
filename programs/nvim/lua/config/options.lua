@@ -14,8 +14,9 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 
+vim.opt.relativenumber = true
 vim.opt.guifont = "Fira Code"
-vim.opt.relativenumber = false
+vim.opt.cursorline = true
 vim.opt.number = true
 
 vim.opt.fillchars:append({ eob = " " })
