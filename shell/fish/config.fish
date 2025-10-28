@@ -15,6 +15,11 @@ if test -z $TMUXIFIER
     set -gx TMUXIFIER "$HOME/.tmuxifier"
 end
 
+# Add asdf binaries to PATH
+if test -d "$HOME/.asdf"
+    set -gx PATH "$HOME/.asdf/shims" "$HOME/.asdf/bin" $PATH
+end
+
 # Add `bin` directory to `$PATH`
 if not contains "$TMUXIFIER/bin" $PATH
     set -gx PATH "$TMUXIFIER/bin" $PATH
