@@ -27,6 +27,7 @@
   rmt = remote
   brc = branch
   add = add -p
+  sth = stash
   mrg = merge
 	pll = pull
 
