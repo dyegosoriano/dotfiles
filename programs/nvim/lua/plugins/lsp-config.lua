@@ -6,24 +6,29 @@ return {
     'williamboman/mason.nvim',
     lazy = false,
     config = function()
-      require('mason').setup()
+      require('mason').setup({
+        ui = { icons = { package_uninstalled = '✗', package_installed = '✓', package_pending = '➜' } }
+      })
     end,
   },
   {
     'williamboman/mason-lspconfig.nvim',
     lazy = false,
-    opts = {
-      ensure_installed = {
-        'docker_compose_language_service',
-        'tailwindcss',
-        'dockerls',
-        'prismals',
-        'lua_ls',
-        'pylsp',
-        'gopls',
-        'ts_ls'
-      },
-    }
+    config = function()
+      require('mason-lspconfig').setup({
+        automatic_installation = true,
+        ensure_installed = {
+          'docker_compose_language_service',
+          'tailwindcss',
+          'dockerls',
+          'prismals',
+          'lua_ls',
+          'pylsp',
+          'gopls',
+          'ts_ls'
+        },
+      })
+    end,
   },
   {
     'neovim/nvim-lspconfig',
