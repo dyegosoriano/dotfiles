@@ -31,6 +31,7 @@ rsync -azv --delete --force -e ssh --update \
 --exclude='.yarn/*' \
 --exclude='.npm/*' \
 --exclude='snap/*' \
+--exclude='dist/*' \
 --include=* $SRC $USER@$HOST:$DEST --chown=soriano:soriano
 
 echo -e '\n\033[0;36mFinish\033[0m\n'
