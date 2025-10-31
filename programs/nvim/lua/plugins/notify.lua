@@ -3,12 +3,12 @@
 
 return {
   {
-    "rcarriga/nvim-notify",
+    'rcarriga/nvim-notify',
     opts = {
-      render = "default",
+      render = 'default',
       top_down = false,
       timeout = 10000,
-      stages = "fade",
+      stages = 'fade',
       level = 3,
       fps = 60,
 
@@ -20,7 +20,7 @@ return {
       end,
     },
     config = function()
-      require("telescope").load_extension("notify")
+      require('telescope').load_extension('notify')
     end,
   },
 }

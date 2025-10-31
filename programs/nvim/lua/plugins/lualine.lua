@@ -2,11 +2,9 @@
 -- if true then return {} end
 
 return {
-  "nvim-lualine/lualine.nvim",
+  'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
-    -- local colors_manager = require("colors")
-
     require('lualine').setup({
       options = {
         -- component_separators = { left = '>', right = '<' },

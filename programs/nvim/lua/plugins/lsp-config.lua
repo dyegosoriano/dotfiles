@@ -3,40 +3,40 @@
 
 return {
   {
-    "williamboman/mason.nvim",
+    'williamboman/mason.nvim',
     lazy = false,
     config = function()
-      require("mason").setup()
+      require('mason').setup()
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    'williamboman/mason-lspconfig.nvim',
     lazy = false,
     opts = {
       ensure_installed = {
-        "docker_compose_language_service",
-        "tailwindcss",
-        "dockerls",
-        "prismals",
-        "lua_ls",
-        "pylsp",
-        "gopls",
-        "ts_ls"
+        'docker_compose_language_service',
+        'tailwindcss',
+        'dockerls',
+        'prismals',
+        'lua_ls',
+        'pylsp',
+        'gopls',
+        'ts_ls'
       },
     }
   },
   {
-    "neovim/nvim-lspconfig",
+    'neovim/nvim-lspconfig',
     lazy = false,
     config = function()
-      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      local cmp_nvim_lsp = require('cmp_nvim_lsp')
       local capabilities = vim.tbl_deep_extend(
-        "force",
+        'force',
         {},
         vim.lsp.protocol.make_client_capabilities(),
         cmp_nvim_lsp.default_capabilities()
       )
-      local lspconfig = require("lspconfig")
+      local lspconfig = require('lspconfig')
 
       -- Docker Compose
       lspconfig.pylsp.setup({ capabilities = capabilities, settings = { pylsp = { plugins = { pycodestyle = { maxLineLength = 100, ignore = { 'W391' } } } } } })
@@ -50,15 +50,15 @@ return {
         capabilities = capabilities,
         settings = {
           tailwindCSS = {
-            classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+            classAttributes = { 'class', 'className', 'class:list', 'classList', 'ngClass' },
             lint = {
-              recommendedVariantOrder = "warning",
-              invalidTailwindDirective = "error",
-              invalidConfigPath = "error",
-              invalidVariant = "error",
-              invalidScreen = "error",
-              cssConflict = "warning",
-              invalidApply = "error",
+              recommendedVariantOrder = 'warning',
+              invalidTailwindDirective = 'error',
+              invalidConfigPath = 'error',
+              invalidVariant = 'error',
+              invalidScreen = 'error',
+              cssConflict = 'warning',
+              invalidApply = 'error',
             },
             validate = true
           }
@@ -70,7 +70,7 @@ return {
         capabilities = capabilities,
         settings = {
           Lua = {
-            workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
+            workspace = { library = vim.api.nvim_get_runtime_file('', true), checkThirdParty = false },
             diagnostics = { globals = { 'vim' } },
             runtime = { version = 'LuaJIT' },
             telemetry = { enable = false },

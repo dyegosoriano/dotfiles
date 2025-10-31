@@ -5,15 +5,15 @@ return {
   'akinsho/bufferline.nvim',
   dependencies = 'nvim-tree/nvim-web-devicons',
   config = function()
-    require("bufferline").setup({
+    require('bufferline').setup({
       options = {
         indicator = { icon = '▎', style = 'icon' },
         offsets = {
           {
-            highlight = "Directory",
-            text = "File Explorer",
-            filetype = "neo-tree",
-            text_align = "center"
+            highlight = 'Directory',
+            text = 'File Explorer',
+            filetype = 'neo-tree',
+            text_align = 'center'
           }
         }
       }

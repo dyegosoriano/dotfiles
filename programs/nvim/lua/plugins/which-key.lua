@@ -2,12 +2,12 @@
 -- if true then return {} end
 
 return {
-  "folke/which-key.nvim",
-  event = "VeryLazy",
+  'folke/which-key.nvim',
+  event = 'VeryLazy',
   opts = {
-    preset = "classic", -- tipo de layout (classic, modern, helix)
+    preset = 'classic', -- tipo de layout (classic, modern, helix)
     win = {
-      title_pos = "center",
+      title_pos = 'center',
       title = true,
     },
     layout = {
@@ -18,11 +18,11 @@ return {
   },
   keys = {
     {
-      "<leader>?",
+      '<leader>?',
       function()
-        require("which-key").show({ buffer = 0 })
+        require('which-key').show({ buffer = 0 })
       end,
-      desc = "Buffer Local Keymaps (which-key)",
+      desc = 'Buffer Local Keymaps (which-key)',
     },
   },
 }
