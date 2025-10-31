@@ -2,20 +2,19 @@
 -- if true then return {} end
 
 return {
-  { 'hrsh7th/cmp-nvim-lsp' },         -- Plugin para integração do LSP com o sistema de completação
-  { 'hrsh7th/cmp-cmdline' },          -- Completação para linha de comando
-  { 'hrsh7th/cmp-buffer' },           -- Completação baseada no buffer
-  { 'hrsh7th/cmp-path' },             -- Completação de caminhos de arquivos
-  {
-    'L3MON4D3/LuaSnip',               -- Engine de snippets em Lua com suporte a múltiplos formatos
-    dependencies = {
-      'rafamadriz/friendly-snippets', -- Coleção de snippets pré-definidos
-      'saadparwaiz1/cmp_luasnip',     -- Integração do LuaSnip com nvim-cmp
-    },
-  },
   {
     'hrsh7th/nvim-cmp', -- Plugin principal de auto completação para Neovim
     version = false,    -- Desativa controle de versão para usar sempre a mais recente
+    event = 'InsertEnter',
+    dependencies = {
+      'rafamadriz/friendly-snippets', -- Coleção de snippets pré-definidos para várias linguagens (Python, JS, Go, etc)
+      'saadparwaiz1/cmp_luasnip',     -- Integra o LuaSnip com nvim-cmp para exibir snippets no menu de completação
+      'hrsh7th/cmp-nvim-lsp',         -- Fonte de completação que integra sugestões do LSP (Language Server Protocol)
+      'hrsh7th/cmp-cmdline',          -- Fonte de completação para a linha de comando do Vim (:)
+      'hrsh7th/cmp-buffer',           -- Fonte de completação baseada em palavras do buffer atual
+      'hrsh7th/cmp-path',             -- Fonte de completação para caminhos de arquivos e diretórios
+      'L3MON4D3/LuaSnip',             -- Engine de snippets em Lua que processa e expande os snippets
+    },
     config = function()
       local luasnip = require('luasnip')
       local cmp = require('cmp')
@@ -125,9 +124,7 @@ return {
       })
 
       -- Completação para pesquisa (/)
-      cmp.setup.cmdline({ '/', '?' }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = { { name = 'buffer' } }
+      cmp.setup.cmdline({ '/', '?' }, { mapping = cmp.mapping.preset.cmdline(), sources = { { name = 'buffer' } }
       })
 
       -- Completação para linha de comando (:)
@@ -137,5 +134,13 @@ return {
         matching = { disallow_symbol_nonprefix_matching = false }
       })
     end,
+  },
+  {
+    'L3MON4D3/LuaSnip', -- Engine de snippets em Lua com suporte a múltiplos formatos
+    lazy = true,
+    dependencies = {
+      'rafamadriz/friendly-snippets', -- Coleção de snippets pré-definidos
+      'saadparwaiz1/cmp_luasnip',     -- Integração do LuaSnip com nvim-cmp
+    },
   },
 }

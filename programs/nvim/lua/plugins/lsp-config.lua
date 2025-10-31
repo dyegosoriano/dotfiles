@@ -18,14 +18,11 @@ return {
       require('mason-lspconfig').setup({
         automatic_installation = true,
         ensure_installed = {
-          'docker_compose_language_service',
           'tailwindcss',
-          'dockerls',
-          'prismals',
           'lua_ls',
-          'pylsp',
+          'ts_ls',
           'gopls',
-          'ts_ls'
+          'pylsp',
         },
       })
     end,
@@ -33,7 +30,12 @@ return {
   {
     'neovim/nvim-lspconfig',
     lazy = false,
+    dependencies = {
+      'nvimtools/none-ls.nvim',
+      'hrsh7th/nvim-cmp', -- Adiciona nvim-cmp como dependência
+    },
     config = function()
+      -- Aguarda o nvim-cmp estar disponível
       local cmp_nvim_lsp = require('cmp_nvim_lsp')
       local capabilities = vim.tbl_deep_extend(
         'force',
@@ -43,79 +45,18 @@ return {
       )
       local lspconfig = require('lspconfig')
 
-      -- Docker Compose
-      lspconfig.pylsp.setup({ capabilities = capabilities, settings = { pylsp = { plugins = { pycodestyle = { maxLineLength = 100, ignore = { 'W391' } } } } } })
-      lspconfig.gopls.setup({ capabilities = capabilities, settings = { gopls = { analyses = { unusedparams = true }, staticcheck = true } } })
-      lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
-      lspconfig.dockerls.setup({ capabilities = capabilities })
-      lspconfig.prismals.setup({ capabilities = capabilities })
+      -- Função on_attach compartilhada para desabilitar formatação quando none-ls estiver ativo
+      local on_attach = function(client, bufnr)
+        -- Desabilita formatação do LSP para evitar conflito com none-ls
+        client.server_capabilities.documentRangeFormattingProvider = false
+        client.server_capabilities.documentFormattingProvider = false
+      end
 
-      -- Tailwind CSS
-      lspconfig.tailwindcss.setup({
-        capabilities = capabilities,
-        settings = {
-          tailwindCSS = {
-            classAttributes = { 'class', 'className', 'class:list', 'classList', 'ngClass' },
-            lint = {
-              recommendedVariantOrder = 'warning',
-              invalidTailwindDirective = 'error',
-              invalidConfigPath = 'error',
-              invalidVariant = 'error',
-              invalidScreen = 'error',
-              cssConflict = 'warning',
-              invalidApply = 'error',
-            },
-            validate = true
-          }
-        }
-      })
-
-      -- Lua
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            workspace = { library = vim.api.nvim_get_runtime_file('', true), checkThirdParty = false },
-            diagnostics = { globals = { 'vim' } },
-            runtime = { version = 'LuaJIT' },
-            telemetry = { enable = false },
-          },
-        },
-      })
-
-      -- TypeScript
-      lspconfig.ts_ls.setup({
-        capabilities = capabilities,
-        settings = {
-          typescript = {
-            inlayHints = {
-              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
-              includeInlayParameterNameHints = 'all',
-              includeInlayVariableTypeHints = true,
-            }
-          },
-          javascript = {
-            inlayHints = {
-              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
-              includeInlayParameterNameHints = 'all',
-              includeInlayVariableTypeHints = true,
-            }
-          }
-        },
-        -- Desabilitar formatação do TypeScript LSP para evitar conflito com Biome
-        on_attach = function(client, bufnr)
-          client.server_capabilities.documentRangeFormattingProvider = false
-          client.server_capabilities.documentFormattingProvider = false
-        end,
-      })
+      lspconfig.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
+      lspconfig.lua_ls.setup({ capabilities = capabilities, on_attach = on_attach })
+      lspconfig.ts_ls.setup({ capabilities = capabilities, on_attach = on_attach })
+      lspconfig.gopls.setup({ capabilities = capabilities, on_attach = on_attach })
+      lspconfig.pylsp.setup({ capabilities = capabilities, on_attach = on_attach })
     end,
   },
 }
