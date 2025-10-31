@@ -2,10 +2,11 @@ function aws_log --description 'Seleciona ambiente e task para dar tail em logs 
   set -l tasks_prod prod-authentication prod-communications prod-localizations prod-tax-invoice prod-marketplace prod-payments prod-parking prod-gateway prod-coupons prod-events job-worker
   set -l tasks_dev Communications Authentication Localizations Marketplace TaxInvoice JobWorker Payments Gateway Parking Coupons Events Elixir
 
+  set -l aws_profile (printf "gen-prod\ngen-dev" | fzf --prompt='Selecione o ambiente: ')
   set -l region "us-east-2"
   set selected_task
+  clear
 
-  set -l aws_profile (printf "gen-prod\ngen-dev" | fzf --prompt='Selecione o ambiente: ')
   if not set -q aws_profile
     echo "Seleção de ambiente cancelada."
     return 1
