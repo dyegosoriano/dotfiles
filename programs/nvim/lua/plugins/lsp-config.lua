@@ -16,26 +16,16 @@ return {
     lazy = false,
     config = function()
       require('mason-lspconfig').setup({
+        ensure_installed = { 'tailwindcss', 'lua_ls', 'ts_ls', 'gopls', 'pylsp' },
         automatic_installation = true,
-        ensure_installed = {
-          'tailwindcss',
-          'lua_ls',
-          'ts_ls',
-          'gopls',
-          'pylsp',
-        },
       })
     end,
   },
   {
     'neovim/nvim-lspconfig',
     lazy = false,
-    dependencies = {
-      'nvimtools/none-ls.nvim',
-      'hrsh7th/nvim-cmp', -- Adiciona nvim-cmp como dependência
-    },
+    dependencies = { 'nvimtools/none-ls.nvim', 'hrsh7th/cmp-nvim-lsp' },
     config = function()
-      -- Aguarda o nvim-cmp estar disponível
       local cmp_nvim_lsp = require('cmp_nvim_lsp')
       local capabilities = vim.tbl_deep_extend(
         'force',
@@ -43,20 +33,21 @@ return {
         vim.lsp.protocol.make_client_capabilities(),
         cmp_nvim_lsp.default_capabilities()
       )
+
       local lspconfig = require('lspconfig')
 
-      -- Função on_attach compartilhada para desabilitar formatação quando none-ls estiver ativo
-      local on_attach = function(client, bufnr)
-        -- Desabilita formatação do LSP para evitar conflito com none-ls
-        client.server_capabilities.documentRangeFormattingProvider = false
-        client.server_capabilities.documentFormattingProvider = false
-      end
+      lspconfig.tailwindcss.setup({ capabilities = capabilities })
+      lspconfig.lua_ls.setup({ capabilities = capabilities })
+      lspconfig.ts_ls.setup({ capabilities = capabilities })
+      lspconfig.gopls.setup({ capabilities = capabilities })
+      lspconfig.pylsp.setup({ capabilities = capabilities })
 
-      lspconfig.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
-      lspconfig.lua_ls.setup({ capabilities = capabilities, on_attach = on_attach })
-      lspconfig.ts_ls.setup({ capabilities = capabilities, on_attach = on_attach })
-      lspconfig.gopls.setup({ capabilities = capabilities, on_attach = on_attach })
-      lspconfig.pylsp.setup({ capabilities = capabilities, on_attach = on_attach })
+      -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
+      -- vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
+      -- vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, {})
+      -- vim.keymap.set('n', '<leader>gf', vim.lsp.buf.format, {})
+      -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {})
+      -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
     end,
   },
 }
