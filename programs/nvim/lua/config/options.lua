@@ -22,3 +22,6 @@ vim.opt.fillchars:append({ eob = ' ' })
 vim.g.netrw_list_hide = ''
 
 vim.o.swapfile = false
+
+-- Clipboard configuration
+vim.opt.clipboard = 'unnamedplus'
