@@ -17,11 +17,3 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
     vim.notify("Arquivo alterado externamente e recarregado!", vim.log.levels.WARN, { timeout = 5000 })
   end,
 })
-
--- Formatar automaticamente ao salvar
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function()
-    vim.lsp.buf.format({ async = false })
-  end,
-})

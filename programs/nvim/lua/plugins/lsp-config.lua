@@ -24,7 +24,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     lazy = false,
-    dependencies = { 'nvimtools/none-ls.nvim', 'hrsh7th/cmp-nvim-lsp' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp' },
     config = function()
       local cmp_nvim_lsp = require('cmp_nvim_lsp')
       local capabilities = vim.tbl_deep_extend(
