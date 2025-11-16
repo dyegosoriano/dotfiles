@@ -7,11 +7,7 @@ return {
     sign_priority = 8,
     signs = true,
     keywords = {
-      FIX = {
-        alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' },
-        color = 'error',
-        icon = ' ',
-      },
+      FIX = { icon = ' ', color = 'error', alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' } },
       TEST = { icon = '⏲ ', color = 'test', alt = { 'TESTING', 'PASSED', 'FAILED' } },
       WARN = { icon = ' ', color = 'warning', alt = { 'WARNING', 'XXX' } },
       PERF = { icon = ' ', alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
