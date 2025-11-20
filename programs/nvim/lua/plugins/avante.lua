@@ -1,5 +1,5 @@
 -- https://github.com/yetone/avante.nvim
--- if true then return {} end
+if true then return {} end
 
 return {
   'yetone/avante.nvim',
