@@ -1,17 +1,27 @@
-theme = catppuccin-mocha
+# Dynamic theme colors
+config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
-# font-family = Fira Code Nerd Font
-font-family = fira-code
-font-size = 10
+# Font
+font-family = "JetBrainsMono Nerd Font"
+font-style = Regular
+font-size = 9
 
-keybind = ctrl+r=new_split:right
-keybind = ctrl+l=new_split:left
-keybind = ctrl+d=new_split:down
-keybind = ctrl+u=new_split:up
-keybind = ctrl+z=close_surface
+# Window
+window-theme = ghostty
+window-padding-x = 14
+window-padding-y = 14
+confirm-close-surface=false
+resize-overlay = never
+gtk-toolbar-style = flat
 
-# background-opacity = 0.95
-gtk-titlebar = false
+# Cursor styling
+cursor-style = "block"
+cursor-style-blink = false
+shell-integration-features = no-cursor
 
-# custom-shader = /home/chris/bloom.glsl
-custom-shader = /home/chris/crt.glsl
+# Keyboard bindings
+keybind = shift+insert=paste_from_clipboard
+keybind = control+insert=copy_to_clipboard
+
+# SSH session terminfo
+shell-integration-features = ssh-env
