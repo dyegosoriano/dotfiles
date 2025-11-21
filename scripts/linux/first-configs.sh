@@ -37,7 +37,7 @@ echo -e '\n\033[0;36mInstalling Tmux\033[0m' # Instala Tmux
 rm -rf ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 git clone -b v2.1.2 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
-rm -rf ~/.tmux.conf && ln -s $SRC/programs/tmux/.tmux.conf ~/.tmux.conf
+rm -rf ~/.tmux.conf && ln -s $SRC/programs/tmux/tmux.conf ~/.tmux.conf
 brew install --quiet --force tmux && tmux source-file ~/.tmux.conf
 
 echo -e '\n\033[0;36mInstalling Tmuxifier\033[0m' # https://github.com/jimeh/tmuxifier
