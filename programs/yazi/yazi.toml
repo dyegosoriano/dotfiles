@@ -1,0 +1,6 @@
+[mgr]
+sort_by = "extension"
+sort_dir_first = true
+sort_reverse = false
+show_hidden = true
+ratio = [1, 1, 4]
