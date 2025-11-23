@@ -13,6 +13,11 @@ return {
         jsonc = { "biome" },
         json = { "biome" },
       })
+
+      -- Configuração adicional do formatador biome
+      opts.formatters = vim.tbl_deep_extend("force", opts.formatters or {}, {
+        biome = { require_cwd = true },
+      })
     end,
   }
 }
