@@ -19,5 +19,18 @@ return {
         biome = { require_cwd = true },
       })
     end,
-  }
+  },
+  {
+    "mfussenegger/nvim-lint",
+    opts = function(_, opts)
+      opts.linters_by_ft = vim.tbl_deep_extend("force", opts.linters_by_ft or {}, {
+        javascriptreact = { "biomejs" },
+        typescriptreact = { "biomejs" },
+        javascript = { "biomejs" },
+        typescript = { "biomejs" },
+        jsonc = { "biomejs" },
+        json = { "biomejs" },
+      })
+    end,
+  },
 }
