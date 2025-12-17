@@ -22,13 +22,43 @@ function chat --description 'Faz uma pergunta e recebe explicação com comandos
   set -l json_data "{\"contents\":[{\"parts\":[{\"text\":\"$escaped_prompt\"}]}]}"
 
   set -l response (curl -s -X POST \
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key=$GEMINI_API_KEY" \
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=$GEMINI_API_KEY" \
     -H "Content-Type: application/json" \
     -d $json_data
   )
 
   if test $status -ne 0
     echo "❌ Erro ao fazer requisição para a API do Gemini"
+    return 1
+  end
+
+  # Verificar se há erro de quota
+  if string match -q '*"code": 429*' $response
+    echo "❌ Quota da API excedida!"
+    echo ""
+    echo "💡 Possíveis soluções:"
+    echo "   1. Aguarde alguns minutos e tente novamente"
+    echo "   2. Verifique seu plano em: https://ai.dev/usage?tab=rate-limit"
+    echo "   3. Considere fazer upgrade do plano se necessário"
+    echo ""
+    
+    # Tentar extrair tempo de retry
+    set -l retry_time (echo $response | string match -r '"retryDelay":\s*"([0-9]+)s"' | string replace -r '.*"retryDelay":\s*"([0-9]+)s".*' '$1')
+    if test -n "$retry_time"
+      echo "⏱️  A API sugere tentar novamente em $retry_time segundos"
+    end
+    return 1
+  end
+
+  # Verificar outros erros da API
+  if string match -q '*"error"*' $response
+    echo "❌ Erro retornado pela API do Gemini"
+    set -l error_msg (echo $response | string match -r '"message":\s*"([^"]+)"' | string replace -r '.*"message":\s*"([^"]+)".*' '$1')
+    if test -n "$error_msg"
+      echo "Mensagem: $error_msg"
+    else
+      echo "Resposta bruta: $response"
+    end
     return 1
   end
 
