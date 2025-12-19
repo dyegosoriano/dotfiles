@@ -1,95 +1,48 @@
 # More details are at https://superfile.dev/configure/superfile-config/
-#
-# change your theme
-theme = 'catppuccin'
-# 
-# The editor files will be opened with. (Leave blank to use the EDITOR environment variable).
-editor = ""
-# 
-# The editor directories will be opened with. (Leave blank to use the default editors).
-dir_editor = ""
-#
-# Auto check for update
-auto_check_update = true
-# 
-# Cd on quit (For more details, please check out https://superfile.dev/configure/superfile-config/#cd_on_quit)
-cd_on_quit = false
-#
-# Whether to open file preview automatically every time superfile is opened.
-default_open_file_preview = true
-#
-# Whether to show image preview
-show_image_preview = true
-# 
-#
-# Whether to hide additional footer info for file panel.
-show_panel_footer_info = true
-#
-# The path of the first file panel when superfile is opened.
-default_directory = "."
-#
-# Display file sizes using powers of 1000 (kB, MB, GB) instead of powers of 1024 (KiB, MiB, GiB).
-file_size_use_si = false
-#
-# Default sort type (0: Name, 1: Size, 2: Date Modified, 3: Type).
-default_sort_type = 0
-#
-# Default sort order (false: Ascending, true: Descending).
-sort_order_reversed = false
-#
-# Case sensitive sort by name (upper "B" comes before lower "a" if true).
-case_sensitive_sort = false
-#
-# Whether to exit the shell on successful command execution.
-shell_close_on_success = false
-#
-# Whether to enable debug mode.
-debug = false
-#
-# Whether to ignore warnings about missing fields in the config file.
-ignore_missing_fields = false
-#
+
+theme = 'catppuccin'              # change your theme
+
+default_open_file_preview = true  # Whether to open file preview automatically every time superfile is opened.
+shell_close_on_success = false    # Whether to exit the shell on successful command execution.
+show_panel_footer_info = true     # Whether to hide additional footer info for file panel.
+ignore_missing_fields = false     # Whether to ignore warnings about missing fields in the config file.
+case_sensitive_sort = false       # Case sensitive sort by name (upper "B" comes before lower "a" if true).
+sort_order_reversed = false       # Default sort order (false: Ascending, true: Descending).
+show_image_preview = true         # Whether to show image preview
+auto_check_update = true          # Auto check for update
+file_size_use_si = false          # Display file sizes using powers of 1000 (kB, MB, GB) instead of powers of 1024 (KiB, MiB, GiB).
+default_directory = "."           # The path of the first file panel when superfile is opened.
+default_sort_type = 3             # Default sort type (0: Name, 1: Size, 2: Date Modified, 3: Type).
+cd_on_quit = false                # Cd on quit (For more details, please check out https://superfile.dev/configure/superfile-config/#cd_on_quit)
+dir_editor = ""                   # The editor directories will be opened with. (Leave blank to use the default editors).
+debug = false                     # Whether to enable debug mode.
+editor = ""                       # The editor files will be opened with. (Leave blank to use the EDITOR environment variable).
+
 # ================   Style =================
-#
-# Whether to use the builtin syntax highlighting with chroma or use bat. Values: "" for builtin chroma, "bat" for bat
-code_previewer = ''
-# 
-# If you don't have or don't want Nerdfont installed you can turn this off
-nerdfont = true
-#
-# Show checkbox icons in select mode (requires nerdfont = true)
-show_select_icons = true
-#
-# Set transparent background or not (this only work when your terminal background is transparent)
-transparent_background = true
-# 
-# File preview width allow '0' (this mean same as file panel),'x' x must be from 2 to 10 (This means that the width of the file preview will be one xth of the total width.)
-file_preview_width = 0
-#
-# The length of the sidebar. If you don't want to display the sidebar, you can input 0 directly. If you want to display the value, please place it in the range of 3-20.
-sidebar_width = 20
-#
+
+transparent_background = true # Set transparent background or not (this only work when your terminal background is transparent)
+show_select_icons = true      # Show checkbox icons in select mode (requires nerdfont = true)
+file_preview_width = 0        # File preview width allow '0' (this mean same as file panel),'x' x must be from 2 to 10 (This means that the width of the file preview will be one xth of the total width.)
+code_previewer = 'bat'        # Whether to use the builtin syntax highlighting with chroma or use bat. Values: "" for builtin chroma, "bat" for bat
+sidebar_width = 20            # The length of the sidebar. If you don't want to display the sidebar, you can input 0 directly. If you want to display the value, please place it in the range of 3-20.
+nerdfont = true               # If you don't have or don't want Nerdfont installed you can turn this off
+
 # Border style
-# Make sure to add strings exactly one character wide. Use ' ' for borderless 
-border_top = '─'
-border_bottom = '─'
-border_left = '│'
-border_right = '│'
-border_top_left = '╭'
-border_top_right = '╮'
-border_bottom_left = '╰'
+# Make sure to add strings exactly one character wide. Use ' ' for borderless
 border_bottom_right = '╯'
-border_middle_left = '├'
 border_middle_right = '┤'
-# 
+border_bottom_left = '╰'
+border_middle_left = '├'
+border_top_right = '╮'
+border_top_left = '╭'
+border_bottom = '─'
+border_right = '│'
+border_left = '│'
+border_top = '─'
+
 # ========== PLUGINS ========== #
+
 # Plugins means that you need to install some external dependencies to use them.
-# 
-# Show more detailed metadata, please install exiftool before enabling this plugin!
-metadata = false
-#
-# Enable MD5 checksum generation for files
-enable_md5_checksum = false
-#
-# Zoxide support for the fast navigation
-zoxide_support = false
+metadata = false            # Show more detailed metadata, please install exiftool before enabling this plugin!
+enable_md5_checksum = false # Enable MD5 checksum generation for files
+zoxide_support = true       # Zoxide support for the fast navigation
