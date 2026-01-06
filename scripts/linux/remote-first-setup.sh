@@ -1,7 +1,7 @@
 #!/bin/bash
 # Script criado para o Ubuntu 22.04 LTS
 
-HOST_INSTANCE="100.10.10.10"
+HOST_INSTANCE="r2-d2.local"
 HOST_USER="soriano"
 
 # sudo blkid
@@ -50,6 +50,21 @@ docker version
 echo -e '\n\033[0;36mInstalling DOCKER COMPOSE\033[0m\n'
 sudo apt install docker-compose -y
 docker-compose version
+
+# Instalar K3S
+echo -e '\n\033[0;36mInstalling K3S\033[0m\n'
+curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
+sudo systemctl status k3s --no-pager
+sudo kubectl version
+
+# Instalar SAMBA
+echo -e '\n\033[0;36mInstalling SAMBA\033[0m\n'
+sudo apt install samba samba-common-bin -y
+samba --version
+sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+sudo systemctl enable smbd
+sudo systemctl start smbd
+sudo systemctl status smbd --no-pager
 
 # Adicionar o usuário $USER no grupo de usuários para executar o docker sem o sudo
 echo -e '\n\033[0;36mAdding user $USER in usergroup to run docker without sudo\033[0m\n'
