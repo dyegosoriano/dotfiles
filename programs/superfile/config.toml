@@ -15,8 +15,8 @@ default_directory = "."           # The path of the first file panel when superf
 default_sort_type = 3             # Default sort type (0: Name, 1: Size, 2: Date Modified, 3: Type).
 cd_on_quit = false                # Cd on quit (For more details, please check out https://superfile.dev/configure/superfile-config/#cd_on_quit)
 dir_editor = ""                   # The editor directories will be opened with. (Leave blank to use the default editors).
+editor = "nvim"                   # The editor files will be opened with. (Leave blank to use the EDITOR environment variable).
 debug = false                     # Whether to enable debug mode.
-editor = ""                       # The editor files will be opened with. (Leave blank to use the EDITOR environment variable).
 
 # ================   Style =================
 
