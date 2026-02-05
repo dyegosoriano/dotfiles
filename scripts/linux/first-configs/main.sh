@@ -12,5 +12,8 @@ echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 [ -d ~/.config/mpd ] && mv ~/.config/mpd ~/.config/mpd.backup 2>/dev/null; ln -sfn "$SRC/programs/mpd" ~/.config/mpd
 [ -d ~/.config/mpv ] && mv ~/.config/mpv ~/.config/mpv.backup 2>/dev/null; ln -sfn "$SRC/programs/mpv" ~/.config/mpv
 
+[ -d ~/.gitconfig ] && mv ~/.gitconfig ~/.gitconfig.backup 2>/dev/null; ln -sfn "$SRC/programs/git/gitconfig" ~/.gitconfig
+[ -d ~/.config/git ] && mv ~/.config/git ~/.config/git.backup 2>/dev/null; ln -sfn "$SRC/programs/git" ~/.config/git
+
 echo -e '\n\033[0;36mFinished.\033[0m'
 
