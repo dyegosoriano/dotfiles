@@ -1,4 +1,5 @@
 utils/fonts/.uuid
+shell/fish/conf.d
 .DS_Store
 examples
 backup
