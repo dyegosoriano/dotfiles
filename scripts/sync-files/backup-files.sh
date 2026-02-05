@@ -17,6 +17,7 @@ rsync -azv --delete --force -e ssh --update \
 --exclude='.windsurf/*' \
 --exclude='.codeium/*' \
 --exclude='.mcp-hub/*' \
+--exclude='.eclipse/*' \
 --exclude='.mongodb/*' \
 --exclude='.config/*' \
 --exclude='.dotnet/*' \
@@ -25,6 +26,7 @@ rsync -azv --delete --force -e ssh --update \
 --exclude='.cursor/*' \
 --exclude='.cache/*' \
 --exclude='.local/*' \
+--exclude='.cargo/*' \
 --exclude='.asdf/*' \
 --exclude='.tmux/*' \
 --exclude='.warp/*' \
