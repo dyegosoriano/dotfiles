@@ -23,6 +23,7 @@ blur = true
 [keyboard]
 bindings = [
 { key = "Insert", mods = "Control", action = "Copy" },
+  { key = "Return", mods = "Shift", chars = "\u001B\r" },
 { key = "Insert", mods = "Shift", action = "Paste" }
 ]
 
