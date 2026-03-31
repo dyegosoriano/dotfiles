@@ -6,6 +6,9 @@ backup
 
 programs/nvim/lazy-lock.json
 programs/tmuxifier/layouts/*
+programs/mpd/database
+programs/mpd/state
+programs/mpd/log
 
 !programs/tmuxifier/layouts/.gitkeep
 !backup/.gitkeep
