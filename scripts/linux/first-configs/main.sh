@@ -4,6 +4,7 @@ SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../../" &> /dev/null && pwd )"
 
 echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 
+[ -d ~/.config/television ] && mv ~/.config/television ~/.config/television.backup 2>/dev/null; ln -sfn "$SRC/programs/television" ~/.config/television
 [ -d ~/.config/superfile ] && mv ~/.config/superfile ~/.config/superfile.backup 2>/dev/null; ln -sfn "$SRC/programs/superfile" ~/.config/superfile
 [ -d ~/.config/yazi ] && mv ~/.config/yazi ~/.config/yazi.backup 2>/dev/null; ln -sfn "$SRC/programs/yazi" ~/.config/yazi
 [ -d ~/.config/imv ] && mv ~/.config/imv ~/.config/imv.backup 2>/dev/null; ln -sfn "$SRC/programs/imv" ~/.config/imv
@@ -16,4 +17,3 @@ echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 [ -d ~/.config/git ] && mv ~/.config/git ~/.config/git.backup 2>/dev/null; ln -sfn "$SRC/programs/git" ~/.config/git
 
 echo -e '\n\033[0;36mFinished.\033[0m'
-
