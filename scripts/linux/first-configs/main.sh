@@ -8,8 +8,11 @@ echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 [ -f "$HOME/.local/share/fish/fish_history" ] && mv "$HOME/.local/share/fish/fish_history" "$HOME/.local/share/fish/fish_history.backup" 2>/dev/null; ln -sfn "$SRC/backup/fish_history" "$HOME/.local/share/fish/fish_history"
 [ -f $HOME/.bash_history ] && mv $HOME/.bash_history $HOME/.bash_history.backup 2>/dev/null; ln -sfn "$SRC/backup/bash_history" $HOME/.bash_history
 
-# # TOOLS
+# TOOLS
 [ -d "$HOME/.config/television" ] && mv "$HOME/.config/television" "$HOME/.config/television.backup" 2>/dev/null; ln -sfn "$SRC/programs/television" "$HOME/.config/television"
+[ -d "$HOME/.config/fastfetch" ] && mv "$HOME/.config/fastfetch" "$HOME/.config/fastfetch.backup" 2>/dev/null; ln -sfn "$SRC/programs/fastfetch" "$HOME/.config/fastfetch"
+[ -d "$HOME/.config/btop" ] && mv "$HOME/.config/btop" "$HOME/.config/btop.backup" 2>/dev/null; ln -sfn "$SRC/programs/btop" "$HOME/.config/btop"
+[ -d "$HOME/.config/cava" ] && mv "$HOME/.config/cava" "$HOME/.config/cava.backup" 2>/dev/null; ln -sfn "$SRC/programs/cava" "$HOME/.config/cava"
 
 # FILES
 [ -d "$HOME/.config/superfile" ] && mv "$HOME/.config/superfile" "$HOME/.config/superfile.backup" 2>/dev/null; ln -sfn "$SRC/programs/superfile" "$HOME/.config/superfile"
@@ -19,6 +22,10 @@ echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 [ -d "$HOME/.config/alacritty" ] && mv "$HOME/.config/alacritty" "$HOME/.config/alacritty.backup" 2>/dev/null; ln -sfn "$SRC/programs/alacritty" "$HOME/.config"
 [ -d "$HOME/.config/ghostty" ] && mv "$HOME/.config/ghostty" "$HOME/.config/ghostty.backup" 2>/dev/null; ln -sfn "$SRC/programs/ghostty" "$HOME/.config"
 [ -d "$HOME/.config/kitty" ] && mv "$HOME/.config/kitty" "$HOME/.config/kitty.backup" 2>/dev/null; ln -sfn "$SRC/programs/kitty" "$HOME/.config"
+
+# SYSTEM
+[ -d "$HOME/.config/waybar" ] && mv "$HOME/.config/waybar" "$HOME/.config/waybar.backup" 2>/dev/null; ln -sfn "$SRC/programs/waybar" "$HOME/.config/waybar"
+[ -d "$HOME/.config/hypr" ] && mv "$HOME/.config/hypr" "$HOME/.config/hypr.backup" 2>/dev/null; ln -sfn "$SRC/programs/hypr" "$HOME/.config/hypr"
 
 # MEDIA
 [ -d "$HOME/.config/rmpc" ] && mv "$HOME/.config/rmpc" "$HOME/.config/rmpc.backup" 2>/dev/null; ln -sfn "$SRC/programs/rmpc" "$HOME/.config/rmpc"
