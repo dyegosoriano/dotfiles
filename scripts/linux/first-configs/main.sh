@@ -5,37 +5,39 @@ SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../../" &> /dev/null && pwd )"
 echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 
 # HISTORY
-[ -f ~/.local/share/fish/fish_history ] && mv ~/.local/share/fish/fish_history ~/.local/share/fish/fish_history.backup 2>/dev/null; ln -sfn "$SRC/backup/fish_history" ~/.local/share/fish/fish_history
-[ -f ~/.bash_history ] && mv ~/.bash_history ~/.bash_history.backup 2>/dev/null; ln -sfn "$SRC/backup/bash_history" ~/.bash_history
+[ -f "$HOME/.local/share/fish/fish_history" ] && mv "$HOME/.local/share/fish/fish_history" "$HOME/.local/share/fish/fish_history.backup" 2>/dev/null; ln -sfn "$SRC/backup/fish_history" "$HOME/.local/share/fish/fish_history"
+[ -f $HOME/.bash_history ] && mv $HOME/.bash_history $HOME/.bash_history.backup 2>/dev/null; ln -sfn "$SRC/backup/bash_history" $HOME/.bash_history
 
 # # TOOLS
-[ -d ~/.config/television ] && mv ~/.config/television ~/.config/television.backup 2>/dev/null; ln -sfn "$SRC/programs/television" ~/.config/television
+[ -d "$HOME/.config/television" ] && mv "$HOME/.config/television" "$HOME/.config/television.backup" 2>/dev/null; ln -sfn "$SRC/programs/television" "$HOME/.config/television"
 
 # FILES
-[ -d ~/.config/superfile ] && mv ~/.config/superfile ~/.config/superfile.backup 2>/dev/null; ln -sfn "$SRC/programs/superfile" ~/.config/superfile
-[ -d ~/.config/yazi ] && mv ~/.config/yazi ~/.config/yazi.backup 2>/dev/null; ln -sfn "$SRC/programs/yazi" ~/.config/yazi
+[ -d "$HOME/.config/superfile" ] && mv "$HOME/.config/superfile" "$HOME/.config/superfile.backup" 2>/dev/null; ln -sfn "$SRC/programs/superfile" "$HOME/.config/superfile"
+[ -d "$HOME/.config/yazi" ] && mv "$HOME/.config/yazi" "$HOME/.config/yazi.backup" 2>/dev/null; ln -sfn "$SRC/programs/yazi" "$HOME/.config/yazi"
 
 # TERMINAL
-[ -d ~/.config/alacritty ] && mv ~/.config/alacritty ~/.config/alacritty.backup 2>/dev/null; ln -sfn "$SRC/programs/alacritty" ~/.config
-[ -d ~/.config/ghostty ] && mv ~/.config/ghostty ~/.config/ghostty.backup 2>/dev/null; ln -sfn "$SRC/programs/ghostty" ~/.config
-[ -d ~/.config/kitty ] && mv ~/.config/kitty ~/.config/kitty.backup 2>/dev/null; ln -sfn "$SRC/programs/kitty" ~/.config
+[ -d "$HOME/.config/alacritty" ] && mv "$HOME/.config/alacritty" "$HOME/.config/alacritty.backup" 2>/dev/null; ln -sfn "$SRC/programs/alacritty" "$HOME/.config"
+[ -d "$HOME/.config/ghostty" ] && mv "$HOME/.config/ghostty" "$HOME/.config/ghostty.backup" 2>/dev/null; ln -sfn "$SRC/programs/ghostty" "$HOME/.config"
+[ -d "$HOME/.config/kitty" ] && mv "$HOME/.config/kitty" "$HOME/.config/kitty.backup" 2>/dev/null; ln -sfn "$SRC/programs/kitty" "$HOME/.config"
 
 # MEDIA
-[ -d ~/.config/rmpc ] && mv ~/.config/rmpc ~/.config/rmpc.backup 2>/dev/null; ln -sfn "$SRC/programs/rmpc" ~/.config/rmpc
-[ -d ~/.config/mpd ] && mv ~/.config/mpd ~/.config/mpd.backup 2>/dev/null; ln -sfn "$SRC/programs/mpd" ~/.config/mpd
-[ -d ~/.config/mpv ] && mv ~/.config/mpv ~/.config/mpv.backup 2>/dev/null; ln -sfn "$SRC/programs/mpv" ~/.config/mpv
-[ -d ~/.config/imv ] && mv ~/.config/imv ~/.config/imv.backup 2>/dev/null; ln -sfn "$SRC/programs/imv" ~/.config/imv
+[ -d "$HOME/.config/rmpc" ] && mv "$HOME/.config/rmpc" "$HOME/.config/rmpc.backup" 2>/dev/null; ln -sfn "$SRC/programs/rmpc" "$HOME/.config/rmpc"
+[ -d "$HOME/.config/mpd" ] && mv "$HOME/.config/mpd" "$HOME/.config/mpd.backup" 2>/dev/null; ln -sfn "$SRC/programs/mpd" "$HOME/.config/mpd"
+[ -d "$HOME/.config/mpv" ] && mv "$HOME/.config/mpv" "$HOME/.config/mpv.backup" 2>/dev/null; ln -sfn "$SRC/programs/mpv" "$HOME/.config/mpv"
+[ -d "$HOME/.config/imv" ] && mv "$HOME/.config/imv" "$HOME/.config/imv.backup" 2>/dev/null; ln -sfn "$SRC/programs/imv" "$HOME/.config/imv"
 
 # DEVELOPMENT
-[ -f ~/.gitconfig ] && mv ~/.gitconfig ~/.gitconfig.backup 2>/dev/null; ln -sfn "$SRC/programs/git/gitconfig" ~/.gitconfig
-[ -d ~/.config/git ] && mv ~/.config/git ~/.config/git.backup 2>/dev/null; ln -sfn "$SRC/programs/git" ~/.config/git
+[ -f "$HOME/.gitconfig" ] && mv "$HOME/.gitconfig" "$HOME/.gitconfig.backup" 2>/dev/null; ln -sfn "$SRC/programs/git/gitconfig" "$HOME/.gitconfig"
+[ -d "$HOME/.config/git" ] && mv "$HOME/.config/git" "$HOME/.config/git.backup" 2>/dev/null; ln -sfn "$SRC/programs/git" "$HOME/.config/git"
 
 # SHELL
-[ -f ~/.config/tmux/tmux.conf ] && mv ~/.config/tmux/tmux.conf ~/.config/tmux/tmux.conf.backup 2>/dev/null; ln -sfn "$SRC/programs/tmux/tmux.conf" ~/.config/tmux/tmux.conf
-[ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/.tmux.conf.backup 2>/dev/null; ln -sfn "$SRC/programs/tmux/tmux.conf" ~/.tmux.conf
-[ -f ~/.bash_aliases ] && mv ~/.bash_aliases ~/.bash_aliases.backup 2>/dev/null; ln -sfn "$SRC/shell/bash/aliases" ~/.bash_aliases
-[ -d ~/.config/fish ] && mv ~/.config/fish ~/.config/fish.backup 2>/dev/null; ln -sfn "$SRC/shell/fish" ~/.config/fish
-[ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.backup 2>/dev/null; ln -sfn "$SRC/shell/zsh/zshrc" ~/.zshrc
+[ -f "$HOME/.config/tmux/tmux.conf" ] && mv "$HOME/.config/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf.backup" 2>/dev/null; ln -sfn "$SRC/programs/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+[ -f "$HOME/.bash_aliases" ] && mv "$HOME/.bash_aliases" "$HOME/.bash_aliases.backup" 2>/dev/null; ln -sfn "$SRC/shell/bash/aliases" "$HOME/.bash_aliases"
+[ -d "$HOME/.config/tmux" ] && mv "$HOME/.config/tmux" "$HOME/.config/tmux.backup" 2>/dev/null; ln -sfn "$SRC/programs/tmux" "$HOME/.config/tmux"
+[ -d "$HOME/.config/fish" ] && mv "$HOME/.config/fish" "$HOME/.config/fish.backup" 2>/dev/null; ln -sfn "$SRC/shell/fish" "$HOME/.config/fish"
+[ -f "$HOME/.zshrc" ] && mv "$HOME/.zshrc" "$HOME/.zshrc.backup" 2>/dev/null; ln -sfn "$SRC/shell/zsh/zshrc" "$HOME/.zshrc"
+
+# EDITOR
+[ -d ~/.config/zed ] && mv ~/.config/zed ~/.config/zed.backup 2>/dev/null; ln -sfn "$SRC/programs/zed" ~/.config/zed
 
 echo -e '\n\033[0;36mFinished.\033[0m'
-
