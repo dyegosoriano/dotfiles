@@ -45,6 +45,7 @@ echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 [ -f "$HOME/.zshrc" ] && mv "$HOME/.zshrc" "$HOME/.zshrc.backup" 2>/dev/null; ln -sfn "$SRC/shell/zsh/zshrc" "$HOME/.zshrc"
 
 # EDITOR
-[ -d ~/.config/zed ] && mv ~/.config/zed ~/.config/zed.backup 2>/dev/null; ln -sfn "$SRC/programs/zed" ~/.config/zed
+[ -d "$HOME/.config/nvim" ] && mv "$HOME/.config/nvim" "$HOME/.config/nvim.backup" 2>/dev/null; ln -sfn "$SRC/programs/nvim" "$HOME/.config/nvim"
+[ -d "$HOME/.config/zed" ] && mv "$HOME/.config/zed" "$HOME/.config/zed.backup" 2>/dev/null; ln -sfn "$SRC/programs/zed" "$HOME/.config/zed"
 
 echo -e '\n\033[0;36mFinished.\033[0m'
