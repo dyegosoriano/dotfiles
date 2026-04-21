@@ -38,6 +38,7 @@ echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 [ -d "$HOME/.config/git" ] && mv "$HOME/.config/git" "$HOME/.config/git.backup" 2>/dev/null; ln -sfn "$SRC/programs/git" "$HOME/.config/git"
 
 # SHELL
+[ -f "$HOME/.config/starship.toml" ] && mv "$HOME/.config/starship.toml" "$HOME/.config/starship.toml.backup" 2>/dev/null; ln -sfn "$SRC/shell/starship/starship.toml" "$HOME/.config/starship.toml"
 [ -f "$HOME/.config/tmux/tmux.conf" ] && mv "$HOME/.config/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf.backup" 2>/dev/null; ln -sfn "$SRC/programs/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
 [ -f "$HOME/.bash_aliases" ] && mv "$HOME/.bash_aliases" "$HOME/.bash_aliases.backup" 2>/dev/null; ln -sfn "$SRC/shell/bash/aliases" "$HOME/.bash_aliases"
 [ -d "$HOME/.config/tmux" ] && mv "$HOME/.config/tmux" "$HOME/.config/tmux.backup" 2>/dev/null; ln -sfn "$SRC/programs/tmux" "$HOME/.config/tmux"
