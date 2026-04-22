@@ -7,39 +7,25 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "agent_servers": {
-    "gemini": {
-      "type": "registry",
-    },
-    "claude-acp": {
-      "type": "registry",
-    },
-  },
   "agent": {
+    "default_model": { "model": "gemini-3-flash-preview", "enable_thinking": false, "provider": "google" },
     "default_profile": "ask",
-    "default_model": {
-      "provider": "google",
-      "model": "gemini-3-flash-preview",
-      "enable_thinking": false,
-    },
     "model_parameters": [],
     "favorite_models": [],
   },
 
-  "tabs": {
-    "close_position": "right",
+  "agent_servers": {
+    "claude-acp": { "type": "registry" },
+    "gemini": { "type": "registry" },
   },
-
-  "title_bar": {
-    "show_branch_icon": true,
-  },
-
-  "session": { "trust_all_worktrees": true },
 
   "icon_theme": { "light": "Symbols Icon Theme", "dark": "Zed (Default)", "mode": "light" },
   "theme": { "dark": "Vesper", "light": "Ayu Light", "mode": "dark" },
   "buffer_font_family": "JetBrainsMonoNL Nerd Font Propo",
   "ui_font_family": "JetBrainsMonoNL Nerd Font Propo",
+  "session": { "trust_all_worktrees": true },
+  "title_bar": { "show_branch_icon": true },
+  "tabs": { "close_position": "right" },
 
   "active_pane_modifiers": {
     "inactive_opacity": 1.0,
