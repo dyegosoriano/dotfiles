@@ -11,8 +11,8 @@ confirm-close-surface=false
 gtk-toolbar-style = flat
 resize-overlay = never
 window-theme = ghostty
-window-padding-x = 4
-window-padding-y = 4
+window-padding-x = 10
+window-padding-y = 1
 
 background-opacity = 0.85
 background = #000000

@@ -16,15 +16,15 @@ foreground = "0xffffff"
 [window]
 decorations = "None"
 padding.x = 14
-padding.y = 14
-opacity = 0.4
+padding.y = 2
+opacity = 0.9
 blur = true
 
 [keyboard]
 bindings = [
-{ key = "Insert", mods = "Control", action = "Copy" },
   { key = "Return", mods = "Shift", chars = "\u001B\r" },
-{ key = "Insert", mods = "Shift", action = "Paste" }
+  { key = "Insert", mods = "Control", action = "Copy" },
+  { key = "Insert", mods = "Shift", action = "Paste" }
 ]
 
 [terminal]
