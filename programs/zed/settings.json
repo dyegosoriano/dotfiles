@@ -33,6 +33,7 @@
 
   "agent_servers": {
     "claude-acp": { "type": "registry" },
+    "codex-acp": { "type": "registry" },
     "opencode": { "type": "registry" },
     "gemini": { "type": "registry" },
   },
