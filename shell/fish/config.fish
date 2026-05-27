@@ -1,11 +1,23 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
+set -q XDG_CONFIG_HOME; or set -gx XDG_CONFIG_HOME "$HOME/.config"
+
+# SSH tooling often runs non-interactive commands through the login shell.
+# Keep fish customizations interactive-only so remote commands stay predictable.
+if not status is-interactive
+    return
 end
 
 # Inicializando o Starship, Zoxide e FZF
-starship init fish | source
-zoxide init fish | source
-fzf --fish | source
+if type -q starship
+    starship init fish | source
+end
+
+if type -q zoxide
+    zoxide init fish | source
+end
+
+if type -q fzf
+    fzf --fish | source
+end
 
 # Removendo a saudação do Fish
 set -g fish_greeting ""
