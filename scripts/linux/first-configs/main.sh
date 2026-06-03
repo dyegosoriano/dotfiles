@@ -24,6 +24,7 @@ echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 [ -d "$HOME/.config/kitty" ] && mv "$HOME/.config/kitty" "$HOME/.config/kitty.backup" 2>/dev/null; ln -sfn "$SRC/programs/kitty" "$HOME/.config"
 
 # SYSTEM
+[ -d "$HOME/.config/walker" ] && mv "$HOME/.config/walker" "$HOME/.config/walker.backup" 2>/dev/null; ln -sfn "$SRC/programs/walker" "$HOME/.config/walker"
 [ -d "$HOME/.config/waybar" ] && mv "$HOME/.config/waybar" "$HOME/.config/waybar.backup" 2>/dev/null; ln -sfn "$SRC/programs/waybar" "$HOME/.config/waybar"
 [ -d "$HOME/.config/hypr" ] && mv "$HOME/.config/hypr" "$HOME/.config/hypr.backup" 2>/dev/null; ln -sfn "$SRC/programs/hypr" "$HOME/.config/hypr"
 
