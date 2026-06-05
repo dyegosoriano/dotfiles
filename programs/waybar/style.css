@@ -24,21 +24,20 @@
 
 #workspaces button {
   all: initial;
-  padding: 0 6px;
   margin: 0 1.5px;
   min-width: 9px;
+  padding: 0 6px;
 }
 
 #workspaces button.empty {
   opacity: 0.5;
 }
 
-#cpu,
-#battery,
-#pulseaudio,
 #custom-omarchy,
-
-#custom-update {
+#custom-update,
+#pulseaudio,
+#battery,
+#cpu {
   min-width: 12px;
   margin: 0 7.5px;
 }
@@ -60,7 +59,17 @@
 }
 
 tooltip {
+  background: @background;
+  color: @foreground;
+  border: 1px solid alpha(@foreground, 0.25);
+  border-radius: 8px;
   padding: 2px;
+}
+
+tooltip label {
+  background: transparent;
+  color: @foreground;
+  padding: 4px 8px;
 }
 
 #custom-update {
@@ -72,14 +81,14 @@ tooltip {
 }
 
 
+#custom-notification-silencing-indicator,
 #custom-screenrecording-indicator,
-#custom-idle-indicator,
-#custom-notification-silencing-indicator {
-  min-width: 12px;
+#custom-idle-indicator {
+  padding-bottom: 1px;
   margin-left: 5px;
   margin-right: 0;
+  min-width: 12px;
   font-size: 10px;
-  padding-bottom: 1px;
 }
 
 #custom-screenrecording-indicator.active {
@@ -87,26 +96,26 @@ tooltip {
 }
 
 #custom-voxtype {
-  min-width: 12px;
   margin: 0 0 0 7.5px;
+  min-width: 12px;
 }
 
 #custom-voxtype.recording {
   color: #a55555;
 }
 
-#custom-idle-indicator.active,
-#custom-notification-silencing-indicator.active {
+#custom-notification-silencing-indicator.active,
+#custom-idle-indicator.active {
   color: #a55555;
 }
 
 #custom-weather {
-  margin-left: 7.5px;
   margin-right: 7.5px;
+  margin-left: 7.5px;
 }
 
 #custom-weather.unavailable {
   min-width: 0;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
