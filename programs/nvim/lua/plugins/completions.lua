@@ -1,5 +1,5 @@
 -- https://github.com/hrsh7th/nvim-cmp
--- if true then return {} end
+if true then return {} end
 
 return {
   {
