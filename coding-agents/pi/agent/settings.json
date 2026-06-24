@@ -2,13 +2,12 @@
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4-mini",
   "defaultThinkingLevel": "off",
-
-  "lastChangelogVersion": "0.80.1",
+  "lastChangelogVersion": "0.80.2",
   "theme": "dark",
-
   "collapseChangelog": false,
   "hideThinkingBlock": true,
   "quietStartup": true,
-
-  "images": { "blockImages": true }
+  "images": {
+    "blockImages": true
+  }
 }

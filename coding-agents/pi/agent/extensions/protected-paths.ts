@@ -1,34 +1,23 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import { normalize, resolve, sep } from "path";
+import { dirname, normalize, relative, resolve } from "path";
+import { execFileSync } from "child_process";
+import { statSync } from "fs";
 
-const BLOCKED_PATHS = [
-  "credentials/**",
-  "secrets/**",
-  "vpn/**",
+const BLOCKED_PATHS = ["credentials/**", "secrets/**", "vpn/**", ".dotfiles/**", ".gnupg/**", ".notes/**", ".azure/**", ".kube/**", ".ssh/**", ".aws/**", ".gcp/**"];
+const BLOCKED_FILES = ["*.ovpn", "*.p12", "*.pem", "*.crt", "*.key", ".env*"]
 
-  ".dotfiles/**",
-  ".gnupg/**",
-  ".notes/**",
-  ".azure/**",
-  ".kube/**",
-  ".ssh/**",
-  ".aws/**",
-  ".gcp/**",
-
-  "*.ovpn",
-  "*.p12",
-  "*.pem",
-  "*.crt",
-  "*.key",
-  ".env*",
-];
+const BLOQUED_ITEMS = [...BLOCKED_PATHS, ...BLOCKED_FILES]
 
 function expandHome(value: string) {
   return value.startsWith("~") ? value.replace(/^~/, process.env.HOME ?? "") : value;
 }
 
+function normalizePath(value: string) {
+  return normalize(value).replace(/\\/g, "/");
+}
+
 function toAbs(cwd: string, value: string) {
-  return normalize(resolve(expandHome(cwd), expandHome(value)));
+  return normalizePath(resolve(expandHome(cwd), expandHome(value)));
 }
 
 function escapeRegExp(value: string) {
@@ -41,44 +30,103 @@ function globToRegExpSource(pattern: string) {
   return escapeRegExp(normalized).replace(/\*/g, "[^/]*").replace(new RegExp(token, "g"), ".*");
 }
 
-function wildcardToRegExp(pattern: string, anchored = true) {
-  const source = globToRegExpSource(pattern);
-  return new RegExp(anchored ? `^${source}$` : source);
+function parseGitIgnorePattern(rawPattern: string) {
+  let pattern = rawPattern.trim();
+
+  if (!pattern || pattern.startsWith("#")) return undefined;
+
+  if (pattern.startsWith("\\#")) pattern = pattern.slice(1);
+
+  const negated = pattern.startsWith("!");
+  if (negated) pattern = pattern.slice(1);
+
+  const anchored = pattern.startsWith("/");
+  if (anchored) pattern = pattern.slice(1);
+
+  const directoryOnly = pattern.endsWith("/");
+  pattern = pattern.replace(/\/+$/g, "");
+
+  if (!pattern) return undefined;
+
+  return { pattern, negated, anchored, directoryOnly };
 }
 
-function resolvePatternCandidates(cwd: string, pattern: string) {
-  if (pattern.startsWith("/") || pattern.startsWith("~")) {
-    return [normalize(resolve(expandHome(pattern)))];
+function relativeCandidates(cwd: string, abs: string) {
+  const bases = [cwd, process.env.HOME].filter(Boolean) as string[];
+  const candidates = [abs];
+
+  for (const base of bases) {
+    const rel = normalizePath(relative(expandHome(base), abs));
+    if (rel && !rel.startsWith("../") && rel !== "..") candidates.push(rel);
   }
 
-  const local = normalize(resolve(cwd, pattern));
-  const home = process.env.HOME ? normalize(resolve(process.env.HOME, pattern)) : undefined;
-
-  return home && home !== local ? [local, home] : [local];
+  return [...new Set(candidates)];
 }
 
-function matchesWildcardPattern(abs: string, pattern: string) {
-  const normalizedAbs = abs.replace(/\\/g, "/");
+function matchesGitIgnorePattern(cwd: string, abs: string, rawPattern: string) {
+  const rule = parseGitIgnorePattern(rawPattern);
+  if (!rule) return false;
 
-  if (pattern.startsWith("/") || pattern.startsWith("~")) {
-    return wildcardToRegExp(normalize(resolve(expandHome(pattern))).replace(/\\/g, "/"), true).test(normalizedAbs);
+  if (rawPattern.startsWith("/") || rawPattern.startsWith("~")) {
+    const absolutePattern = toAbs(cwd, rawPattern.replace(/^!/, ""));
+    const source = globToRegExpSource(absolutePattern);
+    return new RegExp(rule.directoryOnly ? `^${source}(?:/.*)?$` : `^${source}$`).test(abs);
   }
 
-  return new RegExp(`(?:^|.*/)${globToRegExpSource(pattern)}$`).test(normalizedAbs);
+  const source = globToRegExpSource(rule.pattern);
+  const hasSlash = rule.pattern.includes("/");
+
+  return relativeCandidates(cwd, abs).some((candidate) => {
+    const regex = rule.anchored
+      ? new RegExp(rule.directoryOnly ? `^${source}(?:/.*)?$` : `^${source}$`)
+      : new RegExp(rule.directoryOnly || hasSlash ? `(?:^|/)${source}(?:/.*)?$` : `(?:^|/)${source}$`);
+
+    return regex.test(candidate);
+  });
+}
+
+function existingBaseDir(abs: string) {
+  try {
+    return statSync(abs).isDirectory() ? abs : dirname(abs);
+  } catch {
+    return dirname(abs);
+  }
+}
+
+function gitRootFor(abs: string) {
+  try {
+    return execFileSync("git", ["-C", existingBaseDir(abs), "rev-parse", "--show-toplevel"], { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
+  } catch {
+    return undefined;
+  }
+}
+
+function isGitIgnored(abs: string) {
+  const gitRoot = gitRootFor(abs);
+  if (!gitRoot) return false;
+
+  try {
+    execFileSync("git", ["-C", gitRoot, "check-ignore", "-q", "--", abs], { stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function isBlockedPath(cwd: string, value: string) {
   const abs = toAbs(cwd, value);
+  let blocked = isGitIgnored(abs);
 
-  return BLOCKED_PATHS.some((blocked) => {
-    if (blocked.includes("*")) {
-      return matchesWildcardPattern(abs, blocked);
+  for (const rawPattern of BLOQUED_ITEMS) {
+    const rule = parseGitIgnorePattern(rawPattern);
+    if (!rule) continue;
+
+    if (matchesGitIgnorePattern(cwd, abs, rawPattern)) {
+      blocked = !rule.negated;
     }
+  }
 
-    return resolvePatternCandidates(cwd, blocked).some((blockedAbs) => {
-      return abs === blockedAbs || abs.startsWith(blockedAbs + sep);
-    });
-  });
+  return blocked;
 }
 
 function collectStrings(input: unknown): string[] {
@@ -101,11 +149,9 @@ function isBlockedCommand(cwd: string, command: string) {
 export default function(pi: ExtensionAPI) {
   pi.on("tool_call", async (event, ctx) => {
     const toolName = event.toolName;
-
     const fileTools = new Set(["read", "write", "edit", "ls", "find", "grep"]);
-    const isFileTool = fileTools.has(toolName);
 
-    if (!isFileTool && toolName !== "bash") return undefined;
+    if (!fileTools.has(toolName) && toolName !== "bash") return undefined;
 
     if (toolName === "bash") {
       const command = typeof (event.input as { command?: unknown })?.command === "string"
@@ -115,17 +161,14 @@ export default function(pi: ExtensionAPI) {
       if (!command || !isBlockedCommand(ctx.cwd, command)) return undefined;
 
       if (ctx.hasUI) ctx.ui.notify(`Comando bloqueado: ${command}`, "warning");
-
       return { reason: "Comando tenta acessar caminho protegido", block: true };
     }
 
-    const values = collectStrings(event.input);
-    const matches = values.find((value) => isBlockedPath(ctx.cwd, value));
+    const matches = collectStrings(event.input).find((value) => isBlockedPath(ctx.cwd, value));
 
     if (!matches) return undefined;
 
     if (ctx.hasUI) ctx.ui.notify(`Acesso bloqueado: ${matches}`, "warning");
-
     return { reason: `Path protegido: ${matches}`, block: true };
   });
 }
