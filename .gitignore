@@ -11,5 +11,14 @@ programs/mpd/database
 programs/mpd/state
 programs/mpd/log
 
+coding-agents/pi/agent/extensions/omarchy-system-theme.ts
+coding-agents/pi/agent/*
+coding-agents/opencode/*
+
+!coding-agents/pi/agent/settings.json
+!coding-agents/pi/agent/extensions
+!coding-agents/opencode/opencode.json
+!coding-agents/opencode/tui.json
+
 !programs/tmuxifier/layouts/.gitkeep
 !backup/.gitkeep

@@ -50,4 +50,8 @@ echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 [ -d "$HOME/.config/nvim" ] && mv "$HOME/.config/nvim" "$HOME/.config/nvim.backup" 2>/dev/null; ln -sfn "$SRC/programs/nvim" "$HOME/.config/nvim"
 [ -d "$HOME/.config/zed" ] && mv "$HOME/.config/zed" "$HOME/.config/zed.backup" 2>/dev/null; ln -sfn "$SRC/programs/zed" "$HOME/.config/zed"
 
+# AI CODING
+[ -d "$HOME/.config/opencode" ] && mv "$HOME/.config/opencode" "$HOME/.config/opencode.backup" 2>/dev/null; ln -sfn "$SRC/coding-agents/opencode" "$HOME/.config/opencode"
+[ -d "$HOME/.pi" ] && mv "$HOME/.pi" "$HOME/.pi.backup" 2>/dev/null; ln -sfn "$SRC/coding-agents/pi" "$HOME/.pi"
+
 echo -e '\n\033[0;36mFinished.\033[0m'

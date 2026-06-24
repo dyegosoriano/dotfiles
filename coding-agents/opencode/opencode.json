@@ -1,0 +1,34 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": true,
+
+  "permission": {
+    "webfetch": "allow",
+    "edit": "allow",
+
+    "read": {
+      "*": "allow",
+      "*.env.example": "allow",
+      "bash_history": "deny",
+      "fish_history": "deny",
+      "*.env.*": "deny",
+      "*.env": "deny",
+    },
+
+    "bash": {
+      "grep *": "allow",
+      "git *": "allow",
+      "npm *": "allow",
+      "rm *": "deny",
+      "*": "ask",
+    },
+  },
+
+  "server": {
+    "cors": ["http://localhost:5173"],
+    "mdnsDomain": "opencode.local",
+    "hostname": "0.0.0.0",
+    "port": 4096,
+    "mdns": true,
+  }
+}
