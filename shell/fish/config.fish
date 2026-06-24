@@ -6,7 +6,11 @@ if not status is-interactive
     return
 end
 
-# Inicializando o Starship, Zoxide e FZF
+# Inicializando o Claude Code, Starship, Zoxide e FZF
+if test -x ~/.local/bin/claude
+    fish_add_path ~/.local/bin
+end
+
 if type -q starship
     starship init fish | source
 end
