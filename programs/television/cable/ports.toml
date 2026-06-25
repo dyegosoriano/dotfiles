@@ -17,3 +17,4 @@ size = 40
 description = "Kill the process listening on the selected port"
 command = "fuser -k {split: :0}/tcp"
 mode = "execute"
+

@@ -19,3 +19,4 @@ mode = "execute"
 description = "List files owned by the selected package"
 command = "pacman -Ql '{split: :0}' | less"
 mode = "execute"
+

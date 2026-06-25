@@ -4,11 +4,14 @@ description = "List and manage systemd services"
 requirements = ["systemctl"]
 
 [source]
-command = [
-  "systemctl list-units --type=service --no-pager --no-legend --plain",
-  "systemctl list-units --type=service --all --no-pager --no-legend --plain",
-]
 display = "{split: :0}"
+[[source.command]]
+name = "Active"
+run = "systemctl list-units --type=service --no-pager --no-legend --plain"
+
+[[source.command]]
+name = "All"
+run = "systemctl list-units --type=service --all --no-pager --no-legend --plain"
 
 [preview]
 command = "systemctl status '{split: :0}' --no-pager"
@@ -47,3 +50,4 @@ mode = "execute"
 description = "Disable the selected service"
 command = "sudo systemctl disable '{split: :0}'"
 mode = "execute"
+

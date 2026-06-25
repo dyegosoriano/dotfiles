@@ -26,3 +26,4 @@ mode = "execute"
 description = "Reset --hard to the selected reflog entry"
 command = "git reset --hard '{0|strip_ansi}'"
 mode = "execute"
+

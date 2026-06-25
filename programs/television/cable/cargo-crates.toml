@@ -15,3 +15,4 @@ command = "cargo install --list 2>/dev/null | sed -n '/^{split: :0} /,/^[^ ]/p' 
 description = "Uninstall the selected crate"
 command = "cargo uninstall '{split: :0}'"
 mode = "execute"
+

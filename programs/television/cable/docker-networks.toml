@@ -18,3 +18,4 @@ layout = "portrait"
 description = "Remove the selected network"
 command = "docker network rm '{split:\t:0}'"
 mode = "execute"
+

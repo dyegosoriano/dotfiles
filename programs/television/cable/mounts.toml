@@ -1,3 +1,4 @@
+
 [metadata]
 name = "mounts"
 description = "List mounted filesystems"
@@ -15,5 +16,6 @@ enter = "actions:cd"
 
 [actions.cd]
 description = "Open a shell in the selected mount point"
-command = "cd '{}' && $SHELL"
+command = "cd {} && $SHELL"
 mode = "execute"
+

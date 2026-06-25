@@ -20,3 +20,4 @@ mode = "execute"
 description = "Kill the selected window"
 command = "tmux kill-window -t '{split:\t:0}'"
 mode = "fork"
+

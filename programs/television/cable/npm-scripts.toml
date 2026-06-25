@@ -10,13 +10,14 @@ display = "{split:\\t:0}"
 [preview]
 command = "jq -r '.scripts[\"{split:\\t:0}\"]' package.json"
 
-[ui.preview_panel]
-size = 30
-
 [keybindings]
 enter = "actions:run"
+
+[ui.preview_panel]
+size = 30
 
 [actions.run]
 description = "Run the selected npm script"
 command = "npm run '{split:\\t:0}'"
 mode = "execute"
+

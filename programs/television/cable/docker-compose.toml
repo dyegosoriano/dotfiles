@@ -30,3 +30,4 @@ mode = "fork"
 description = "Follow logs of the selected service"
 command = "docker compose logs -f '{split:\t:1}'"
 mode = "execute"
+

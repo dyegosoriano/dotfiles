@@ -11,3 +11,4 @@ command = "fc-list '{}' --format='%{file}\n%{style}\n%{family}\n' | head -20"
 
 [ui.preview_panel]
 size = 70
+

@@ -18,3 +18,4 @@ layout = "portrait"
 description = "Remove the selected network"
 command = "podman network rm '{split:\t:0}'"
 mode = "execute"
+

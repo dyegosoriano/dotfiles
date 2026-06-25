@@ -23,3 +23,4 @@ mode = "execute"
 description = "Inspect the selected volume in a pager"
 command = "podman volume inspect '{split:\t:0}' | jq -C '.[0]' | less -R"
 mode = "execute"
+

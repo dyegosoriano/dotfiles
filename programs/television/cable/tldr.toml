@@ -19,3 +19,4 @@ ctrl-e = "actions:open"
 description = "Open the selected TLDR page"
 command = "tldr '{0}'"
 mode = "execute"
+

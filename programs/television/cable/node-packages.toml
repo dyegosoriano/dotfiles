@@ -19,3 +19,4 @@ mode = "execute"
 description = "Open the package homepage"
 command = "node -e \"const p=require('./node_modules/{}/package.json'); const u=p.homepage||'https://www.npmjs.com/package/'+p.name; require('child_process').exec('xdg-open '+u)\""
 mode = "fork"
+

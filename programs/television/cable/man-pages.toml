@@ -4,22 +4,25 @@ description = "Browse and preview system manual pages"
 requirements = ["apropos", "man"]
 
 [source]
-# List all man pages using apropos
 command = "apropos ."
 
 [preview]
-# Show the man page for the selected entry
 command = "man '{0}'"
-env = { "MANWIDTH" = "80" }
 
 [keybindings]
 enter = "actions:open"
+
+[ui]
+layout = "portrait"
+
+[preview.env]
+MANWIDTH = "80"
 
 [actions.open]
 description = "Open the selected man page in the system pager"
 command = "man '{0}'"
 mode = "execute"
 
-[ui]
-layout = "portrait"
-preview_panel = { header = "{0}" }
+[ui.preview_panel]
+header = "{0}"
+

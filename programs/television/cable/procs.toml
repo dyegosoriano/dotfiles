@@ -36,3 +36,4 @@ mode = "fork"
 description = "Continue/resume the selected process (SIGCONT)"
 command = "kill -CONT {split: :0}"
 mode = "fork"
+

@@ -32,3 +32,4 @@ mode = "execute"
 description = "Checkout the selected commit"
 command = "git checkout '{strip_ansi|split: :1}'"
 mode = "execute"
+

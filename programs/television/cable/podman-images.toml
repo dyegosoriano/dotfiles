@@ -32,3 +32,4 @@ mode = "execute"
 description = "Remove the selected image"
 command = "podman rmi '{split: :-1}'"
 mode = "execute"
+

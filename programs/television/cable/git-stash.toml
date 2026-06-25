@@ -35,3 +35,4 @@ mode = "execute"
 description = "Drop the selected stash"
 command = "git stash drop '{strip_ansi|split:\\::0}'"
 mode = "execute"
+

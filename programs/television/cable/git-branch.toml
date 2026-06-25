@@ -35,3 +35,4 @@ mode = "execute"
 description = "Rebase current branch onto the selected branch"
 command = "git rebase '{0}'"
 mode = "execute"
+

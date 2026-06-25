@@ -20,3 +20,4 @@ mode = "execute"
 description = "Kill the selected session"
 command = "tmux kill-session -t '{split:\t:0}'"
 mode = "fork"
+

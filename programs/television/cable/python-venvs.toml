@@ -18,3 +18,4 @@ mode = "execute"
 description = "List all packages in the selected venv"
 command = "'{}/bin/pip' list | less"
 mode = "execute"
+

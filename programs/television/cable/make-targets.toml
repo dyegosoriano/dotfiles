@@ -16,3 +16,4 @@ enter = "actions:run"
 description = "Run the selected make target"
 command = "make {}"
 mode = "execute"
+

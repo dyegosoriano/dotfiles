@@ -4,12 +4,15 @@ description = "List and manage Docker containers"
 requirements = ["docker", "jq"]
 
 [source]
-command = [
-  "docker ps --format '{{.Names}}\\t{{.Image}}\\t{{.Status}}'",
-  "docker ps -a --format '{{.Names}}\\t{{.Image}}\\t{{.Status}}'",
-]
 display = "{split:\\t:0} ({split:\\t:2})"
 output = "{split:\\t:0}"
+[[source.command]]
+name = "Running"
+run = "docker ps --format '{{.Names}}\\t{{.Image}}\\t{{.Status}}'"
+
+[[source.command]]
+name = "All"
+run = "docker ps -a --format '{{.Names}}\\t{{.Image}}\\t{{.Status}}'"
 
 [preview]
 command = "docker inspect '{split:\\t:0}' | jq -C '.[0] | {Name, State, Config: {Image: .Config.Image, Cmd: .Config.Cmd}, NetworkSettings: {IPAddress: .NetworkSettings.IPAddress}}'"
@@ -54,3 +57,4 @@ mode = "execute"
 description = "Remove the selected container"
 command = "docker rm '{split:\\t:0}'"
 mode = "execute"
+

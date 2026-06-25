@@ -11,12 +11,15 @@ command = "cargo {} --help 2>/dev/null | head -50"
 
 [ui]
 layout = "portrait"
-preview_panel = { size = 60 }
 
 [keybindings]
 enter = "actions:run"
 
+[ui.preview_panel]
+size = 60
+
 [actions.run]
 description = "Run the selected cargo command"
-command = "cargo '{}'"
+command = "cargo {}"
 mode = "execute"
+
