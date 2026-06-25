@@ -1,9 +1,12 @@
-utils/fonts/.uuid
 shell/fish/fish_variables
+utils/fonts/.uuid
 shell/fish/conf.d
-.DS_Store
 examples
 backup
+
+.DS_Store
+*.bak-*
+*.bak.*
 
 programs/nvim/lazy-lock.json
 programs/tmuxifier/layouts/*
