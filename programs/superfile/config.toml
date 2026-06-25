@@ -14,7 +14,7 @@ show_image_preview = true         # Whether to show image preview.
 auto_check_update = true          # Auto check for update
 file_size_use_si = false          # Display file sizes using powers of 1000 (kB, MB, GB) instead of powers of 1024 (KiB, MiB, GiB).
 default_directory = '.'           # The path of the first file panel when superfile is opened.
-default_sort_type = 3             # Default sort type (0: Name, 1: Size, 2: Date Modified, 3: Type).
+default_sort_type = 3             # Default sort type (0: Name, 1: Size, 2: Date Modified, 3: Type, 4: Natural).
 page_scroll_size = 0              # Number of lines to scroll for PgUp/PgDown keys (0: full page, default behavior).
 cd_on_quit = false                # Cd on quit (For more details, please check out https://superfile.dev/configure/superfile-config/#cd_on_quit)
 dir_editor = ''                   # The editor directories will be opened with. (Leave blank to use the default editors).
@@ -23,13 +23,14 @@ debug = false                     # Whether to enable debug mode.
 
 # ================   Style =================
 
-file_preview_width = 0 # File preview width allow '0' (this mean same as file panel),'x' x must be less than 10 and greater than 1 (This means that the width of the file preview will be one xth of the total width.)
-code_previewer = 'bat' # Whether to use the builtin syntax highlighting with chroma or use bat. Values: "" for builtin chroma, "bat" for bat
-transparent_background = true # Set transparent background or not (this only work when your terminal background is transparent)
-enable_file_preview_border = false # Enable border around the file preview panel (default: false)
-nerdfont = true #  If you don't have or don't want Nerdfont installed you can turn this off
-show_select_icons = true # Show checkbox icons in select mode (requires nerdfont)
-sidebar_width = 20 # The length of the sidebar(excluding borders). If you don't want to display the sidebar, you can input 0 directly. If you want to display the value, please place it in the range of 5-20.
+sidebar_sections = ['home', 'pinned', 'disks']  # Order of sidebar sections (valid values: "home", "pinned", "disks"). # Only sections included in this list will be displayed.
+enable_file_preview_border = false              # Enable border around the file preview panel (default: false)
+transparent_background = true                   # Set transparent background or not (this only work when your terminal background is transparent)
+show_select_icons = true                        # Show checkbox icons in select mode (requires nerdfont)
+file_preview_width = 0                          # File preview width allow '0' (this mean same as file panel),'x' x must be less than 10 and greater than 1 (This means that the width of the file preview will be one xth of the total width.)
+code_previewer = 'bat'                          # Whether to use the builtin syntax highlighting with chroma or use bat. Values: "" for builtin chroma, "bat" for bat
+sidebar_width = 20                              # The length of the sidebar(excluding borders). If you don't find to display the sidebar, you can input 0 directly. If you want to display the value, please place it in the range of 5-20.
+nerdfont = true                                 # If you don't have or don't want Nerdfont installed you can turn this off
 
 # Border style
 border_bottom_right = '╯'
@@ -46,6 +47,6 @@ border_top = '─'
 # ==========PLUGINS========== #
 # Plugins means that you need to install some external dependencies to use them.
 
-metadata = false # Show more detailed metadata, please install exiftool before enabling this plugin!
 enable_md5_checksum = false # Enable MD5 checksum generation for files
-zoxide_support = true # Zoxide support for the fast navigation
+zoxide_support = true       # Zoxide support for the fast navigation
+metadata = false            # Show more detailed metadata, please install exiftool before enabling this plugin!
