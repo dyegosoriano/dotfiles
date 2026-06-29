@@ -5,6 +5,7 @@ import {
   matchesGitignorePattern,
   readGitignorePatterns,
 } from "./utils/gitignore-utils.js";
+import { isGuardianFeatureEnabled } from "./config.js";
 
 export { GitignoreGuardError } from "./errors/gitignore-guard-error.js";
 
@@ -17,6 +18,7 @@ export type GitignoreGuardResult = {
 };
 
 function gitignoreDecision(params: { path: string; rootDir: string }): { blocked: boolean; allowedByException: boolean } {
+  if (!isGuardianFeatureEnabled("gitignore")) return { blocked: false, allowedByException: false };
   const patterns = readGitignorePatterns({ rootDir: params.rootDir });
   let blocked = false;
   let allowedByException = false;
@@ -50,6 +52,7 @@ export function guardGitignoreAccess(params: {
   operation: GitignoreGuardOperation;
 }): GitignoreGuardResult {
   const rootDir = params.rootDir ?? process.cwd();
+  if (!isGuardianFeatureEnabled("gitignore")) return { allowed: true, hidden: false };
   const blocked =
     params.operation === "terminal"
       ? commandContainsGitignoredPath({ command: params.path, patterns: readGitignorePatterns({ rootDir }), rootDir })

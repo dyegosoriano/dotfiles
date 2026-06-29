@@ -2,6 +2,24 @@
 
 Extensão/camada do PI Agent para bloquear acesso a arquivos sensíveis por padrões configuráveis.
 
+## Feature flags
+
+Ative/desative guardas somente em `@coding-agents/pi/agent/settings.json`:
+
+```json
+{
+  "piGuardian": {
+    "features": {
+      "file": true,
+      "path": true,
+      "gitignore": true
+    }
+  }
+}
+```
+
+Use `false` para desativar uma camada sem remover a extensão.
+
 ## API
 
 ```ts
@@ -24,6 +42,8 @@ import { assertFileAccessAllowed, FileGuardError, BLOQUED_FILES, isBlockedFile }
 - `src/guard-path.ts` — regra pública de bloqueio de diretórios sensíveis
 
 Essa separação permite reaproveitar utilitários em futuras features, como bloqueio de diretórios.
+
+Com as feature flags no `settings.json` você pode desligar só uma camada sem remover a extensão.
 
 ## Exemplos de uso
 

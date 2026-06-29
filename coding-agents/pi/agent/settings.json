@@ -1,20 +1,27 @@
 {
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4-mini",
-  "defaultThinkingLevel": "low",
   "lastChangelogVersion": "0.80.2",
-  "theme": "dark",
+  "defaultThinkingLevel": "low",
+  "doubleEscapeAction": "tree",
+  "showHardwareCursor": false,
+  "treeFilterMode": "default",
   "collapseChangelog": true,
   "hideThinkingBlock": true,
+  "defaultModel": "gpt-5.5",
   "quietStartup": true,
+  "editorPaddingX": 0,
+  "theme": "dark",
   "images": {
     "blockImages": true
   },
-  "showHardwareCursor": false,
-  "editorPaddingX": 0,
+  "piGuardian": {
+    "features": {
+      "gitignore": true
+      "file": true,
+      "path": true,
+    }
+  },
   "terminal": {
     "showTerminalProgress": false
   },
-  "treeFilterMode": "default",
-  "doubleEscapeAction": "tree"
 }
