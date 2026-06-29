@@ -15,6 +15,7 @@ export const BLOQUED_FILES = [
   "id_ed25519",
   "*.keystore",
   "*password*",
+  "auth.json",
   "id_ecdsa",
   "*.secret",
   "*.tfvars",
