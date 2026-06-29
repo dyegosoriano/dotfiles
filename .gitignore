@@ -4,6 +4,10 @@ shell/fish/conf.d
 examples
 backup
 
+node_modules
+sessions
+dist
+
 .DS_Store
 *.bak-*
 *.bak.*
