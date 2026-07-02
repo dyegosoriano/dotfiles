@@ -65,6 +65,10 @@ export const BLOCKED_CREDENTIALS_PATHS = [
 
 export const BLOCKED_ROOT_PATHS = ["/etc", "/root", "/var", "/boot", "/proc", "/sys", "/dev", "/run/secrets"];
 
+export const ALLOWED_COMMANDS = ["find", "grep", "cat", "pwd", "ls"];
+
+export const BLOCKED_COMMANDS = ["systemctl", "service", "umount", "mount", "chmod", "chown", "rmdir", "pkill", "kill", "sudo", "wget", "curl", "mkfs", "ssh", "scp", "rm", "mv", "cp", "su", "dd"];
+
 export const BLOCKED_CONFIGS_PATHS = [
   "~/.config/kubernetes",
   "~/.config/bitwarden",

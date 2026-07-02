@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 
-export type GuardianFeature = "file" | "path" | "gitignore";
+export type GuardianFeature = "file" | "path" | "gitignore" | "command";
 
 type PiGuardianSettings = Partial<Record<GuardianFeature, boolean>> & {
   features?: Partial<Record<GuardianFeature, boolean>>;

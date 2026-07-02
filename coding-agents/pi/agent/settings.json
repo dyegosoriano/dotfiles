@@ -9,19 +9,23 @@
   "hideThinkingBlock": true,
   "defaultModel": "gpt-5.5",
   "quietStartup": true,
-  "editorPaddingX": 0,
+  "editorPaddingX": 1,
   "theme": "dark",
   "images": {
     "blockImages": true
   },
   "piGuardian": {
     "features": {
-      "gitignore": true
+      "gitignore": true,
       "file": true,
-      "path": true,
+      "path": true
     }
   },
   "terminal": {
     "showTerminalProgress": false
   },
+  "packages": [
+    "npm:remote-pi"
+  ],
+  "outputPad": 1
 }

@@ -8,8 +8,9 @@ import { assertGuardOperationCommandAllowed } from "./src/operations/guard-opera
 import { guardGitignoreAccess, GitignoreGuardError, type GitignoreGuardOperation } from "./src/guard-gitignore.js";
 import { getBashCommand, getEditPaths, getPathInput } from "./src/utils/tool-inputs.js";
 import { isGuardianFeatureEnabled } from "./src/config.js";
+import { assertCommandExecutionAllowed, CommandGuardError } from "./src/guard-command.js";
 
-export { BLOCKED_CREDENTIALS_PATHS, CONTENT_READING_COMMANDS, BLOCKED_CONFIGS_PATHS, BLOCKED_ROOT_PATHS, BLOQUED_FILES } from "./src/constants/guardian-constants.js";
+export { ALLOWED_COMMANDS, BLOCKED_COMMANDS, BLOCKED_CREDENTIALS_PATHS, CONTENT_READING_COMMANDS, BLOCKED_CONFIGS_PATHS, BLOCKED_ROOT_PATHS, BLOQUED_FILES } from "./src/constants/guardian-constants.js";
 export type { FileGuardOperation, GuardOperation } from "./src/operations/guard-operations.js";
 export { matchesPattern, wildcardPatternToRegExp } from "./src/utils/pattern-matcher.js";
 export { assertPathAccessAllowed, BLOCKED_PATHS, isBlockedPath } from "./src/guard-path.js";
@@ -20,6 +21,9 @@ export { PathGuardError } from "./src/errors/path-guard-error.js";
 export { GitignoreGuardError } from "./src/errors/gitignore-guard-error.js";
 export type { GitignoreGuardOperation, GitignoreGuardResult } from "./src/guard-gitignore.js";
 export { assertGitignoreAccessAllowed, guardGitignoreAccess, isAllowedByGitignoreException, isBlockedByGitignore } from "./src/guard-gitignore.js";
+export { assertCommandExecutionAllowed, extractMainCommand, guardCommandExecution, isAllowedCommand, isBlockedCommand, matchesCommandPattern } from "./src/guard-command.js";
+export { CommandGuardError } from "./src/errors/command-guard-error.js";
+export type { CommandGuardDecision, CommandGuardResult } from "./src/guard-command.js";
 
 export default function piGuardian(pi: ExtensionAPI) {
   pi.on("tool_call", async (event) => {
@@ -27,6 +31,7 @@ export default function piGuardian(pi: ExtensionAPI) {
     const fileGuardEnabled = isGuardianFeatureEnabled("file");
     const pathGuardEnabled = isGuardianFeatureEnabled("path");
     const gitignoreGuardEnabled = isGuardianFeatureEnabled("gitignore");
+    const commandGuardEnabled = isGuardianFeatureEnabled("command");
 
     if (fileGuardEnabled || pathGuardEnabled || gitignoreGuardEnabled) {
       if (isToolCallEventType("read", event)) {
@@ -48,6 +53,9 @@ export default function piGuardian(pi: ExtensionAPI) {
       const command = getBashCommand(event.input);
       if (command) {
         try {
+          if (commandGuardEnabled) {
+            await assertCommandExecutionAllowed({ commandLine: command });
+          }
           if (pathGuardEnabled) {
             assertGuardOperationCommandAllowed({ command, blockedPaths: BLOCKED_PATHS, operation: "execute" });
           }
@@ -55,7 +63,7 @@ export default function piGuardian(pi: ExtensionAPI) {
             guardGitignoreAccess({ path: command, rootDir: process.cwd(), operation: "terminal" });
           }
         } catch (error) {
-          if (error instanceof PathGuardError || error instanceof GitignoreGuardError) return { block: true, reason: error.message };
+          if (error instanceof CommandGuardError || error instanceof PathGuardError || error instanceof GitignoreGuardError) return { block: true, reason: error.message };
           throw error;
         }
 
