@@ -1,9 +1,9 @@
-import { BLOCKED_CONFIGS_PATHS, BLOCKED_CREDENTIALS_PATHS, BLOCKED_ROOT_PATHS } from "./constants/guardian-constants.js";
+import { BLOCKED_CONFIGS_PATHS, BLOCKED_CREDENTIALS_PATHS, BLOCKED_ROOT_PATHS } from "./constants/guard-path-constants.js";
 import { pathContainsBlockedSegment } from "./utils/path-guard-utils.js";
 import { PathGuardError } from "./errors/path-guard-error.js";
 import { isGuardianFeatureEnabled } from "./config.js";
 
-export { BLOCKED_CONFIGS_PATHS, BLOCKED_CREDENTIALS_PATHS, BLOCKED_ROOT_PATHS } from "./constants/guardian-constants.js";
+export { BLOCKED_CONFIGS_PATHS, BLOCKED_CREDENTIALS_PATHS, BLOCKED_ROOT_PATHS } from "./constants/guard-path-constants.js";
 export { PathGuardError } from "./errors/path-guard-error.js";
 
 export const BLOCKED_PATHS = [...BLOCKED_ROOT_PATHS, ...BLOCKED_CREDENTIALS_PATHS, ...BLOCKED_CONFIGS_PATHS];

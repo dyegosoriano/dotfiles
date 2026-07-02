@@ -1,5 +1,5 @@
 import { addAllowedCommand, addBlockedCommand, loadConfig, type CommandPolicyConfig } from "./utils/config-storage.js";
-import { ALLOWED_COMMANDS, BLOCKED_COMMANDS } from "./constants/guardian-constants.js";
+import { ALLOWED_COMMANDS, BLOCKED_COMMANDS } from "./constants/guard-command-constants.js";
 import { CommandGuardError } from "./errors/command-guard-error.js";
 
 export type CommandGuardResult = { requiresConfirmation?: boolean; matchedRule?: string; allowed: boolean; command: string; reason?: string };
@@ -175,5 +175,5 @@ export async function assertCommandExecutionAllowed(params: {
   if (!result.allowed) throw new CommandGuardError({ commandLine: params.commandLine, command: result.command, reason: result.reason });
 }
 
-export { ALLOWED_COMMANDS, BLOCKED_COMMANDS } from "./constants/guardian-constants.js";
+export { ALLOWED_COMMANDS, BLOCKED_COMMANDS } from "./constants/guard-command-constants.js";
 export { CommandGuardError } from "./errors/command-guard-error.js";
