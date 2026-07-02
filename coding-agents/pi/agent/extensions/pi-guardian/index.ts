@@ -26,7 +26,7 @@ export { FileGuardError } from "./src/errors/file-guard-error.js";
 export { PathGuardError } from "./src/errors/path-guard-error.js";
 
 export default function piGuardian(pi: ExtensionAPI) {
-  pi.on("tool_call", async (event) => {
+  pi.on("tool_call", async (event, ctx) => {
     const paths: Array<{ path: string; operation: string }> = [];
     const gitignoreGuardEnabled = isGuardianFeatureEnabled("gitignore");
     const commandGuardEnabled = isGuardianFeatureEnabled("command");
@@ -51,9 +51,28 @@ export default function piGuardian(pi: ExtensionAPI) {
 
     if (isToolCallEventType("bash", event)) {
       const command = getBashCommand(event.input);
+
       if (command) {
         try {
-          if (commandGuardEnabled) await assertCommandExecutionAllowed({ commandLine: command });
+          if (commandGuardEnabled) {
+            await assertCommandExecutionAllowed({
+              commandLine: command,
+              onUnknownCommand: async ({ commandLine }) => {
+                if (!ctx.hasUI) return "block";
+
+                const choice = await ctx.ui.select(
+                  `Unknown command: ${commandLine}\nThis command is not present in the whitelist or blacklist. What do you want to do?`,
+                  ["Allow once", "Allow always", "Reject", "Block"],
+                );
+
+                if (choice === "Allow always") return "add-to-whitelist";
+                if (choice === "Block") return "add-to-blacklist";
+                if (choice === "Allow once") return "allow-once";
+                return "block";
+              },
+            });
+          }
+
           if (pathGuardEnabled) assertGuardOperationCommandAllowed({ command, blockedPaths: BLOCKED_PATHS, operation: "execute" });
           if (gitignoreGuardEnabled) guardGitignoreAccess({ path: command, rootDir: process.cwd(), operation: "terminal" });
 
