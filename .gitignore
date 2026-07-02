@@ -1,6 +1,7 @@
 shell/fish/fish_variables
 utils/fonts/.uuid
 shell/fish/conf.d
+peers.json
 examples
 backup
 
