@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, it } from "node:test";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import assert from "node:assert/strict";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -79,6 +79,51 @@ describe("guard-command", () => {
     assert.equal((await guardCommandExecution({ commandLine: "go test ./..." })).allowed, true);
   });
 
+  it("preserva itens existentes ao adicionar whitelist", async () => {
+    await guardCommandExecution({ commandLine: "go test ./...", onUnknownCommand: () => "add-to-whitelist" });
+    await guardCommandExecution({ commandLine: "go vet ./...", onUnknownCommand: () => "add-to-whitelist" });
+
+    const config = JSON.parse(await readFile(join(home, ".config/pi-guardian/config.json"), "utf8"));
+
+    assert.deepEqual(config.allowedCommands, ["go test ./...", "go vet ./..."]);
+  });
+
+  it("não limpa config existente ao solicitar confirmação", async () => {
+    const configDir = join(home, ".config/pi-guardian");
+    const configPath = join(configDir, "config.json");
+    const rawConfig = `{
+  "blockedCommands": ["python", "python3"],
+  "allowedCommands": ["git commit *", "git status *"],
+}
+`;
+
+    await mkdir(configDir, { recursive: true });
+    await writeFile(configPath, rawConfig);
+
+    await guardCommandExecution({ commandLine: "whoami", onUnknownCommand: () => "allow-once" });
+
+    assert.equal(await readFile(configPath, "utf8"), rawConfig);
+  });
+
+  it("preserva whitelist e blacklist existentes ao adicionar whitelist com vírgula final", async () => {
+    const configDir = join(home, ".config/pi-guardian");
+    const configPath = join(configDir, "config.json");
+
+    await mkdir(configDir, { recursive: true });
+    await writeFile(configPath, `{
+  "blockedCommands": ["python", "python3"],
+  "allowedCommands": ["git commit *", "git status *"],
+}
+`);
+
+    await guardCommandExecution({ commandLine: "go vet ./...", onUnknownCommand: () => "add-to-whitelist" });
+
+    const config = JSON.parse(await readFile(configPath, "utf8"));
+
+    assert.deepEqual(config.blockedCommands, ["python", "python3"]);
+    assert.deepEqual(config.allowedCommands, ["git commit *", "git status *", "go vet ./..."]);
+  });
+
   it("bloqueia e persiste blacklist quando decisão for add-to-blacklist", async () => {
     const result = await guardCommandExecution({ commandLine: "python script.py", onUnknownCommand: () => "add-to-blacklist" });
 
@@ -88,6 +133,34 @@ describe("guard-command", () => {
 
     assert.deepEqual(config.blockedCommands, ["python script.py"]);
     assert.equal((await guardCommandExecution({ commandLine: "python script.py", onUnknownCommand: () => "allow-once" })).allowed, false);
+  });
+
+  it("preserva itens existentes ao adicionar blacklist", async () => {
+    await guardCommandExecution({ commandLine: "python script.py", onUnknownCommand: () => "add-to-blacklist" });
+    await guardCommandExecution({ commandLine: "ruby script.rb", onUnknownCommand: () => "add-to-blacklist" });
+
+    const config = JSON.parse(await readFile(join(home, ".config/pi-guardian/config.json"), "utf8"));
+
+    assert.deepEqual(config.blockedCommands, ["python script.py", "ruby script.rb"]);
+  });
+
+  it("preserva whitelist e blacklist existentes ao adicionar blacklist com vírgula final", async () => {
+    const configDir = join(home, ".config/pi-guardian");
+    const configPath = join(configDir, "config.json");
+
+    await mkdir(configDir, { recursive: true });
+    await writeFile(configPath, `{
+  "blockedCommands": ["python", "python3"],
+  "allowedCommands": ["git commit *", "git status *"],
+}
+`);
+
+    await guardCommandExecution({ commandLine: "ruby script.rb", onUnknownCommand: () => "add-to-blacklist" });
+
+    const config = JSON.parse(await readFile(configPath, "utf8"));
+
+    assert.deepEqual(config.blockedCommands, ["python", "python3", "ruby script.rb"]);
+    assert.deepEqual(config.allowedCommands, ["git commit *", "git status *"]);
   });
 
   it("bloqueia comandos compostos com operadores de shell", async () => {

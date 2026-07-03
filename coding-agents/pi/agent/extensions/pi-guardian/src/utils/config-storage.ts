@@ -18,20 +18,18 @@ function normalizeConfig(value: unknown): CommandPolicyConfig {
   };
 }
 
+function parseConfig(raw: string): CommandPolicyConfig {
+  return normalizeConfig(JSON.parse(raw.replace(/,\s*([}\]])/g, "$1")));
+}
+
 export async function loadConfig(): Promise<CommandPolicyConfig> {
   const path = configPath();
   await mkdir(join(path, ".."), { recursive: true });
 
   try {
     const raw = await readFile(path, "utf8");
-    const config = normalizeConfig(JSON.parse(raw));
-
-    if (JSON.stringify(config) !== JSON.stringify(JSON.parse(raw))) await saveConfig(config);
-
-    return config;
+    return parseConfig(raw);
   } catch {
-    await saveConfig(DEFAULT_CONFIG);
-
     return { ...DEFAULT_CONFIG };
   }
 }
@@ -52,24 +50,31 @@ export async function saveConfig(config: CommandPolicyConfig): Promise<void> {
 
 async function readExistingConfig(): Promise<CommandPolicyConfig> {
   try {
-    return normalizeConfig(JSON.parse(await readFile(configPath(), "utf8")));
+    return parseConfig(await readFile(configPath(), "utf8"));
   } catch {
     return { ...DEFAULT_CONFIG };
   }
 }
 
 export async function addAllowedCommand(command: string): Promise<void> {
-  const config = await loadConfig();
+  const config = await readExistingConfig();
 
   if (!config.allowedCommands.includes(command)) config.allowedCommands.push(command);
 
-  await saveConfig(config);
+  await writeConfig(config);
 }
 
 export async function addBlockedCommand(command: string): Promise<void> {
-  const config = await loadConfig();
+  const config = await readExistingConfig();
 
   if (!config.blockedCommands.includes(command)) config.blockedCommands.push(command);
 
-  await saveConfig(config);
+  await writeConfig(config);
+}
+
+async function writeConfig(config: CommandPolicyConfig): Promise<void> {
+  const path = configPath();
+
+  await mkdir(join(path, ".."), { recursive: true });
+  await writeFile(path, `${JSON.stringify(normalizeConfig(config), null, 2)}\n`, "utf8");
 }
