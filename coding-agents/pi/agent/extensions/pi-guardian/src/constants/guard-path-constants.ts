@@ -20,6 +20,7 @@ export const BLOCKED_CREDENTIALS_PATHS = [
 ];
 
 export const BLOCKED_CONFIGS_PATHS = [
+  "~/.config/pi-guardian",
   "~/.config/kubernetes",
   "~/.config/bitwarden",
   "~/.config/1password",

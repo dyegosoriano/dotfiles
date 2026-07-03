@@ -92,7 +92,11 @@ export function matchesWildcardCommandPattern(params: { commandLine: string; pat
   const command = normalizeCommandLine({ commandLine: params.commandLine });
   const pattern = normalizeCommandLine({ commandLine: params.pattern });
 
-  if (pattern.endsWith(" *")) return command === pattern.slice(0, -2) || command.startsWith(pattern.slice(0, -1));
+  if (pattern.includes("*")) {
+    const source = pattern.split("*").map((part) => part.replace(/[|\\{}()[\]^$+?.]/g, "\\$&")).join(".*");
+
+    return new RegExp(`^${source}$`).test(command);
+  }
 
   return command === pattern || extractMainCommand({ commandLine: command }) === pattern;
 }

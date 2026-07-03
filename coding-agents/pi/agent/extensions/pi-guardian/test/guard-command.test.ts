@@ -44,6 +44,10 @@ describe("guard-command", () => {
     }
   });
 
+  it("permite comando coberto por wildcard", () => {
+    assert.equal(matchesCommandPattern({ commandLine: "git commit -m 'chore: add test'", pattern: "git commit *" }), true);
+  });
+
   it("solicita confirmação para comando fora da whitelist e blacklist", async () => {
     const result = await guardCommandExecution({ commandLine: "whoami", onUnknownCommand: () => "allow-once" });
 
