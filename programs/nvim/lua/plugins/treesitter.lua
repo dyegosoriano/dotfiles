@@ -18,6 +18,7 @@ return {
         'scss',
         'json',
         'bash',
+        'fish',
         'yaml',
         'html',
         'vim',
