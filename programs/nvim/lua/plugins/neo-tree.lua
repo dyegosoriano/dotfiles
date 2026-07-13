@@ -11,6 +11,7 @@ return {
   },
   config = function()
     require("neo-tree").setup({
+      hide_root_node = true,
       sources = { "filesystem", "buffers", "git_status", "document_symbols" },
       filesystem = {
         follow_current_file = {
