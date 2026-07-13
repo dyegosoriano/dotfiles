@@ -54,6 +54,6 @@ if test -d ~/.dotfiles/shell/fish/functions
 end
 
 # Configurações do FZF
+set -gx FZF_CTRL_T_OPTS "--preview 'if test -d {}; eza --tree --color=always {} | head -200; else bat -n --color=always {}; end'"
 set -gx FZF_DEFAULT_OPTS "--walker-skip .git,node_modules,dist --layout reverse --border top --height 40% --style full"
 set -gx FZF_ALT_C_OPTS "--preview 'eza --tree --color=always {} | head -200'"
-set -gx FZF_CTRL_T_OPTS "--preview 'bat -n color=always {}'"
