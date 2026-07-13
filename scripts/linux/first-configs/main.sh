@@ -10,7 +10,9 @@ echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 
 # TOOLS
 [ -d "$HOME/.config/television" ] && mv "$HOME/.config/television" "$HOME/.config/television.backup" 2>/dev/null; ln -sfn "$SRC/programs/television" "$HOME/.config/television"
+[ -d "$HOME/.config/lazydocker" ] && mv "$HOME/.config/lazydocker" "$HOME/.config/lazydocker.backup" 2>/dev/null; ln -sfn "$SRC/programs/lazydocker" "$HOME/.config/lazydocker"
 [ -d "$HOME/.config/fastfetch" ] && mv "$HOME/.config/fastfetch" "$HOME/.config/fastfetch.backup" 2>/dev/null; ln -sfn "$SRC/programs/fastfetch" "$HOME/.config/fastfetch"
+[ -d "$HOME/.config/lazygit" ] && mv "$HOME/.config/lazygit" "$HOME/.config/lazygit.backup" 2>/dev/null; ln -sfn "$SRC/programs/lazygit" "$HOME/.config/lazygit"
 [ -d "$HOME/.config/btop" ] && mv "$HOME/.config/btop" "$HOME/.config/btop.backup" 2>/dev/null; ln -sfn "$SRC/programs/btop" "$HOME/.config/btop"
 [ -d "$HOME/.config/cava" ] && mv "$HOME/.config/cava" "$HOME/.config/cava.backup" 2>/dev/null; ln -sfn "$SRC/programs/cava" "$HOME/.config/cava"
 
