@@ -5,6 +5,7 @@ return {
   {
     'mason-org/mason.nvim',
     opts = {
+      ensure_installed = { 'shfmt' },
       ui = { icons = { package_uninstalled = '✗', package_installed = '✓', package_pending = '➜' } },
     },
   },
