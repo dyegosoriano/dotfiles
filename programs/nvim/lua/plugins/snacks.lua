@@ -2,8 +2,8 @@
 -- if true then return {} end
 
 return {
-  'folke/snacks.nvim',
-  dependencies = { 'echasnovski/mini.icons', },
+  "folke/snacks.nvim",
+  dependencies = { "echasnovski/mini.icons" },
   priority = 1000,
   lazy = false,
   opts = {
@@ -43,5 +43,5 @@ return {
     -- { '<leader>fb',       function() Snacks.picker.buffers() end,     desc = 'Buffers' },
     -- { '<leader>fg',       function() Snacks.picker.grep() end,        desc = 'Grep Files' },
     -- { '<C-n>',            function() Snacks.explorer() end,           desc = 'Explorer' },
-  }
+  },
 }
