@@ -1,5 +1,5 @@
 -- Selecione aqui: "dracula", "vesper", "aura" ou "catppuccin".
-local colorscheme = "catppuccin"
+local colorscheme = "aura"
 
 return {
   {
