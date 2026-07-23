@@ -5,8 +5,8 @@ TERM = "xterm-256color"
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font" }
-bold = { family = "JetBrainsMono Nerd Font" }
 italic = { family = "JetBrainsMono Nerd Font" }
+bold = { family = "JetBrainsMono Nerd Font" }
 size = 9
 
 [colors.primary]
@@ -22,7 +22,8 @@ blur = true
 
 [keyboard]
 bindings = [
-  { key = "Return", mods = "Shift", chars = "\u001B\r" },
+  { key = "Return", mods = "Alt|Shift", chars = "\u001B[13;4u" },
+  { key = "Return", mods = "Shift", chars = "\u001B[13;2u" },
   { key = "Insert", mods = "Control", action = "Copy" },
   { key = "Insert", mods = "Shift", action = "Paste" }
 ]
