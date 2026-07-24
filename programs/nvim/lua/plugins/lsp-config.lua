@@ -3,17 +3,18 @@
 
 return {
   {
-    'mason-org/mason.nvim',
+    "mason-org/mason.nvim",
     opts = {
-      ensure_installed = { 'shfmt' },
-      ui = { icons = { package_uninstalled = '✗', package_installed = '✓', package_pending = '➜' } },
+      ui = { icons = { package_uninstalled = "✗", package_installed = "✓", package_pending = "➜" } },
+      ensure_installed = { "shfmt" },
     },
   },
   {
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
     opts = {
       servers = {
         tailwindcss = {},
+        prismals = {},
         lua_ls = {},
         ts_ls = {},
         gopls = {},
