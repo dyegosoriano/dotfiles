@@ -29,6 +29,7 @@ return {
       },
       window = {
         auto_expand_width = false,
+        position = "right",
         mappings = {},
         width = 30,
       },
