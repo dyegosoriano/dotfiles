@@ -3,18 +3,24 @@
 -- Add any additional options here
 
 -- Clipboard configuration
-if vim.fn.has('unnamedplus') == 1 then vim.opt.clipboard = 'unnamedplus' end
-if vim.fn.has('unnamed') == 1 then vim.opt.clipboard = 'unnamed' end
+if vim.fn.has("unnamedplus") == 1 then
+  vim.opt.clipboard = "unnamedplus"
+end
+if vim.fn.has("unnamed") == 1 then
+  vim.opt.clipboard = "unnamed"
+end
 
-vim.g.maplocalleader = ',' -- (Opcional) Define uma tecla líder local, útil para mapeamentos específicos de buffer
-vim.g.mapleader = ' '      -- Define a barra de espaço como tecla líder
+vim.g.maplocalleader = "," -- (Opcional) Define uma tecla líder local, útil para mapeamentos específicos de buffer
+vim.g.mapleader = " " -- Define a barra de espaço como tecla líder
 
 -- Editor config settings
-vim.opt.fileencoding = 'utf-8'
+vim.opt.fileencoding = "utf-8"
 vim.opt.fixendofline = true
+vim.opt.fileformat = "unix"
 vim.opt.endofline = true
 vim.opt.expandtab = true
 vim.opt.softtabstop = 2
+vim.opt.textwidth = 160
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 
@@ -22,7 +28,7 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.number = true
 
-vim.opt.fillchars:append({ eob = ' ' })
-vim.g.netrw_list_hide = ''
+vim.opt.fillchars:append({ eob = " " })
+vim.g.netrw_list_hide = ""
 
 vim.o.swapfile = false
