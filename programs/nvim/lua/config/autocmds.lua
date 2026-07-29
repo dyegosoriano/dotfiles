@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd(
 )
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "fish", "sh" },
+  pattern = { "fish", "lua", "sh" },
   callback = function()
     vim.bo.fileformat = "unix"
     vim.bo.expandtab = true
