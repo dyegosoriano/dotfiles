@@ -1,0 +1,13 @@
+{
+  "pi-guardian": {
+    "commandExecutionEnabled": true,
+    "features": {
+      "gitignore": true,
+      "command": true,
+      "file": true,
+      "path": true
+    },
+    "allowedCommands": ["nvim --headless *", "find *", "rg *"],
+    "blockedCommands": []
+  }
+}
