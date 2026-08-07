@@ -16,7 +16,7 @@ return {
         tailwindcss = {},
         prismals = {},
         lua_ls = {},
-        ts_ls = {},
+        biome = {},
         gopls = {},
         pylsp = {},
       },
