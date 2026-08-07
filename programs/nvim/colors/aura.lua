@@ -39,7 +39,7 @@ hi("WinSeparator", { fg = c.surface }) -- Define o separador entre janelas divid
 hi("CursorColumn", { bg = c.bg }) -- Define o fundo da coluna onde está o cursor.
 hi("CursorLine", { bg = c.bg }) -- Define o fundo da linha onde está o cursor.
 
-hi("CursorLineNr", { fg = c.orange, bold = true }) -- Destaca o número da linha atual em laranja.
+hi("CursorLineNr", { fg = c.purple, bold = true }) -- Destaca o número da linha atual em laranja.
 hi("MatchParen", { fg = c.orange, bold = true }) -- Destaca parênteses correspondentes em laranja.
 hi("FloatBorder", { fg = c.purple, bg = c.bg }) -- Define a borda roxa das janelas flutuantes.
 hi("IncSearch", { fg = c.bg, bg = c.purple }) -- Destaca a ocorrência atual da busca com fundo roxo.
