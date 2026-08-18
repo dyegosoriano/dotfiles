@@ -1,14 +1,14 @@
-@import "../omarchy/current/theme/waybar.css";
+@define-color foreground #ffffff;
+@define-color background #000000;
 
 * {
-  background: transparent;
+  background: @background;
   color: @foreground;
 
-  border: none;
-  border-radius: 0;
-  min-height: 0;
   font-family: 'JetBrainsMono Nerd Font';
   font-size: 12px;
+
+  border: none;
 }
 
 .modules-left {
@@ -20,6 +20,17 @@
 }
 
 #clock {
+}
+
+tooltip {
+  background: @background;
+  color: @foreground;
+}
+
+tooltip label {
+  background: transparent;
+  color: @foreground;
+  padding: 4px 8px;
 }
 
 #workspaces button {
@@ -58,20 +69,6 @@
   margin-right: 18px;
 }
 
-tooltip {
-  background: @background;
-  color: @foreground;
-  border: 1px solid alpha(@foreground, 0.25);
-  border-radius: 8px;
-  padding: 2px;
-}
-
-tooltip label {
-  background: transparent;
-  color: @foreground;
-  padding: 4px 8px;
-}
-
 #custom-update {
   font-size: 10px;
 }
@@ -79,7 +76,6 @@ tooltip label {
 .hidden {
   opacity: 0;
 }
-
 
 #custom-notification-silencing-indicator,
 #custom-screenrecording-indicator,
@@ -110,8 +106,7 @@ tooltip label {
 }
 
 #custom-weather {
-  margin-right: 7.5px;
-  margin-left: 7.5px;
+  margin-right: 17px;
 }
 
 #custom-weather.unavailable {
