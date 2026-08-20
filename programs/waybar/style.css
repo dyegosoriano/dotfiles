@@ -25,12 +25,15 @@
 tooltip {
   background: @background;
   color: @foreground;
+  padding: 0;
+  margin: 0;
 }
 
 tooltip label {
   background: transparent;
   color: @foreground;
-  padding: 4px 8px;
+  padding: 0;
+  margin: 0;
 }
 
 #workspaces button {
@@ -44,33 +47,19 @@ tooltip label {
   opacity: 0.5;
 }
 
+#custom-expand-icon,
 #custom-omarchy,
+#custom-weather,
 #custom-update,
+#custom-update,
+#custom-aibar,
 #pulseaudio,
+#bluetooth,
+#network,
 #battery,
+#tray,
 #cpu {
-  min-width: 12px;
-  margin: 0 7.5px;
-}
-
-#tray {
-  margin-right: 16px;
-}
-
-#bluetooth {
-  margin-right: 17px;
-}
-
-#network {
-  margin-right: 13px;
-}
-
-#custom-expand-icon {
-  margin-right: 18px;
-}
-
-#custom-update {
-  font-size: 10px;
+  margin-right: 14px;
 }
 
 .hidden {
@@ -103,10 +92,6 @@ tooltip label {
 #custom-notification-silencing-indicator.active,
 #custom-idle-indicator.active {
   color: #a55555;
-}
-
-#custom-weather {
-  margin-right: 17px;
 }
 
 #custom-weather.unavailable {
