@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../../" &> /dev/null && pwd )"
@@ -54,6 +55,5 @@ echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 
 # AI CODING
 [ -d "$HOME/.config/opencode" ] && mv "$HOME/.config/opencode" "$HOME/.config/opencode.backup" 2>/dev/null; ln -sfn "$SRC/coding-agents/opencode" "$HOME/.config/opencode"
-[ -d "$HOME/.pi" ] && mv "$HOME/.pi" "$HOME/.pi.backup" 2>/dev/null; ln -sfn "$SRC/coding-agents/pi" "$HOME/.pi"
 
 echo -e '\n\033[0;36mFinished.\033[0m'
