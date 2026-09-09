@@ -1,6 +1,6 @@
 {
   "modules-center": ["clock", "custom/update", "custom/voxtype", "custom/screenrecording-indicator", "custom/idle-indicator", "custom/notification-silencing-indicator"],
-  "modules-right": ["group/tray-expander", "custom/aibar", "custom/weather", "bluetooth", "network", "pulseaudio", "cpu", "battery"],
+  "modules-right": ["group/tray-expander", "custom/aibar", "custom/weather", "cpu", "network", "bluetooth", "pulseaudio", "battery"],
   "modules-left": ["custom/omarchy", "hyprland/workspaces"],
 
   "reload_style_on_change": true,
@@ -11,7 +11,7 @@
   
   "hyprland/workspaces": {
     "format-icons": { "default": "", "active": "󱓻", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "0" },
-    "persistent-workspaces": { "1": [], "2": [], "3": [], "4": [], "5": [], "6": [], "7": [], "8": [], "9": [], "10": [] },
+    "persistent-workspaces": { "1": [], "2": [], "3": [], "4": [], "5": [], "6": [], "7": [] },
     "on-click": "activate",
     "format": "{icon}"
   },
@@ -23,7 +23,7 @@
     "on-click": "ai-usagebar-tui",
     "return-type": "json",
     "tooltip": true,
-    "interval": 60,
+    "interval": 30,
     "signal": 13
   },
 

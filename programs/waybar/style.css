@@ -51,7 +51,6 @@ tooltip label {
 #custom-omarchy,
 #custom-weather,
 #custom-update,
-#custom-update,
 #custom-aibar,
 #pulseaudio,
 #bluetooth,
@@ -59,7 +58,7 @@ tooltip label {
 #battery,
 #tray,
 #cpu {
-  margin-right: 14px;
+  margin: 0px 7px;
 }
 
 .hidden {
