@@ -12,6 +12,7 @@ clear
 echo -e '\n\033[0;36mCopy files...\033[0m\n'
 
 rsync -azv --delete --delete-excluded --force -e "ssh -i $SSH_KEY" --update \
+  --exclude='/**/prisma/schemas/generated/***' \
   --exclude='/Documents/**/.docker/data/***' \
   --exclude='/Documents/**/node_modules/***' \
   --exclude='/Documents/**/.angular/***' \
@@ -22,6 +23,7 @@ rsync -azv --delete --delete-excluded --force -e "ssh -i $SSH_KEY" --update \
   --include='/.dotfiles/***' \
   --include='/Pictures/***' \
   --include='/Music/***' \
+  --include='/.ssh/***' \
   --exclude='/.pi/**/node_modules/***' \
   --include='/.pi/***' \
   --exclude='*' \
