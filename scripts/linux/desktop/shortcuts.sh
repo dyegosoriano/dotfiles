@@ -47,6 +47,7 @@ echo -e '\n\033[0;36mConfiguring shell...\033[0m'
 [ -f "$HOME/.bash_aliases" ] && mv "$HOME/.bash_aliases" "$HOME/.bash_aliases.backup" 2>/dev/null; ln -sfn "$SRC/shell/bash/aliases" "$HOME/.bash_aliases"
 [ -d "$HOME/.config/tmux" ] && mv "$HOME/.config/tmux" "$HOME/.config/tmux.backup" 2>/dev/null; ln -sfn "$SRC/programs/tmux" "$HOME/.config/tmux"
 [ -d "$HOME/.config/fish" ] && mv "$HOME/.config/fish" "$HOME/.config/fish.backup" 2>/dev/null; ln -sfn "$SRC/shell/fish" "$HOME/.config/fish"
+[ -f "$HOME/.bashrc" ] && mv "$HOME/.bashrc" "$HOME/.bashrc.backup" 2>/dev/null; ln -sfn "$SRC/shell/bash/bashrc" "$HOME/.bashrc"
 [ -f "$HOME/.zshrc" ] && mv "$HOME/.zshrc" "$HOME/.zshrc.backup" 2>/dev/null; ln -sfn "$SRC/shell/zsh/zshrc" "$HOME/.zshrc"
 
 # EDITOR
